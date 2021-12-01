@@ -2,12 +2,26 @@
 <html lang="de">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titel der Seite | Name der Website</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Orpheus-Musikverleih</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
   </head>
   <body>
-    <!-- Sichtbarer Dokumentinhalt im body -->
-    <p>Sehen Sie sich den Quellcode dieser Seite an.
-      <kbd>(Kontextmenu: Seitenquelltext anzeigen)</kbd></p>
+    <div class="row">
+      <div class="col">
+        <div class="p">Hallo</div>
+      </div>
+      <div class="col">
+        <div class="p">Rechts</div>
+      </div>
+    </div>
+    
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
