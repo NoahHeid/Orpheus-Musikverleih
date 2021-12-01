@@ -25,7 +25,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#" class="navbar-brand">Frontend Bootcamp</a>
+        <a href="#" class="navbar-brand">Orpheus Musikservice</a>
 
         <button
           class="navbar-toggler"
@@ -39,13 +39,16 @@
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="#learn" class="nav-link">What You'll Learn</a>
+              <a href="#orpheus" class="nav-link">Wieso Orpheus?</a>
             </li>
             <li class="nav-item">
-              <a href="#questions" class="nav-link">Questions</a>
+              <a href="#faq" class="nav-link">FAQ</a>
             </li>
             <li class="nav-item">
-              <a href="#instructors" class="nav-link">Instructors</a>
+              <a href="#werwirsind" class="nav-link">Wer wir sind</a>
+            </li>
+            <li class="nav-item">
+              <a href="#kontakt" class="nav-link">Kontakt</a>
             </li>
           </ul>
         </div>
@@ -54,12 +57,12 @@
 
     <!-- Showcase -->
     <section
-      class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+      class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start" id="showcaseID"
     >
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
-            <h1>Become a <span class="text-warning"> Web Developer </span></h1>
+            <h1>Hol mit uns gemeinsam alles <span class="text-warning"> aus deiner Musik raus!</span></h1>
             <p class="lead my-4">
               We focus on teaching our students the fundamentals of the latest
               and greatest technologies to prepare them for their first dev role
@@ -73,8 +76,8 @@
             </button>
           </div>
           <img
-            class="img-fluid w-50 d-none d-sm-block"
-            src="img/showcase.svg"
+            class="img-fluid w-25 d-none d-sm-block"
+            src="img/310984.svg"
             alt=""
           />
         </div>
@@ -82,7 +85,7 @@
     </section>
 
     <!-- Newsletter -->
-    <section class="bg-primary text-light p-5">
+    <section class="bg-primary text-light p-5" >
       <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
           <h3 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h3>
@@ -149,11 +152,11 @@
     </section>
 
     <!-- Learn Sections -->
-    <section id="learn" class="p-5">
+    <section id="orpheus" class="p-5">
       <div class="container">
         <div class="row align-items-center justify-content-between">
           <div class="col-md">
-            <img src="img/fundamentals.svg" class="img-fluid" alt="" />
+            <img src="img/orpheus-saga.jpg" class="img-fluid" alt="" />
           </div>
           <div class="col-md p-5">
             <h2>Learn The Fundamentals</h2>
@@ -162,10 +165,33 @@
               Similique deleniti possimus magnam corporis ratione facere!
             </p>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
-              reiciendis eius autem eveniet mollitia, at asperiores suscipit
-              quae similique laboriosam iste minus placeat odit velit quos,
-              nulla architecto amet voluptates?
+              <?php
+              $servername = "localhost";
+              $user = "root";
+              $password = "";
+              $datenbank = "instrumente";
+
+              $connection = new mysqli($servername, $user, $password, $datenbank);
+
+              if($connection->connect_error){
+                die("Fehlermeldung: ".$connection->connect_error);
+              }
+              $sql = "SELECT * FROM kunden";
+              $ergebnis = $connection ->query($sql);
+
+              if($ergebnis->num_rows > 0){
+                while($i = $ergebnis->fetch_assoc()){
+                  echo "ID:".$i["kd_id"]." Name: ".$i["kd_vorname"]." ".$i["kd_nachname"];
+                }
+              }
+              else{
+                echo "Hat net geklappt";
+              }
+              $connection->close();
+          
+              ?>
+
+
             </p>
             <a href="#" class="btn btn-light mt-3">
               <i class="bi bi-chevron-right"></i> Read More
@@ -175,7 +201,7 @@
       </div>
     </section>
 
-    <section id="learn" class="p-5 bg-dark text-light">
+    <section id="orpheus" class="p-5 bg-dark text-light">
       <div class="container">
         <div class="row align-items-center justify-content-between">
           <div class="col-md p-5">
@@ -202,7 +228,7 @@
     </section>
 
     <!-- Question Accordion -->
-    <section id="questions" class="p-5">
+    <section id="faq" class="p-5">
       <div class="container">
         <h2 class="text-center mb-4">Frequently Asked Questions</h2>
         <div class="accordion accordion-flush" id="questions">
@@ -350,7 +376,7 @@
       </div>
     </section>
 
-    <section id="instructors" class="p-5 bg-primary">
+    <section id="werwirsind" class="p-5 bg-primary">
       <div class="container">
         <h2 class="text-center text-white">Our Instructors</h2>
         <p class="lead text-center text-white mb-5">
@@ -446,28 +472,23 @@
     </section>
 
     <!-- Contact & Map -->
-    <section class="p-5">
+    <section class="p-5" id="kontakt">
       <div class="container">
         <div class="row g-4">
           <div class="col-md">
-            <h2 class="text-center mb-4">Contact Info</h2>
+            <h2 class="text-center mb-4">Kontakt Info und Anfahrt</h2>
             <ul class="list-group list-group-flush lead">
               <li class="list-group-item">
-                <span class="fw-bold">Main Location:</span> 50 Main st Boston MA
+                <span class="fw-bold">Sie finden uns hier:</span> Mozartstraße 41, 55283 Nierstein
               </li>
               <li class="list-group-item">
-                <span class="fw-bold">Enrollment Phone:</span> (555) 555-5555
+                <span class="fw-bold">Musikschule:</span> 06133 5757801
               </li>
               <li class="list-group-item">
-                <span class="fw-bold">Student Phone:</span> (333) 333-3333
+                <span class="fw-bold">Instrumentverleih:</span> 06133 5757802
               </li>
               <li class="list-group-item">
-                <span class="fw-bold">Enrollment Email:</span> (555)
-                enroll@frontendbc.test
-              </li>
-              <li class="list-group-item">
-                <span class="fw-bold">Student Email:</span>
-                student@frontendbc.test
+                <span class="fw-bold">Email:</span> musikservice@orpheus.de
               </li>
             </ul>
           </div>
@@ -481,7 +502,7 @@
     <!-- Footer -->
     <footer class="p-5 bg-dark text-white text-center position-relative">
       <div class="container">
-        <p class="lead">Copyright &copy; 2021 Frontend Bootcamp</p>
+        <p class="lead">Copyright &copy; 2021 Noah Heidrich, Moritz Hussing</p>
 
         <a href="#" class="position-absolute bottom-0 end-0 p-5">
           <i class="bi bi-arrow-up-circle h1"></i>
@@ -558,8 +579,8 @@
       var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-71.060982, 42.35725],
-        zoom: 18,
+        center: [8.336097717285156, 49.86569595336914],
+        zoom: 14,
       })
     </script>
   </body>
