@@ -22,10 +22,12 @@
     <title>Orpheus Musikverleih</title>
   </head>
   <body>
+  <div class="bgmaincolor5">
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bgmaincolor1">
       <div class="container">
-        <a href="#" class="navbar-brand">Orpheus Musikservice</a>
+        <a href="#" class="navbar-brand"><img src="img/OrpheusLogoKleinTransparentGoldeneSchrift.png" alt="Logo" style="width: 150px"></a>
 
         <button
           class="navbar-toggler"
@@ -39,16 +41,16 @@
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="#orpheus" class="nav-link">Wieso Orpheus?</a>
+              <a href="#orpheus" class="nav-link text-warning">Wieso Orpheus?</a>
             </li>
             <li class="nav-item">
-              <a href="#faq" class="nav-link">FAQ</a>
+              <a href="#faq" class="nav-link text-warning">FAQ</a>
             </li>
             <li class="nav-item">
-              <a href="#werwirsind" class="nav-link">Wer wir sind</a>
+              <a href="#werwirsind" class="nav-link text-warning">Wer wir sind</a>
             </li>
             <li class="nav-item">
-              <a href="#kontakt" class="nav-link">Kontakt</a>
+              <a href="#kontakt" class="nav-link text-warning">Kontakt</a>
             </li>
           </ul>
         </div>
@@ -57,18 +59,17 @@
 
     <!-- Showcase -->
     <section
-      class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start" id="showcaseID"
+      class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor1"
     >
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
             <h1>Hol mit uns gemeinsam alles <span class="text-warning"> aus deiner Musik raus!</span></h1>
             <p class="lead my-4">
-              We focus on teaching our students the fundamentals of the latest
-              and greatest technologies to prepare them for their first dev role
+              Unser Ziel ist es, allen die Möglichkeit zu geben, das Beste aus ihrer Musik herauszuholen!
             </p>
             <button
-              class="btn btn-primary btn-lg"
+              class="btn btn-warning btn-lg"
               data-bs-toggle="modal"
               data-bs-target="#enroll"
             >
@@ -85,14 +86,14 @@
     </section>
 
     <!-- Newsletter -->
-    <section class="bg-primary text-light p-5" >
+    <section class="text-light p-5 bgmaincolor4">
       <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
-          <h3 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h3>
+          <p class="mb-3 mb-md-0 text-dark text-underlined"><u>Registriere dich für unseren Newsletter, um keine Nachrichten zu verpassen!</u></p>
 
           <div class="input-group news-input">
-            <input type="text" class="form-control" placeholder="Enter Email" />
-            <button class="btn btn-dark btn-lg" type="button">Submit</button>
+            <input type="text" class="form-control" placeholder="Email Addresse" />
+            <button class="btn bgmaincolor1 text-light btn-lg" type="button">Senden</button>
           </div>
         </div>
       </div>
@@ -102,23 +103,24 @@
     <section class="p-5">
       <div class="container">
         <div class="row text-center g-4">
+          <div class="h2">Unsere Musikschule ist nicht nur in Präsenz!</div>
           <div class="col-md">
-            <div class="card bg-dark text-light">
+            <div class="card bgmaincolor3 text-light">
               <div class="card-body text-center">
+                
                 <div class="h1 mb-3">
                   <i class="bi bi-laptop"></i>
                 </div>
-                <h3 class="card-title mb-3">Virtual</h3>
+                <h3 class="card-title mb-3">Virtuell</h3>
                 <p class="card-text">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Iure, quas quidem possimus dolorum esse eligendi?
+                  Die Pandemie nimmt uns alle mit. Deswegen bieten wir Montags und Freitags unsere Stunden auch über Zoom an!
                 </p>
                 <a href="#" class="btn btn-primary">Read More</a>
               </div>
             </div>
           </div>
           <div class="col-md">
-            <div class="card bg-secondary text-light">
+            <div class="card bgmaincolor4 text-light">
               <div class="card-body text-center">
                 <div class="h1 mb-3">
                   <i class="bi bi-person-square"></i>
@@ -133,7 +135,7 @@
             </div>
           </div>
           <div class="col-md">
-            <div class="card bg-dark text-light">
+            <div class="card bgmaincolor3 text-light">
               <div class="card-body text-center">
                 <div class="h1 mb-3">
                   <i class="bi bi-people"></i>
@@ -151,8 +153,8 @@
       </div>
     </section>
 
-    <!-- Learn Sections -->
-    <section id="orpheus" class="p-5">
+    <!-- Wer ist Orpheus? -->
+    <section class="p-5" id="orpheus">
       <div class="container">
         <div class="row align-items-center justify-content-between">
           <div class="col-md">
@@ -201,7 +203,8 @@
       </div>
     </section>
 
-    <section id="orpheus" class="p-5 bg-dark text-light">
+    <!-- Unser Instrumentverleih -->
+    <section class="p-5 bgmaincolor1 text-light">
       <div class="container">
         <div class="row align-items-center justify-content-between">
           <div class="col-md p-5">
@@ -221,13 +224,36 @@
             </a>
           </div>
           <div class="col-md">
-            <img src="img/react.svg" class="img-fluid" alt="" />
+            <img src="img/saxophon.jpeg" class="img-fluid" alt="" />
+          </div>
+        </div>
+
+        <!-- Unsere Musikschule -->
+        <div class="row align-items-center justify-content-between">
+          <div class="col-md">
+            <img src="img/saxophon.jpeg" class="img-fluid" alt="" />
+          </div>
+          <div class="col-md p-5">
+            <h2>Learn React</h2>
+            <p class="lead">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Similique deleniti possimus magnam corporis ratione facere!
+            </p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
+              reiciendis eius autem eveniet mollitia, at asperiores suscipit
+              quae similique laboriosam iste minus placeat odit velit quos,
+              nulla architecto amet voluptates?
+            </p>
+            <a href="#" class="btn btn-light mt-3">
+              <i class="bi bi-chevron-right"></i> Read More
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Question Accordion -->
+    <!-- FAQ -->
     <section id="faq" class="p-5">
       <div class="container">
         <h2 class="text-center mb-4">Frequently Asked Questions</h2>
@@ -375,7 +401,7 @@
         </div>
       </div>
     </section>
-
+  <!-- Wer wir sind -->
     <section id="werwirsind" class="p-5 bg-primary">
       <div class="container">
         <h2 class="text-center text-white">Our Instructors</h2>
@@ -583,5 +609,7 @@
         zoom: 14,
       })
     </script>
+  
+  </div>
   </body>
 </html>
