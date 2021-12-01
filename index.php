@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Frontend Bootcamp</title>
+    <title>Orpheus Musikverleih</title>
   </head>
   <body>
     <!-- Navbar -->
