@@ -115,7 +115,7 @@
                 <p class="card-text">
                   Die Pandemie nimmt uns alle mit. Deswegen bieten wir Montags und Freitags unsere Stunden auch über Zoom an!
                 </p>
-                <a href="#" class="btn btn-primary">Read More</a>
+                <a href="#" class="btn btn-dark">Zur Terminauswahl</a>
               </div>
             </div>
           </div>
@@ -127,10 +127,9 @@
                 </div>
                 <h3 class="card-title mb-3">Hybrid</h3>
                 <p class="card-text">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Iure, quas quidem possimus dolorum esse eligendi?
+                  Mittwochs führen wir unsere Schule in Hybrid durch, sodass alle selbst entscheiden können, von wo aus sie teilnehmen wollen!
                 </p>
-                <a href="#" class="btn btn-dark">Read More</a>
+                <a href="#" class="btn btn-dark">Zur Terminauswahl</a>
               </div>
             </div>
           </div>
@@ -142,10 +141,9 @@
                 </div>
                 <h3 class="card-title mb-3">In Person</h3>
                 <p class="card-text">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Iure, quas quidem possimus dolorum esse eligendi?
+                  Nur in vor Ort kann dein Instrument alles geben. Deswegen findet jeden Dienstag, Donnerstag und Samstag alles in Präsenz statt!
                 </p>
-                <a href="#" class="btn btn-primary">Read More</a>
+                <a href="#" class="btn btn-dark">Zur Terminauswahl</a>
               </div>
             </div>
           </div>
@@ -161,10 +159,9 @@
             <img src="img/orpheus-saga.jpg" class="img-fluid" alt="" />
           </div>
           <div class="col-md p-5">
-            <h2>Learn The Fundamentals</h2>
+            <h2>Wer war Opheus?</h2>
             <p class="lead">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Similique deleniti possimus magnam corporis ratione facere!
+              Orpheus war ein begnadeter Musiker aus der Antike. Sein 
             </p>
             <p>
               <?php
