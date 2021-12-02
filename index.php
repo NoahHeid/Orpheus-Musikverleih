@@ -141,7 +141,7 @@
                 </div>
                 <h3 class="card-title mb-3">Vor Ort</h3>
                 <p class="card-text">
-                  Vor Ort ist maßgeschneiderte Förderung am Besten möglich. Deswegen findet jeden Dienstag, Donnerstag und Samstag Unterricht in Präsenz statt! (Natürlich unter Einhaltung aller aktuell gültigen Maßnahmen!)
+                  Vor Ort ist maßgeschneiderte Förderung am Besten möglich. Deswegen findet jeden Dienstag, Donnerstag und Samstag Unterricht in Präsenz statt!
                 </p>
                 <a href="#" class="btn btn-dark">Jetzt Termin vereinbaren</a>
               </div>
