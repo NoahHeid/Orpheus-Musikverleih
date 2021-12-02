@@ -66,7 +66,9 @@
           <div>
             <h1>Beginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
             <p class="lead my-4">
+              
               Entdecke mit uns ungeahnte Talente und entfalte dein Potential!
+
             </p>
             <button
               class="btn btn-warning btn-lg"
@@ -182,6 +184,7 @@
             <h2>Unser Instrumentverleih</h2>
             <p class="lead">
              Ein großer Künstler braucht das richtige Werkzeug. Unsere Kunden können sich bei uns auf die beste Qualität verlassen.
+             Dieser Text soll hier stehen.
             </p>
             <p>
               Hier bitte Werbetext für den Verleih einfügen @Moritz
