@@ -66,7 +66,7 @@
           <div>
             <h1>Beginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
             <p class="lead my-4">
-              Unser Ziel ist es, allen die Möglichkeit zu geben, das Beste aus ihrer Hose herauszuholen!
+              Unser Ziel ist es, allen die Möglichkeit zu geben, das Beste aus ihrer Hose herauszuholen! Hallo so siehts aus! Ich hasse Kinder.
             </p>
             <button
               class="btn btn-warning btn-lg"
