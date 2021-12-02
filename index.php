@@ -66,14 +66,14 @@
           <div>
             <h1>Beginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
             <p class="lead my-4">
-              Mit uns holen sie das Beste aus ihrer Zukunft heraus!
+              Entdecke mit uns ungeahnte Talente und entfalte dein Potential!
             </p>
             <button
               class="btn btn-warning btn-lg"
               data-bs-toggle="modal"
               data-bs-target="#enroll"
             >
-              Start The Enrollment
+              Hier anmelden
             </button>
           </div>
           <img
@@ -89,7 +89,7 @@
     <section class="text-light p-5 bgmaincolor4">
       <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
-          <p class="mb-3 mb-md-0 text-dark text-underlined"><u>Registriere dich für unseren Newsletter, um keine Nachrichten zu verpassen!</u></p>
+          <p class="mb-3 mb-md-0 text-dark text-underlined"><u>Registriere dich hier, um nichts mehr zu verpassen!</u></p>
 
           <div class="input-group news-input">
             <input type="text" class="form-control" placeholder="Email Addresse" />
@@ -103,7 +103,7 @@
     <section class="p-5">
       <div class="container">
         <div class="row text-center g-4">
-          <div class="h2">Unsere Musikschule ist nicht nur in Präsenz!</div>
+          <div class="h2">Unsere Unterrichtskonzepte passen sich flexibel an deine Bedürfnisse an!</div>
           <div class="col-md">
             <div class="card bgmaincolor3 text-light">
               <div class="card-body text-center">
@@ -113,9 +113,9 @@
                 </div>
                 <h3 class="card-title mb-3">Virtuell</h3>
                 <p class="card-text">
-                  Die Pandemie nimmt uns alle mit. Deswegen bieten wir Montags und Freitags unsere Stunden auch über Zoom an!
+                  Die Pandemie fordert uns alle heraus. Daher bieten wir Montags und Freitags Musikunterricht über Zoom an!
                 </p>
-                <a href="#" class="btn btn-dark">Zur Terminauswahl</a>
+                <a href="#" class="btn btn-dark">Jetzt Termin vereinbaren</a>
               </div>
             </div>
           </div>
@@ -127,9 +127,9 @@
                 </div>
                 <h3 class="card-title mb-3">Hybrid</h3>
                 <p class="card-text">
-                  Mittwochs führen wir unsere Schule in Hybrid durch, sodass alle selbst entscheiden können, von wo aus sie teilnehmen wollen!
+                  Mittwochs finden unsere Stunden als Hybridmodell statt. Hier kannst du entscheiden, von wo aus du teilnehmen willst!
                 </p>
-                <a href="#" class="btn btn-dark">Zur Terminauswahl</a>
+                <a href="#" class="btn btn-dark">Jetzt Termin vereinbaren</a>
               </div>
             </div>
           </div>
@@ -139,11 +139,11 @@
                 <div class="h1 mb-3">
                   <i class="bi bi-people"></i>
                 </div>
-                <h3 class="card-title mb-3">In Person</h3>
+                <h3 class="card-title mb-3">Vor Ort</h3>
                 <p class="card-text">
-                  Nur vor Ort kann dein Instrument alles zeigen. Deswegen findet jeden Dienstag, Donnerstag und Samstag alles in Präsenz statt!
+                  Vor Ort ist maßgeschneiderte Förderung am Besten möglich. Deswegen findet jeden Dienstag, Donnerstag und Samstag Unterricht in Präsenz statt! (Natürlich unter Einhaltung aller aktuell gültigen Maßnahmen!)
                 </p>
-                <a href="#" class="btn btn-dark">Zur Terminauswahl</a>
+                <a href="#" class="btn btn-dark">Jetzt Termin vereinbaren</a>
               </div>
             </div>
           </div>
