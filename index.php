@@ -163,14 +163,18 @@
           <div class="col-md p-5">
             <h2>Wer war Opheus?</h2>
             <p class="lead">
-              Orpheus war ein begnadeter Musiker aus der Antike. Sein 
+              Orpheus war ein begnadeter Musiker aus der Antike. Seine Gabe war so groß, dass er sogar in der Gunst des großen Apollon stand.
             </p>
             <p>
 
             </p>
-            <a href="#" class="btn btn-light mt-3">
-              <i class="bi bi-chevron-right"></i> Read More
-            </a>
+            <button
+              class="btn btn-warning btn-lg"
+              data-bs-toggle="modal"
+              data-bs-target="#orpheusMehr"
+            >
+              <i class="bi bi-chevron-right"></i> Erfahre mehr
+            </button>
           </div>
         </div>
       </div>
@@ -480,7 +484,7 @@
       </div>
     </footer>
 
-    <!-- Modal -->
+    <!-- Modal Hier Anmelden -->
     <div
       class="modal fade"
       id="enroll"
@@ -535,6 +539,44 @@
         </div>
       </div>
     </div>
+    
+    <!-- Modal Mehr erfahren über Orpheus -->
+    <div
+      class="modal fade"
+      id="orpheusMehr"
+      tabindex="-1"
+      aria-labelledby="orpheusMehr"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="orpheusMehr">Mehr über Orpheus</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="lead">Wer war dieser begnadete Musiker?</p>
+            <p>Orpheus war...</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Schließen
+            </button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
