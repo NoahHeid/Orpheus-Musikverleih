@@ -64,7 +64,7 @@
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
-            <h1>Hol mit uns gemeinsam alles <span class="text-warning"> aus deiner Musik raus!</span></h1>
+            <h1>Beginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
             <p class="lead my-4">
               Unser Ziel ist es, allen die Möglichkeit zu geben, das Beste aus ihrer Musik herauszuholen!
             </p>
