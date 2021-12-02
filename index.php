@@ -141,7 +141,7 @@
                 </div>
                 <h3 class="card-title mb-3">In Person</h3>
                 <p class="card-text">
-                  Nur in vor Ort kann dein Instrument alles geben. Deswegen findet jeden Dienstag, Donnerstag und Samstag alles in Präsenz statt!
+                  Nur vor Ort kann dein Instrument alles zeigen. Deswegen findet jeden Dienstag, Donnerstag und Samstag alles in Präsenz statt!
                 </p>
                 <a href="#" class="btn btn-dark">Zur Terminauswahl</a>
               </div>
@@ -205,16 +205,12 @@
       <div class="container">
         <div class="row align-items-center justify-content-between">
           <div class="col-md p-5">
-            <h2>Learn React</h2>
+            <h2>Unser Instrumentverleih</h2>
             <p class="lead">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Similique deleniti possimus magnam corporis ratione facere!
+             Ein großer Künstler braucht das richtige Werkzeug. Unsere Kunden können sich bei uns auf die beste Qualität verlassen.
             </p>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
-              reiciendis eius autem eveniet mollitia, at asperiores suscipit
-              quae similique laboriosam iste minus placeat odit velit quos,
-              nulla architecto amet voluptates?
+              Hier bitte Werbetext für den Verleih einfügen @Moritz
             </p>
             <a href="#" class="btn btn-light mt-3">
               <i class="bi bi-chevron-right"></i> Read More
@@ -231,16 +227,12 @@
             <img src="img/saxophon.jpeg" class="img-fluid" alt="" />
           </div>
           <div class="col-md p-5">
-            <h2>Learn React</h2>
+            <h2>Unsere Musikschule</h2>
             <p class="lead">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Similique deleniti possimus magnam corporis ratione facere!
+              Ein Instrument in der Hand bringt einem nichts, wenn man keine gerade Töne rausbekommen kann. Dafür wollen wir abhilfe schaffen!
             </p>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
-              reiciendis eius autem eveniet mollitia, at asperiores suscipit
-              quae similique laboriosam iste minus placeat odit velit quos,
-              nulla architecto amet voluptates?
+            Hier bitte Werbetext für den Verleih einfügen @Moritz
             </p>
             <a href="#" class="btn btn-light mt-3">
               <i class="bi bi-chevron-right"></i> Read More
