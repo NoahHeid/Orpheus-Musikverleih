@@ -182,6 +182,7 @@
             <h2>Unser Instrumentverleih</h2>
             <p class="lead">
              Ein großer Künstler braucht das richtige Werkzeug. Unsere Kunden können sich bei uns auf die beste Qualität verlassen.
+             Dieser Text soll hier stehen.
             </p>
             <p>
               Hier bitte Werbetext für den Verleih einfügen @Moritz
