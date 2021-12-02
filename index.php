@@ -259,6 +259,7 @@
               if($ergebnis->num_rows > 0){
                 while($i = $ergebnis->fetch_assoc()){
                   echo "ID:".$i["kd_id"]." Name: ".$i["kd_vorname"]." ".$i["kd_nachname"];
+                  echo "</br>";
                 }
               }
               else{
