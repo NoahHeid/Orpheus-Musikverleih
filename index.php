@@ -64,7 +64,7 @@
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
-            <h1>Hol mit uns gemeinsam alles <span class="text-warning"> aus deiner Musik raus!</span></h1>
+            <h1>Beginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
             <p class="lead my-4">
               Unser Ziel ist es, allen die Möglichkeit zu geben, das Beste aus ihrer Musik herauszuholen!
             </p>
@@ -164,32 +164,6 @@
               Orpheus war ein begnadeter Musiker aus der Antike. Sein 
             </p>
             <p>
-              <?php
-              $servername = "localhost";
-              $user = "root";
-              $password = "";
-              $datenbank = "instrumente";
-
-              $connection = new mysqli($servername, $user, $password, $datenbank);
-
-              if($connection->connect_error){
-                die("Fehlermeldung: ".$connection->connect_error);
-              }
-              $sql = "SELECT * FROM kunden";
-              $ergebnis = $connection ->query($sql);
-
-              if($ergebnis->num_rows > 0){
-                while($i = $ergebnis->fetch_assoc()){
-                  echo "ID:".$i["kd_id"]." Name: ".$i["kd_vorname"]." ".$i["kd_nachname"];
-                }
-              }
-              else{
-                echo "Hat net geklappt";
-              }
-              $connection->close();
-          
-              ?>
-
 
             </p>
             <a href="#" class="btn btn-light mt-3">
