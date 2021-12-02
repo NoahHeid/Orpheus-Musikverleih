@@ -164,32 +164,6 @@
               Orpheus war ein begnadeter Musiker aus der Antike. Sein 
             </p>
             <p>
-              <?php
-              $servername = "localhost";
-              $user = "root";
-              $password = "";
-              $datenbank = "instrumente";
-
-              $connection = new mysqli($servername, $user, $password, $datenbank);
-
-              if($connection->connect_error){
-                die("Fehlermeldung: ".$connection->connect_error);
-              }
-              $sql = "SELECT * FROM kunden";
-              $ergebnis = $connection ->query($sql);
-
-              if($ergebnis->num_rows > 0){
-                while($i = $ergebnis->fetch_assoc()){
-                  echo "ID:".$i["kd_id"]." Name: ".$i["kd_vorname"]." ".$i["kd_nachname"];
-                }
-              }
-              else{
-                echo "Hat net geklappt";
-              }
-              $connection->close();
-          
-              ?>
-
 
             </p>
             <a href="#" class="btn btn-light mt-3">
