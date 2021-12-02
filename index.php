@@ -233,7 +233,7 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#question-one"
               >
-                Where exactly are you located?
+                Gönn mal alle Kundeneinträge
               </button>
             </h2>
             <div
@@ -242,13 +242,31 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                beatae fuga animi distinctio perspiciatis adipisci velit maiores
-                totam tempora accusamus modi explicabo accusantium consequatur,
-                praesentium rem quisquam molestias at quos vero. Officiis ad
-                velit doloremque at. Dignissimos praesentium necessitatibus
-                natus corrupti cum consequatur aliquam! Minima molestias iure
-                quam distinctio velit.
+              <?php
+              $servername = "localhost";
+              $user = "root";
+              $password = "";
+              $datenbank = "instrumente";
+
+              $connection = new mysqli($servername, $user, $password, $datenbank);
+
+              if($connection->connect_error){
+                die("Fehlermeldung: ".$connection->connect_error);
+              }
+              $sql = "SELECT * FROM kunden";
+              $ergebnis = $connection ->query($sql);
+
+              if($ergebnis->num_rows > 0){
+                while($i = $ergebnis->fetch_assoc()){
+                  echo "ID:".$i["kd_id"]." Name: ".$i["kd_vorname"]." ".$i["kd_nachname"];
+                }
+              }
+              else{
+                echo "Hat net geklappt";
+              }
+              $connection->close();
+
+              ?>
               </div>
             </div>
           </div>
