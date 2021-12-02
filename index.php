@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Orpheus Musikverleih</title>
+    <title>Orpheus Musikverleih Moritz</title>
   </head>
   <body>
   <div class="bgmaincolor5">
