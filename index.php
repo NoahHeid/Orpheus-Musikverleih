@@ -127,7 +127,7 @@
                 </div>
                 <h3 class="card-title mb-3">Hybrid</h3>
                 <p class="card-text">
-                  Mittwochs finden unsere Stunden als Hybridmodell statt. Hier kannst du entscheiden, von wo aus du teilnehmen willst!
+                  Mittwochs finden unsere Stunden als Hybridmodell statt. Hier kannst du entscheiden, von wo aus du teilnehmen möchtest!
                 </p>
                 <a href="#" class="btn btn-dark">Jetzt Termin vereinbaren</a>
               </div>
