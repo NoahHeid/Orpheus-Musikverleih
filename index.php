@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Orpheus Musikverleih Moritz</title>
+    <title>Orpheus Musikverleih</title>
   </head>
   <body>
   <div class="bgmaincolor5">
@@ -27,7 +27,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bgmaincolor1">
       <div class="container">
-        <a href="#" class="navbar-brand"><img src="img/OrpheusLogoKleinTransparentGoldeneSchrift.png" alt="Logo" style="width: 150px"></a>
+        <a href="index.php" class="navbar-brand"><img src="img/OrpheusLogoKleinTransparentGoldeneSchrift.png" alt="Logo" style="width: 150px"></a>
 
         <button
           class="navbar-toggler"
@@ -54,20 +54,19 @@
             </li>
             <li class="nav-item">
               <button
-                class="btn btn-warning btn-sm mx-4"
+                class="btn btn-warning btn-sm"
                 data-bs-toggle="modal"
                 data-bs-target="#anmelden"
-              >
-                Hier anmelden
+              > Anmelden 
               </button>
+ 
             </li>
             <li class="nav-item">
               <button
                 class="btn btn-warning btn-sm"
                 data-bs-toggle="modal"
                 data-bs-target="#registrieren"
-              >
-                Hier registrieren
+              >Registrieren
               </button>
             </li>
           </ul>
@@ -113,7 +112,7 @@
       </div>
     </section>
 
-    <!-- Boxes -->
+    <!-- Terminplanung Musikschule -->
     <section class="p-5">
       <div class="container">
         <div class="row text-center g-4">
@@ -129,7 +128,7 @@
                 <p class="card-text">
                   Die Pandemie fordert uns alle heraus. Daher bieten wir Montags und Freitags Musikunterricht über Zoom an!
                 </p>
-                <a href="#" class="btn btn-dark">Jetzt Termin vereinbaren</a>
+                <a href="terminplanung.php#virtuell" class="btn btn-dark">Jetzt Termin vereinbaren</a>
               </div>
             </div>
           </div>
@@ -143,7 +142,7 @@
                 <p class="card-text">
                   Mittwochs finden unsere Stunden als Hybridmodell statt. Hier kannst du entscheiden, von wo aus du teilnehmen möchtest!
                 </p>
-                <a href="#" class="btn btn-dark">Jetzt Termin vereinbaren</a>
+                <a href="terminplanung.php#hybrid" class="btn btn-dark">Jetzt Termin vereinbaren</a>
               </div>
             </div>
           </div>
@@ -157,7 +156,7 @@
                 <p class="card-text">
                   Vor Ort ist maßgeschneiderte Förderung am Besten möglich. Deswegen findet jeden Dienstag, Donnerstag und Samstag Unterricht in Präsenz statt!
                 </p>
-                <a href="#" class="btn btn-dark">Jetzt Termin vereinbaren</a>
+                <a href="terminplanung.php#vorort" class="btn btn-dark">Jetzt Termin vereinbaren</a>
               </div>
             </div>
           </div>
