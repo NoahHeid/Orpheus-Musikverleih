@@ -222,11 +222,11 @@ function check_events(day, month, year) {
 var event_data = {
     "events": [
     {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
+        "occasion": " Test ",
+        "invited_count": 4,
+        "year": 2021,
+        "month": 12,
+        "day": 04,
         "cancelled": true
     },
     {

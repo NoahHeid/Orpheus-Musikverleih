@@ -1,11 +1,11 @@
 :root{
-    
+    /*
     --maincolor1: #2b2d42; 
     --maincolor2: #4a4e69; 
     --maincolor3: #9a8c98; 
     --maincolor4: #c9ada7; 
     --maincolor5: #f2e9e4; 
-    
+    */
     /*
     Naja
     --maincolor1: #05668d;
@@ -38,6 +38,14 @@
     --maincolor4: #76949f; 
     --maincolor5: #86bbbd; 
     */
+     
+
+    --maincolor1: #270e0c;
+    --maincolor2: #9c3930; 
+    --maincolor3: #9c3930; 
+    --maincolor4: #74c33c; 
+    --maincolor5: #f3dad8; 
+    
 }
 
   body::before {
