@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="de">
   <head>
@@ -37,7 +40,6 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        //Test
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -52,14 +54,24 @@
             <li class="nav-item">
               <a href="#kontakt" class="nav-link text-warning">Kontakt</a>
             </li>
-            <li class="nav-item">
-              <button
-                class="btn btn-warning btn-sm"
-                data-bs-toggle="modal"
-                data-bs-target="#anmelden"
-              > Anmelden 
-              </button>
- 
+            <li class="nav-item mx-2">
+              <?php 
+                if(!isset($_SESSION['loggedin'])){
+                  echo '<button
+                  class="btn btn-warning btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#anmelden"
+                  
+                > Anmelden
+                </button>';
+                }
+                else{
+                  echo '<form action="logout.php">
+                          <button type="submit" class="btn btn-warning btn-sm value="Abmelden" ></button>
+                        </form>';
+                }
+              ?>
+              
             </li>
             <li class="nav-item">
               <button
@@ -81,11 +93,10 @@
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
-            <h1>Beginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
+            <h1> <?php if(isset($_SESSION['loggedin'])){echo "Lieber ".$_SESSION['vorname'];} ?> Beginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
             <p class="lead my-4">
-              
-              Entdecke mit uns ungeahnte Talente und entfalte dein Potential!
 
+              Entdecke mit uns ungeahnte Talente und entfalte dein Potential!
             </p>
 
           </div>
@@ -257,32 +268,6 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
-              <?php
-              $servername = "localhost";
-              $user = "root";
-              $password = "";
-              $datenbank = "instrumente";
-
-              $connection = new mysqli($servername, $user, $password, $datenbank);
-
-              if($connection->connect_error){
-                die("Fehlermeldung: ".$connection->connect_error);
-              }
-              $sql = "SELECT * FROM kunden";
-              $ergebnis = $connection ->query($sql);
-
-              if($ergebnis->num_rows > 0){
-                while($i = $ergebnis->fetch_assoc()){
-                  echo "ID:".$i["kd_id"]." Name: ".$i["kd_vorname"]." ".$i["kd_nachname"];
-                  echo "</br>";
-                }
-              }
-              else{
-                echo "Hat net geklappt";
-              }
-              $connection->close();
-
-              ?>
               </div>
             </div>
           </div>
@@ -503,6 +488,7 @@
       aria-labelledby="enrollLabel"
       aria-hidden="true"
     >
+
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -515,29 +501,27 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form>
+
+            <form action="login.php" method="POST" >
               <div class="mb-3">
-                <label for="email" class="col-form-label">
-                  Email
-                </label>
-                <input type="text" class="form-control" id="email" />
+                <label for="user" class="col-form-label">Email</label>
+                <input type="text" class="form-control" id="user" name="user" />
               </div>
               <div class="mb-3">
-                <label for="password" class="col-form-label">Passwort:</label>
-                <input type="text" class="form-control" id="password" />
+                <label for="pass" class="col-form-label">Passwort:</label>
+                <input type="password" class="form-control" id="pass" name="pass" />
               </div>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <input type="submit" value="Login" class="btn btn-primary" />
             </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Submit</button>
-          </div>
+        </div>
+          
         </div>
       </div>
     </div>
@@ -591,7 +575,7 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-primary" value="submit">Submit</button>
           </div>
         </div>
       </div>
