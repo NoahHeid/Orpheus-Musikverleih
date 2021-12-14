@@ -43,7 +43,7 @@
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="#orpheus" class="nav-link text-warning">Wieso Orpheus?</a>
+              <a href="#orpheus" class="nav-link text-warning">Orpheus</a>
             </li>
             <li class="nav-item">
               <a href="#faq" class="nav-link text-warning">FAQ</a>
@@ -63,24 +63,27 @@
                   data-bs-target="#anmelden"
                   
                 > Anmelden
-                </button>';
+                </button>
+                </li>
+                <li class="nav-item">
+                  <button
+                    class="btn btn-warning btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#registrieren"
+                  >Registrieren
+                </button>
+                </li>';
                 }
                 else{
                   echo '<form action="logout.php">
                           <button type="submit" class="btn btn-warning btn-sm" >Abmelden</button>
-                        </form>';
+                        </form>
+                        </li>';
                 }
               ?>
               
-            </li>
-            <li class="nav-item">
-              <button
-                class="btn btn-warning btn-sm"
-                data-bs-toggle="modal"
-                data-bs-target="#registrieren"
-              >Registrieren
-              </button>
-            </li>
+            
+            
           </ul>
         </div>
       </div>
