@@ -99,7 +99,7 @@
             <h1> <?php if(isset($_SESSION['loggedin'])){echo "Lieber ".$_SESSION['vorname']." b";}else{echo "B";} ?>eginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
             <p class="lead my-4">
 
-            <em>Die Musik drückt das aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.</em> 
+            <em>Die Musik drückt das aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.</em> <br>
             - Victor Hugo
             </p>
 
@@ -198,7 +198,7 @@
           <div class="col-md p-5">
             <h2>Wer war Opheus?</h2>
             <p class="lead">
-              Orpheus war ein begnadeter Musiker aus der Antike. Seine Gabe war so groß, dass er sogar in der Gunst des großen Apollon stand.
+              Orpheus war ein begnadeter Musiker aus der Antike. Seine Gabe war so groß, dass er sogar in der Gunst des Gottes Apollon stand.
             </p>
             <p>
 
@@ -222,14 +222,13 @@
           <div class="col-md p-5">
             <h2>Unser Instrumentverleih</h2>
             <p class="lead">
-             Ein großer Künstler braucht das richtige Werkzeug. Unsere Kunden können sich bei uns auf die beste Qualität verlassen.
-             Dieser Text soll hier stehen.
+             Das richtige Instrument ist Voraussetzung für das Realisieren der eigenen musikalischen Ziele und Träume.
             </p>
             <p>
-              Hier bitte Werbetext für den Verleih einfügen @Moritz
+              Wir bieten ihnen Instrumente, Beratung und Service von höchster Qualität. Bei Fragen aller Art stehen wir gerne zur Verfügung!
             </p>
             <a href="#" class="btn btn-light mt-3">
-              <i class="bi bi-chevron-right"></i> Read More
+              <i class="bi bi-chevron-right"></i> Nimm Kontakt zu uns auf
             </a>
           </div>
           <div class="col-md">
@@ -245,13 +244,14 @@
           <div class="col-md p-5">
             <h2>Unsere Musikschule</h2>
             <p class="lead">
-              Ein Instrument in der Hand bringt einem nichts, wenn man keine gerade Töne rausbekommen kann. Dafür wollen wir abhilfe schaffen!
+            <em>Musik allein ist die Weltsprache und braucht nicht übersetzt zu werden.</em><br>
+            - Berthold Auerbach
             </p>
             <p>
-            Hier bitte Werbetext für den Verleih einfügen @Moritz
+            Entdecke mit uns deine Talente und entfalte dein Potential. Wir bieten hervorragenden Unterricht in Violine, Klavier und Gesang!
             </p>
             <a href="#" class="btn btn-light mt-3">
-              <i class="bi bi-chevron-right"></i> Read More
+              <i class="bi bi-chevron-right"></i> Nimm Kontakt zu uns auf
             </a>
           </div>
         </div>
@@ -281,6 +281,9 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
+                Ja! Unter Einhaltung der aktuell gültigen Hygiene- und Sicherheitsmaßnahmen kann wie gewohnt Unterricht in Präsenz stattfinden.
+                Ergänzend dazu bieten wir auch ein Hybridmodell an, bei dem einige Lernende vor Ort teilnehmen und andere über Zoom zugeschaltet werden.
+                Außerdem ist auch das Modell Stunden vollständig Online abzuhalten in unserem Angebot enthalten.
               </div>
             </div>
           </div>
@@ -302,13 +305,11 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                beatae fuga animi distinctio perspiciatis adipisci velit maiores
-                totam tempora accusamus modi explicabo accusantium consequatur,
-                praesentium rem quisquam molestias at quos vero. Officiis ad
-                velit doloremque at. Dignissimos praesentium necessitatibus
-                natus corrupti cum consequatur aliquam! Minima molestias iure
-                quam distinctio velit.
+                Die Preise für die einzelnen Stunden sind abhänig vom gewählten Instrument und dem Level der Lernenden:<br>
+                Violine: 40 € für Anfänger, 50 € für Fortgeschrittene<br>
+                Klavier: 35 € für Anfänger, 45 € für Fortgeschrittene<br>
+                Gesang: 40 € für jedes Level
+                
               </div>
             </div>
           </div>
@@ -321,7 +322,7 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#question-three"
               >
-               Was muss ich mitbringen?
+               Was benötige Ich?
               </button>
             </h2>
             <div
@@ -330,7 +331,10 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
-                eigenes instru, oder man leiht aus
+                Natürlich am Wichtigsten: Das gewünschte Instrument! Hierbei kannst du entweder dein eigenes mitbringen,
+                oder unseren Verleihservice in Anspruch nehmen. 
+                Weiteres eventuell benötigtes Material (z.B. Noten) wird von uns zur Verfügung gestellt.<br>
+                Im Falle der in Anspruchnahme der Online-Angebote wird außerdem ein Tablet, Laptop oder Computer mit funktionierender Kamera und funktionierendem Mikrophon benötigt!
               </div>
             </div>
           </div>
