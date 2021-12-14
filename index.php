@@ -519,11 +519,11 @@
             <form action="login.php" method="POST" >
               <div class="mb-3">
                 <label for="user" class="col-form-label">Email</label>
-                <input type="text" class="form-control" id="user" name="user" />
+                <input type="text" class="form-control" id="user" name="user" required/>
               </div>
               <div class="mb-3">
                 <label for="pass" class="col-form-label">Passwort:</label>
-                <input type="password" class="form-control" id="pass" name="pass" />
+                <input type="password" class="form-control" id="pass" name="pass" required/>
               </div>
               <button
                 type="button"
@@ -532,7 +532,7 @@
               >
                 Close
               </button>
-              <input type="submit" value="Login" class="btn btn-primary" />
+              <input type="submit" value="Login" class="btn btn-warning" />
             </form>
         </div>
           
@@ -558,38 +558,39 @@
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="email" class="col-form-label">
-                  Email
-                </label>
-                <input type="text" class="form-control" id="email" />
-              </div>
-              <div class="mb-3">
-                <label for="password" class="col-form-label">Passwort:</label>
-                <input type="text" class="form-control" id="password" />
-              </div>
-              <div class="mb-3">
-                <label for="vorname" class="col-form-label">Vorname:</label>
-                <input type="text" class="form-control" id="vorname" />
-              </div>
-              <div class="mb-3">
-                <label for="telefonnummer" class="col-form-label">Telefonnummer:</label>
-                <input type="text" class="form-control" id="telefonnummer" />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary" value="submit">Submit</button>
+            </div>
+            <div class="modal-body">
+
+              <form action="registrieren.php" method="POST">
+                <div class="mb-3">
+                  <label for="vorname" class="col-form-label">Vorname:</label>
+                  <input type="text" class="form-control" id="vorname" name="vorname" required/>
+                </div>
+                <div class="mb-3">
+                  <label for="nachname" class="col-form-label">Nachname:</label>
+                  <input type="text" class="form-control" id="nachname" name="nachname" required/>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="col-form-label"> Email </label>
+                  <input type="email" class="form-control" id="email" name="email" required/>
+                </div>
+                <div class="mb-3">
+                  <label for="pass" class="col-form-label">Passwort:</label>
+                  <input type="password" class="form-control" id="pass" name="pass" required/>
+                </div>
+                <div class="mb-3">
+                  <label for="telefonnummer" class="col-form-label">Telefonnummer:</label>
+                  <input type="tel" class="form-control" id="telefonnummer" name="telefonnummer" required/>
+                </div>
+                <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                >
+                Close
+                </button>
+                <input type="submit" value="Registrieren" class="btn btn-warning" />
+              </form>
           </div>
         </div>
       </div>
@@ -657,6 +658,13 @@
       echo '
       <script>
         alert("Falsche Einlogdaten!");
+      </script>
+      ';
+    }
+    if(isset($_POST['emailExistiert'])){
+      echo '
+      <script>
+        alert("Diese Email wird bereits verwendet, bitte nutze eine andere Email Adresse!");
       </script>
       ';
     }
