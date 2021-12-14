@@ -322,7 +322,7 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#question-three"
               >
-               Was benötige Ich?
+               Was benötige ich?
               </button>
             </h2>
             <div
@@ -356,13 +356,8 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                beatae fuga animi distinctio perspiciatis adipisci velit maiores
-                totam tempora accusamus modi explicabo accusantium consequatur,
-                praesentium rem quisquam molestias at quos vero. Officiis ad
-                velit doloremque at. Dignissimos praesentium necessitatibus
-                natus corrupti cum consequatur aliquam! Minima molestias iure
-                quam distinctio velit.
+                Nachdem du dich oben auf dieser Website angemeldet hast steht dir die Option <em>Jetzt Termin vereinbaren</em> zur Verfügung.
+                Hier wählst du nun einfach das von dir gewünschte Unterrichtsmodell aus und vereinbarst mit unseren fachkompetenten Lehrenden den für dich optimalen Termin.
               </div>
             </div>
           </div>
@@ -375,7 +370,7 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#question-five"
               >
-                Wie kann ich Sie erreichen?
+                Wie kann ich euch erreichen?
               </button>
             </h2>
             <div
@@ -384,13 +379,8 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                beatae fuga animi distinctio perspiciatis adipisci velit maiores
-                totam tempora accusamus modi explicabo accusantium consequatur,
-                praesentium rem quisquam molestias at quos vero. Officiis ad
-                velit doloremque at. Dignissimos praesentium necessitatibus
-                natus corrupti cum consequatur aliquam! Minima molestias iure
-                quam distinctio velit.
+                Ganz unten auf dieser Website findest du alle Informationen bezüglich der Anfahrt und Kontaktaufnahme.
+                Bei Fragen aller Art melde dich gerne bei uns!
               </div>
             </div>
           </div>
@@ -400,9 +390,9 @@
   <!-- Wer wir sind -->
     <section id="werwirsind" class="p-5 bgmaincolor1">
       <div class="container">
-        <h2 class="text-center text-white">Our Instructors</h2>
+        <h2 class="text-center text-white">Wer sind wir?</h2>
         <p class="lead text-center text-white mb-5">
-          Hier erklären warum unser Team so geil ist @Moritz
+          Unser Team überzeugt mit jahrelanger musikalischer Erfahrung und Referenzen der bekanntesten Opernhäuser dieser Welt.
         </p>
         <div class="row g-4">
           <div class="col-md-6 col-lg-6">
@@ -416,8 +406,9 @@
                 />
                 <h3 class="card-title mb-3">Noah Heidrich</h3>
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Assumenda accusamus nobis sed cupiditate iusto? Quibusdam.
+                  Noah Heidrich ist der Fachwelt als profilierter Violinist bekannt. 
+                  Sein Repertoire reicht von klassischen Stücken bis zu moderner Pop-Musik. 
+                  Stilistisch beeindruckt Heidrich durch die feine Eleganz seines Spiels und glänzt außerdem mit innovativen Interpretationen klassischer Werke.
                 </p>
                 <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
                 <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
