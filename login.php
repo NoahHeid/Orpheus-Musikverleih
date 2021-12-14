@@ -33,20 +33,28 @@ if($ergebnis->num_rows > 0){
         $_SESSION['email'] = $i["kd_email"];
         $_SESSION['handy'] = $i["kd_handy"];
     }
- 
+    //Schliesse Datenbank!
+    $connection->close();
 
+    header('Location: '."index.php");
+    die();
 }
 else{
-     echo "Hat net geklappt";
-     $_SESSION['loggedin'] = false;
+     session_destroy();
+     $connection->close();
+     echo '
+     <script>
+            function redirect1()
+            {
+                document.getElementById("myform").submit();
+            }
+    </script>
+     <body onload="redirect1()">
+     <form action="index.php" method="post" id="myform">
+        <input type="text" id="anmeldeFehler" name="anmeldeFehler" value="true" hidden><br>
+        <input type="submit" name="Submit1" hidden>
+    </form>';
+
 }
-
-
-//Schliesse Datenbank!
-$connection->close();
-
-header('Location: '."index.php");
-die();
-
 
 ?>

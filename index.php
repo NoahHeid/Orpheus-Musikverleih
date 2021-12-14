@@ -1,5 +1,12 @@
 <?php
     session_start();
+    if(isset($_SESSION['loggedin'])){
+      $eingeloggt = true;
+    }
+    else{
+      $eingeloggt = false;
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -56,7 +63,7 @@
             </li>
             <li class="nav-item mx-2">
               <?php 
-                if(!isset($_SESSION['loggedin'])){
+                if(!$eingeloggt){
                   echo '<button
                   class="btn btn-warning btn-sm"
                   data-bs-toggle="modal"
@@ -96,7 +103,7 @@
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
-            <h1> <?php if(isset($_SESSION['loggedin'])){echo "Lieber ".$_SESSION['vorname']." b";}else{echo "B";} ?>eginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
+            <h1> <?php if($eingeloggt){echo "Lieber ".$_SESSION['vorname']." b";}else{echo "B";} ?>eginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
             <p class="lead my-4">
 
               Entdecke mit uns ungeahnte Talente und entfalte dein Potential!
@@ -145,7 +152,8 @@
                 <p class="card-text">
                   Die Pandemie fordert uns alle heraus. Daher bieten wir Montags und Freitags Musikunterricht über Zoom an!
                 </p>
-                <script>function alertNachricht(){
+                <script>
+                function alertNachricht(){
                   alert("Bitte zur Terminplanung erst einloggen!");
                 }
                 </script>
@@ -644,5 +652,14 @@
     </script>
   
   </div>
+  <?php
+    if(isset($_POST['anmeldeFehler'])){
+      echo '
+      <script>
+        alert("Falsche Einlogdaten!");
+      </script>
+      ';
+    }
+  ?>
   </body>
 </html>
