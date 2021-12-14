@@ -99,7 +99,8 @@
             <h1> <?php if(isset($_SESSION['loggedin'])){echo "Lieber ".$_SESSION['vorname']." b";}else{echo "B";} ?>eginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
             <p class="lead my-4">
 
-              Entdecke mit uns ungeahnte Talente und entfalte dein Potential!
+            <em>Die Musik drückt das aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.</em> 
+            - Victor Hugo
             </p>
 
           </div>
