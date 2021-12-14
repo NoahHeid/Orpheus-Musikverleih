@@ -67,7 +67,7 @@
                 }
                 else{
                   echo '<form action="logout.php">
-                          <button type="submit" class="btn btn-warning btn-sm value="Abmelden" ></button>
+                          <button type="submit" class="btn btn-warning btn-sm" >Abmelden</button>
                         </form>';
                 }
               ?>
@@ -93,7 +93,7 @@
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
-            <h1> <?php if(isset($_SESSION['loggedin'])){echo "Lieber ".$_SESSION['vorname'];} ?> Beginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
+            <h1> <?php if(isset($_SESSION['loggedin'])){echo "Lieber ".$_SESSION['vorname']." b";}else{echo "B";} ?>eginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
             <p class="lead my-4">
 
               Entdecke mit uns ungeahnte Talente und entfalte dein Potential!
@@ -110,6 +110,7 @@
     </section>
 
     <!-- Newsletter -->
+    <?php if(!isset($_SESSION['loggedin'])){echo '      
     <section class="text-light p-5 bgmaincolor4">
       <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
@@ -122,6 +123,8 @@
         </div>
       </div>
     </section>
+    ';}
+    ?>
 
     <!-- Terminplanung Musikschule -->
     <section class="p-5">
@@ -139,7 +142,13 @@
                 <p class="card-text">
                   Die Pandemie fordert uns alle heraus. Daher bieten wir Montags und Freitags Musikunterricht über Zoom an!
                 </p>
-                <a href="terminplanung.php#virtuell" class="btn btn-dark">Jetzt Termin vereinbaren</a>
+                <script>function alertNachricht(){
+                  alert("Bitte zur Terminplanung erst einloggen!");
+                }
+                </script>
+                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" onclick="alertNachricht");" value="Jetzt Termin vereinbaren" />';}
+                else{echo '<a href="terminplanung.php#virtuell" class="btn btn-dark">Jetzt Termin vereinbaren</a>';}
+                ?>
               </div>
             </div>
           </div>
@@ -259,7 +268,7 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#question-one"
               >
-                Gönn mal alle Kundeneinträge
+               Kann trotz Corona Musikuntericht stattfinden?
               </button>
             </h2>
             <div
@@ -280,7 +289,7 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#question-two"
               >
-                How much does it cost to attend?
+                Wie viel kosten die Stunden?
               </button>
             </h2>
             <div
@@ -308,7 +317,7 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#question-three"
               >
-                What do I need to Know?
+               Was muss ich mitbringen?
               </button>
             </h2>
             <div
@@ -317,13 +326,7 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                beatae fuga animi distinctio perspiciatis adipisci velit maiores
-                totam tempora accusamus modi explicabo accusantium consequatur,
-                praesentium rem quisquam molestias at quos vero. Officiis ad
-                velit doloremque at. Dignissimos praesentium necessitatibus
-                natus corrupti cum consequatur aliquam! Minima molestias iure
-                quam distinctio velit.
+                eigenes instru, oder man leiht aus
               </div>
             </div>
           </div>
@@ -336,7 +339,7 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#question-four"
               >
-                How Do I sign up?
+                Wie melde ich mich an?
               </button>
             </h2>
             <div
@@ -364,7 +367,7 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#question-five"
               >
-                Do you help me find a job?
+                Wie kann ich Sie erreichen?
               </button>
             </h2>
             <div
