@@ -158,9 +158,11 @@
                   alert("Bitte zur Terminplanung erst einloggen!");
                 }
                 </script>
-                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" onclick="alertNachricht");" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<a href="terminplanung.php#virtuell" class="btn btn-dark">Jetzt Termin vereinbaren</a>';}
+
+                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn-5 " onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
+                else{echo '<a href="terminplanung.php#virtuell" class="custom-btn btn-1">Jetzt Termin vereinbaren</a>';}
                 ?>
+
               </div>
             </div>
           </div>
@@ -174,7 +176,11 @@
                 <p class="card-text">
                   Mittwochs finden unsere Stunden als Hybridmodell statt. Hier kannst du entscheiden, von wo aus du teilnehmen möchtest!
                 </p>
-                <a href="terminplanung.php#hybrid" class="btn btn-dark">Jetzt Termin vereinbaren</a>
+
+                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-dark" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
+                else{echo '<a href="terminplanung.php#hybrid" class="btn btn-dark">Jetzt Termin vereinbaren</a>';}
+                ?>
+
               </div>
             </div>
           </div>
@@ -188,7 +194,11 @@
                 <p class="card-text">
                   Vor Ort ist maßgeschneiderte Förderung am Besten möglich. Deswegen findet jeden Dienstag, Donnerstag und Samstag Unterricht in Präsenz statt!
                 </p>
-                <a href="terminplanung.php#vorort" class="btn btn-dark">Jetzt Termin vereinbaren</a>
+
+                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-dark" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
+                else{echo '<a href="terminplanung.php#vorort" class="btn btn-dark">Jetzt Termin vereinbaren</a>';}
+                ?>
+
               </div>
             </div>
           </div>
