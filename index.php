@@ -479,6 +479,14 @@
       </div>
     </section>
 
+    <!-- Grosses Bild -->
+    <section class="p-5" id="bild">
+      <div class="container">
+        
+        <img src="img/man_gitarre.jpg" class="img-fluid" alt="Gitarre">
+      </div>
+    </section> 
+
     <!-- Footer -->
     <footer class="p-5 bg-dark text-white text-center position-relative">
       <div class="container">
