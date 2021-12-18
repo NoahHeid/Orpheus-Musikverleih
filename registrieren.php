@@ -33,26 +33,31 @@ if($ergebnis->num_rows > 0){
     while($i = $ergebnis->fetch_assoc()){
         echo "Hallo: ID:".$i["kd_id"]." Name: ".$i["kd_vorname"]." ".$i["kd_nachname"]." ID: ".$i["kd_id"];
     }
+    session_destroy();
+    $connection->close();
     echo '
     <script>
-           
            function redirect1()
            {
                document.getElementById("myform").submit();
            }
    </script>
-    <body onload="alert("Fehler")">
-    <form action="index.php" method="POST" id="myform">
-       <input type="text" id="emailExistiertBereits" name="emailExistiert" value="true"><br>
-       <input type="submit" name="Submit1" >
+    <body onload="redirect1()">
+    <form action="index.php" method="post" id="myform">
+       <input type="text" id="emailExistiert" name="emailExistiert" value="true" hidden><br>
+       <input type="submit" name="Submit1" hidden>
    </form>';
-    //Schliesse Datenbank!
-    $connection->close();
 
 
 }
 else{
-
+    $sql = "INSERT INTO kunden (kd_vorname, kd_nachname, kd_email, kd_handy, kd_kennwort) VALUES ('$vorname', '$nachname', '$email', '$tel', '$pass')";
+    if ($connection->query($sql) === TRUE) {
+      echo "New record created successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    $connection->close();
 }
 
 

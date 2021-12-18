@@ -14,6 +14,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -122,15 +124,10 @@
 
     <!-- Newsletter -->
     <?php if(!isset($_SESSION['loggedin'])){echo '      
-    <section class="text-light p-5 bgmaincolor4">
+    <section class="text-light p-5 bgmaincolor4 shadow-md">
       <div class="container">
-        <div class="d-md-flex justify-content-between align-items-center">
-          <p class="mb-3 mb-md-0 text-dark text-underlined"><u>Registriere dich hier, um nichts mehr zu verpassen!</u></p>
-
-          <div class="input-group news-input">
-            <input type="text" class="form-control" placeholder="Email Addresse" />
-            <button class="btn bgmaincolor1 text-light btn-lg" type="button">Senden</button>
-          </div>
+        <div class="d-md-flex justify-content-center align-items-center ">
+          <div class="h3 text-align-center ">Bitte melde dich oben rechts an, um vollen Zugriff auf alle Elemente zu haben!</div>
         </div>
       </div>
     </section>
@@ -143,7 +140,7 @@
         <div class="row text-center g-4">
           <div class="h2">Unsere Unterrichtskonzepte passen sich flexibel an deine Bedürfnisse an!</div>
           <div class="col-md">
-            <div class="card bgmaincolor3 text-light">
+            <div class="card bgmaincolor3 text-light" style="height: auto;">
               <div class="card-body text-center">
                 
                 <div class="h1 mb-3">
@@ -159,15 +156,15 @@
                 }
                 </script>
 
-                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn-5 " onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<a href="terminplanung.php#virtuell" class="custom-btn btn-1">Jetzt Termin vereinbaren</a>';}
+                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
+                else{echo '<as href="terminplanung.php#virtuell" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
                 ?>
 
               </div>
             </div>
           </div>
           <div class="col-md">
-            <div class="card bgmaincolor4 text-light">
+            <div class="card bgmaincolor4 text-light" style="height: auto;">
               <div class="card-body text-center">
                 <div class="h1 mb-3">
                   <i class="bi bi-person-square"></i>
@@ -177,15 +174,15 @@
                   Mittwochs finden unsere Stunden als Hybridmodell statt. Hier kannst du entscheiden, von wo aus du teilnehmen möchtest!
                 </p>
 
-                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-dark" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<a href="terminplanung.php#hybrid" class="btn btn-dark">Jetzt Termin vereinbaren</a>';}
+                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
+                else{echo '<a href="terminplanung.php#hybrid" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
                 ?>
 
               </div>
             </div>
           </div>
           <div class="col-md">
-            <div class="card bgmaincolor3 text-light">
+            <div class="card bgmaincolor3 text-light" style="height: auto;">
               <div class="card-body text-center">
                 <div class="h1 mb-3">
                   <i class="bi bi-people"></i>
@@ -195,8 +192,8 @@
                   Vor Ort ist maßgeschneiderte Förderung am Besten möglich. Deswegen findet jeden Dienstag, Donnerstag und Samstag Unterricht in Präsenz statt!
                 </p>
 
-                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-dark" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<a href="terminplanung.php#vorort" class="btn btn-dark">Jetzt Termin vereinbaren</a>';}
+                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
+                else{echo '<a href="terminplanung.php#vorort" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
                 ?>
 
               </div>
@@ -245,7 +242,7 @@
             <p>
               Wir bieten ihnen Instrumente, Beratung und Service von höchster Qualität. Bei Fragen aller Art stehen wir gerne zur Verfügung!
             </p>
-            <a href="#" class="btn btn-light mt-3">
+            <a href="#" class="btn btn-warning mt-3">
               <i class="bi bi-chevron-right"></i> Nimm Kontakt zu uns auf
             </a>
           </div>
@@ -268,7 +265,7 @@
             <p>
             Entdecke mit uns deine Talente und entfalte dein Potential. Wir bieten hervorragenden Unterricht in Violine, Klavier und Gesang!
             </p>
-            <a href="#" class="btn btn-light mt-3">
+            <a href="#" class="btn btn-warning mt-3">
               <i class="bi bi-chevron-right"></i> Nimm Kontakt zu uns auf
             </a>
           </div>
