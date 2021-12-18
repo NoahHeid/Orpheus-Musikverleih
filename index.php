@@ -63,6 +63,14 @@
             <li class="nav-item">
               <a href="#kontakt" class="nav-link text-warning">Kontakt</a>
             </li>
+            <!-- Admin Bereich -->
+            <?php
+            if($eingeloggt==true && $_SESSION['id']<3){
+              echo '<li class="nav-item">
+              <a href="admin.php" class="nav-link text-warning"><u>Admin Bereich</u></a>
+            </li>';
+            }
+            ?>
             <li class="nav-item mx-2">
               <?php 
                 if(!$eingeloggt){
@@ -676,6 +684,13 @@
       echo '
       <script>
         alert("Diese Email wird bereits verwendet, bitte nutze eine andere Email Adresse!");
+      </script>
+      ';
+    }
+    if(isset($_POST['registrationErfolgreich'])){
+      echo '
+      <script>
+        alert("Registration erfolgreich! Bitte logge dich nun ein :)");
       </script>
       ';
     }

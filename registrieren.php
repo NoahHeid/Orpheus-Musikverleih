@@ -53,7 +53,20 @@ if($ergebnis->num_rows > 0){
 else{
     $sql = "INSERT INTO kunden (kd_vorname, kd_nachname, kd_email, kd_handy, kd_kennwort) VALUES ('$vorname', '$nachname', '$email', '$tel', '$pass')";
     if ($connection->query($sql) === TRUE) {
-      echo "New record created successfully";
+      echo 'Registration erfolgreich!
+      <script>
+      function redirect1()
+      {
+          document.getElementById("myform").submit();
+      }
+        </script>
+    <body onload="redirect1()">
+    <form action="index.php" method="post" id="myform">
+    <input type="text" id="registrationErfolgreich" name="registrationErfolgreich" value="true" hidden><br>
+    <input type="submit" name="Submit1" hidden>
+    </form>;';
+      header('Location: '."index.php");
+      die();
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
