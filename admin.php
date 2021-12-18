@@ -138,12 +138,11 @@
                      if ($erg = $connection->query($sql)) {
                        while ($datensatz = $erg->fetch_object()) {
                          $daten[] = $datensatz;
-                         print_r($daten);
                        }
                      }
                    }
                    ?>
-                   <table class="table">
+                   <table class="table text-light">
                     <thead>
                    <tr>
                     <th scope="col">ID</th>
