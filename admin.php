@@ -121,101 +121,190 @@
                   <div class="d-flex justify-content-center h2 text-dark">Instrumente</div>
                   <!-- Linke Spalte-->
                   <div class="col-5">
-                    <div class="text-center h3 text-dark">Geigen</div>
-                  </div>
-                  <!-- Rechte Spalte-->
-                  <div class="col-5">
-                  <div class="text-center h3 text-dark">Harfen</div>
-                  <?php
-                    $servername = "localhost";
-                    $user = "root";
-                    $password = "";
-                    $datenbank = "instrumente";
-                  
-                    $connection = new mysqli($servername, $user, $password, $datenbank);
-                    $sql = "SELECT * FROM harfen";
-                    if ($erg = $connection->query($sql)) {
-                      if ($erg->num_rows) {
-                      // print_r($erg->num_rows);
-                       $ds_gesamt = $erg->num_rows;
-                       $erg->free();
-                     }
-                     if ($erg = $connection->query($sql)) {
-                       while ($datensatz = $erg->fetch_object()) {
-                         $daten[] = $datensatz;
-                       }
-                     }
-                   }
-                   
-                   ?>
-                   <table class="table text-dark mr-5">
-                    <thead>
-                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Harfe</th>
-                    <th scope="col">Ausgeliehen an</th>
-                    <th scope="col">Ausgeliehen am</th>
-                   </tr>
-                 </thead>
-                 <tbody>
-                 <?php
-                 foreach ($daten as $inhalt) {
-                 ?>
-          
+                      <div class="text-center h3 text-dark">Geigen</div>
+                      <?php
+                        $servername = "localhost";
+                        $user = "root";
+                        $password = "";
+                        $datenbank = "instrumente";
+                      
+                        $connection1 = new mysqli($servername, $user, $password, $datenbank);
+                        $sql1 = "SELECT * FROM geigen";
+                        if ($erg1 = $connection1->query($sql1)) {
+                          if ($erg1->num_rows) {
+                          // print_r($erg->num_rows);
+                          $ds_gesamt = $erg1->num_rows;
+                          $erg1->free();
+                        }
+                        if ($erg1 = $connection1->query($sql1)) {
+                          while ($datensatz1 = $erg1->fetch_object()) {
+                            $daten1[] = $datensatz1;
+                          }
+                        }
+                      }
+                      
+                      ?>
+                      <table class="table text-dark mr-5">
+                        <thead>
                       <tr>
-                          <td>
-                          
-                          <form method="post" action="harfen.php">
-                              <div class="input-group mb-3">
-                                <input type="text" hidden name="toDeleteID" value=<?php echo $inhalt->hf_id;?>>
-                                <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
-                              </div>
-                            </form>
-                          
-
-                          </td>
-
-                          <th scope="row"> <?php echo $inhalt->hf_id; ?></th>
-                          <td>
-                              <?php echo $inhalt->hf_name; ?>
-                          </td>
-                          <td>
-                          <?php $kunde = $inhalt->kd_id; 
-                              if($erg = $connection->query("SELECT `kd_vorname`, `kd_nachname` FROM `kunden` WHERE `kd_id` = $kunde")){
-                                if($erg->num_rows > 0){
-                                  $kundendaten = $erg->fetch_object();
-                                  echo $kundendaten->kd_vorname." ".$kundendaten->kd_nachname;
-                                }
-                                else{
-                                  echo "Auf Lager";
-                                }
-                              }else{
-                                echo "keine Connection zur Kundendatenbank";
-                              }
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Geige</th>
+                        <th scope="col">Ausgeliehen an</th>
+                        <th scope="col">Ausgeliehen am</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($daten1 as $inhalt1) {
+                    ?>
+              
+                          <tr>
+                              <td>
                               
-                              ?>
-                          </td> 
-                          <td>
-                              <?php echo $inhalt->hf_ausleihdatum; ?>
-                          </td>               
-                    </tr>
-                <?php
-                }
-                $connection->close();
-                ?>
-                </tbody>
-                </table>
-                  <form method="post" action="harfen.php">
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Harfenname" aria-label="Harfenname" aria-describedby="basic-addon2" name="harfenname">
-                      <div class="input-group-append">
-                        <input type="submit" class="btn btn-warning"/>
-                      </div>
-                    </div>
-                </form>
-              </div>
-         </div>
+                              <form method="post" action="geigen.php">
+                                  <div class="input-group mb-3">
+                                    <input type="text" hidden name="toDeleteID" value=<?php echo $inhalt1->gg_id;?>>
+                                    <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
+                                  </div>
+                                </form>
+                              
+
+                              </td>
+
+                              <th scope="row"> <?php echo $inhalt1->gg_id; ?></th>
+                              <td>
+                                  <?php echo $inhalt1->gg_name; ?>
+                              </td>
+                              <td>
+                              <?php $kunde1 = $inhalt1->kd_id; 
+                                  if($erg1 = $connection1->query("SELECT `kd_vorname`, `kd_nachname` FROM `kunden` WHERE `kd_id` = $kunde1")){
+                                    if($erg1->num_rows > 0){
+                                      $kundendaten1 = $erg1->fetch_object();
+                                      echo $kundendaten1->kd_vorname." ".$kundendaten->kd_nachname;
+                                    }
+                                    else{
+                                      echo "Auf Lager";
+                                    }
+                                  }else{
+                                    echo "keine Connection zur Kundendatenbank";
+                                  }
+                                  
+                                  ?>
+                              </td> 
+                              <td>
+                                  <?php echo $inhalt1->gg_ausleihdatum; ?>
+                              </td>               
+                        </tr>
+                    <?php
+                    }
+                   
+                    ?>
+                    </tbody>
+                    </table>
+                      <form method="post" action="geigen.php">
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" placeholder="Geigenname" aria-label="Geigenname" aria-describedby="basic-addon2" name="geigenname">
+                          <div class="input-group-append">
+                            <input type="submit" class="btn btn-warning"/>
+                          </div>
+                        </div>
+                    </form>
+                  </div>
+<!-- Rechte Spalte-->
+                  <div class="col-5">
+                      <div class="text-center h3 text-dark">Harfen</div>
+                      <?php
+                        $servername = "localhost";
+                        $user = "root";
+                        $password = "";
+                        $datenbank = "instrumente";
+                      
+                        $connection = new mysqli($servername, $user, $password, $datenbank);
+
+                        $sql = "SELECT * FROM harfen";
+                        if ($erg = $connection->query($sql)) {
+                          if ($erg->num_rows) {
+                          // print_r($erg->num_rows);
+                          $ds_gesamt = $erg->num_rows;
+                          $erg->free();
+                        }
+                        if ($erg = $connection->query($sql)) {
+                          while ($datensatz = $erg->fetch_object()) {
+                            $daten[] = $datensatz;
+                          }
+                        }
+                      }
+                      
+                      ?>
+                      <table class="table text-dark mr-5">
+                        <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Harfe</th>
+                        <th scope="col">Ausgeliehen an</th>
+                        <th scope="col">Ausgeliehen am</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($daten as $inhalt) {
+                    ?>
+              
+                          <tr>
+                              <td>
+                              
+                              <form method="post" action="harfen.php">
+                                  <div class="input-group mb-3">
+                                    <input type="text" hidden name="toDeleteID" value=<?php echo $inhalt->hf_id;?>>
+                                    <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
+                                  </div>
+                                </form>
+                              
+
+                              </td>
+
+                              <th scope="row"> <?php echo $inhalt->hf_id; ?></th>
+                              <td>
+                                  <?php echo $inhalt->hf_name; ?>
+                              </td>
+                              <td>
+                              <?php $kunde = $inhalt->kd_id; 
+                                  if($erg = $connection->query("SELECT `kd_vorname`, `kd_nachname` FROM `kunden` WHERE `kd_id` = $kunde")){
+                                    if($erg->num_rows > 0){
+                                      $kundendaten = $erg->fetch_object();
+                                      echo $kundendaten->kd_vorname." ".$kundendaten->kd_nachname;
+                                    }
+                                    else{
+                                      echo "Auf Lager";
+                                    }
+                                  }else{
+                                    echo "keine Connection zur Kundendatenbank";
+                                  }
+                                  
+                                  ?>
+                              </td> 
+                              <td>
+                                  <?php echo $inhalt->hf_ausleihdatum; ?>
+                              </td>               
+                        </tr>
+                    <?php
+                    }
+                    $connection->close();
+                    ?>
+                    </tbody>
+                    </table>
+                      <form method="post" action="harfen.php">
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" placeholder="Harfenname" aria-label="Harfenname" aria-describedby="basic-addon2" name="harfenname">
+                          <div class="input-group-append">
+                            <input type="submit" class="btn btn-warning"/>
+                          </div>
+                        </div>
+                    </form>
+                  </div>
+        </div>
       </section>   
    </div>   
    <footer class="p-5 bg-dark text-white text-center position-relative">
