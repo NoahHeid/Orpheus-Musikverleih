@@ -152,6 +152,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Geige</th>
                         <th scope="col">Ausleihen</th>
+                        <th scope="col">Verliehen bis</th>
                       </tr>
                     </thead>
                     <tbody>
