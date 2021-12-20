@@ -309,7 +309,7 @@
       <!-- Kunden -->
       <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5">
         <div class="d-flex justify-content-center h2 text-dark">Kunden</div> 
-        
+        <input type="button" onclick="lastSeen()">
         <?php
                         $servername = "localhost";
                         $user = "root";
@@ -370,14 +370,14 @@
                                   <?php echo $inhalt->kd_handy; ?>
                               </td>
                               <td>
-                              <p><span id="lastSeen"><input type="button" onclick="lastSeen()"></p>
+                              <p><span id="lastSeen"></p>
                               <script>
                                 function lastSeen() {
                                   const xmlhttp = new XMLHttpRequest();
                                   xmlhttp.onload = function() {
                                     document.getElementById("lastSeen").innerHTML = this.responseText;
                                   }
-                                  xmlhttp.open("GET", 'supportPages/lastSeen.php?kd_anmeldeDatum=$inhalt->kd_anmeldedatum');
+                                  xmlhttp.open("GET", 'supportPages/lastSeen.php?kd_anmeldeDatum='.$inhalt->kd_anmeldedatum);
                                   xmlhttp.send();
                                 }
                                 </script>
