@@ -63,14 +63,22 @@
             <li class="nav-item">
               <a href="#kontakt" class="nav-link text-warning">Kontakt</a>
             </li>
+            <?php 
+                if($eingeloggt){
+                  echo '<li class="nav-item mx-2"><a href="ausleihe.php" class="nav-link text-warning"><u>Zur Ausleihe</u></a></li>';
+                }
+                
+              ?>
             <!-- Admin Bereich -->
             <?php
+            //Prüfe ob Kunden ID unter 3 ist, da nur Moritz und ich als Admins die IDs 1 und 2 haben können!
             if($eingeloggt==true && $_SESSION['id']<3){
               echo '<li class="nav-item">
               <a href="admin.php" class="nav-link text-warning"><u>Admin Bereich</u></a>
             </li>';
             }
             ?>
+
             <li class="nav-item mx-2">
               <?php 
                 if(!$eingeloggt){

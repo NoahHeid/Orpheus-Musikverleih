@@ -58,7 +58,21 @@
           </button>
           <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-            
+            <?php 
+                if($eingeloggt){
+                  echo '<li class="nav-item mx-2"><a href="ausleihe.php" class="nav-link text-warning"><u>Zur Ausleihe</u></a></li>';
+                }
+                
+              ?>
+              <!-- Admin Bereich -->
+            <?php
+            //Prüfe ob Kunden ID unter 3 ist, da nur Moritz und ich als Admins die IDs 1 und 2 haben können!
+            if($eingeloggt==true && $_SESSION['id']<3){
+              echo '<li class="nav-item">
+              <a href="admin.php" class="nav-link text-warning"><u>Admin Bereich</u></a>
+            </li>';
+            }
+            ?>
               <li class="nav-item mx-2">
                 <?php 
                   if(!$eingeloggt){
@@ -181,7 +195,7 @@
                                   if($erg1 = $connection1->query("SELECT `kd_vorname`, `kd_nachname` FROM `kunden` WHERE `kd_id` = $kunde1")){
                                     if($erg1->num_rows > 0){
                                       $kundendaten1 = $erg1->fetch_object();
-                                      echo $kundendaten1->kd_vorname." ".$kundendaten->kd_nachname;
+                                      echo $kundendaten1->kd_vorname." ".$kundendaten1->kd_nachname;
                                     }
                                     else{
                                       echo "Auf Lager";
@@ -307,7 +321,8 @@
         </div>
       </section>  
       <!-- Kunden -->
-      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5">
+      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center d-flex justify-content-center text-sm-start bgmaincolor5">
+        <div class="col-10">
         <div class="d-flex justify-content-center h2 text-dark">Kunden</div> 
 
         <?php
@@ -436,7 +451,7 @@
                     ?>
                     </tbody>
                     </table>
-
+        </div>
       </section>
       
 

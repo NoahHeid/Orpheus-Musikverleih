@@ -58,7 +58,21 @@
           </button>
           <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-            
+            <?php 
+                if($eingeloggt){
+                  echo '<li class="nav-item mx-2"><a href="ausleihe.php" class="nav-link text-warning"><u>Zur Ausleihe</u></a></li>';
+                }
+                
+              ?>
+            <!-- Admin Bereich -->
+            <?php
+            //Prüfe ob Kunden ID unter 3 ist, da nur Moritz und ich als Admins die IDs 1 und 2 haben können!
+            if($eingeloggt==true && $_SESSION['id']<3){
+              echo '<li class="nav-item">
+              <a href="admin.php" class="nav-link text-warning"><u>Admin Bereich</u></a>
+            </li>';
+            }
+            ?>
               <li class="nav-item mx-2">
                 <?php 
                   if(!$eingeloggt){
@@ -133,17 +147,10 @@
                         $connection1 = connectDatabase();
                         $sql1 = "SELECT * FROM geigen";
                         if ($erg1 = $connection1->query($sql1)) {
-                          if ($erg1->num_rows) {
-                          // print_r($erg->num_rows);
-                          $ds_gesamt = $erg1->num_rows;
-                          $erg1->free();
-                        }
-                        if ($erg1 = $connection1->query($sql1)) {
                           while ($datensatz1 = $erg1->fetch_object()) {
                             $daten1[] = $datensatz1;
                           }
                         }
-                      }
                       
                       ?>
                       <table class="table text-dark mr-5">
@@ -152,19 +159,44 @@
                         <th scope="col">#</th>
                         <th scope="col">Geige</th>
                         <th scope="col">Ausleihen</th>
-                        <th scope="col">Verliehen bis</th>
                       </tr>
                     </thead>
                     <tbody>
                     <?php
-                    foreach ($daten1 as $inhalt1) {
+                    foreach ($daten1 as $inhalt) {
                     ?>
               
                           <tr>
-                              <th scope="row"> <?php echo $inhalt1->gg_id; ?></th>
+                              <th scope="row"> <?php echo $inhalt->gg_id; ?></th>
                               <td>
-                                  <?php echo $inhalt1->gg_name; ?>
+                                  <?php echo $inhalt->gg_name; ?>
                               </td>  
+                              <td><?php 
+                              //Falls die Geige auf Lager ist (Also das Ausleihdatum NULL ist), mache es möglich Auszuleihen!
+                              if($inhalt->gg_ausleihdatum == NULL){
+                                echo '<form method="post" action="geigen.php">
+                                <div class="input-group mb-3">
+                                  <input type="text" hidden name="ggID" value='.$inhalt->gg_id.'>
+                                  <input type="text" hidden name="kdID" value='.$_SESSION['id'].'>
+                                  <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Ausleihen" name="ausleihen" id="ausleihen">
+                                </div>
+                              </form>';
+                              }else{
+                                //Prüfe ob das Element vom Nutzer ausgeliehen ist, wenn ja, mach es möglich, das Element zurückzugeben!
+                                if($inhalt->kd_id == $_SESSION['id']){
+                                  echo '<form method="post" action="geigen.php">
+                                  <div class="input-group mb-3">
+                                    <input type="text" hidden name="ggID" value='.$inhalt->gg_id.'>
+                                    <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Zurückgeben" name="zurückgeben" id="zurückgeben">
+                                  </div>
+                                </form>';
+                                }
+                                else{
+                                  echo 'leider bereits ausgeliehen!';
+                                }
+                              }
+                              
+                              ?></td>
                         </tr>
                     <?php
                     }
@@ -177,6 +209,78 @@
         </div>
       </section>
 
+      <!-- Harfenverleih -->
+      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5">
+        <div class="container">
+          <div class="d-sm-flex align-items-center justify-content-around">
+                <div>
+                    <?php
+                        $connection2 = connectDatabase();
+                        $sql2 = "SELECT * FROM harfen";
+                        if ($erg2 = $connection2->query($sql2)) {
+                          while ($datensatz2 = $erg2->fetch_object()) {
+                            $daten2[] = $datensatz2;
+                          }
+                        }
+                      
+                      ?>
+                      <table class="table text-dark mr-5">
+                        <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Harfe</th>
+                        <th scope="col">Ausleihen</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($daten2 as $inhalt2) {
+                    ?>
+              
+                          <tr>
+                              <th scope="row"> <?php echo $inhalt2->hf_id; ?></th>
+                              <td>
+                                  <?php echo $inhalt2->hf_name; ?>
+                              </td>  
+                              <td><?php 
+                              //Falls die Geige auf Lager ist (Also das Ausleihdatum NULL ist), mache es möglich Auszuleihen!
+                              if($inhalt2->hf_ausleihdatum == NULL){
+                                echo '<form method="post" action="harfen.php">
+                                <div class="input-group mb-3">
+                                  <input type="text" hidden name="hfID" value='.$inhalt2->hf_id.'>
+                                  <input type="text" hidden name="kdID" value='.$_SESSION['id'].'>
+                                  <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Ausleihen" name="ausleihen" id="ausleihen">
+                                </div>
+                              </form>';
+                              }else{
+                                //Prüfe ob das Element vom Nutzer ausgeliehen ist, wenn ja, mach es möglich, das Element zurückzugeben!
+                                if($inhalt2->kd_id == $_SESSION['id']){
+                                  echo '<form method="post" action="harfen.php">
+                                  <div class="input-group mb-3">
+                                    <input type="text" hidden name="hfID" value='.$inhalt2->hf_id.'>
+                                    <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Zurückgeben" name="zurückgeben" id="zurückgeben">
+                                  </div>
+                                </form>';
+                                }
+                                else{
+                                  echo 'leider bereits ausgeliehen!';
+                                }
+                              }
+                              
+                              ?></td>
+                        </tr>
+                    <?php
+                    }
+                   
+                    ?>
+                    </tbody>
+                    </table>
+                </div>
+                <div class="h1 text-dark text-center">Harfenverleih</div>
+          </div>
+        </div>
+      </section>
+      
 
     </body>
     </html>
