@@ -211,7 +211,7 @@
                         </div>
                     </form>
                   </div>
-<!-- Rechte Spalte-->
+                <!-- Rechte Spalte-->
                   <div class="col-5">
                       <div class="text-center h3 text-dark">Harfen</div>
                       <?php
@@ -299,13 +299,104 @@
                         <div class="input-group mb-3">
                           <input type="text" class="form-control" placeholder="Harfenname" aria-label="Harfenname" aria-describedby="basic-addon2" name="harfenname">
                           <div class="input-group-append">
-                            <input type="submit" class="btn btn-warning"/>
+                            <input type="submit" value="Hinzufügen" class="btn btn-warning"/>
                           </div>
                         </div>
                     </form>
                   </div>
         </div>
-      </section>   
+      </section>  
+      <!-- Kunden -->
+      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5">
+        <div class="d-flex justify-content-center h2 text-dark">Kunden</div> 
+        
+        <?php
+                        $servername = "localhost";
+                        $user = "root";
+                        $password = "";
+                        $datenbank = "instrumente";
+                      
+                        $connection2 = new mysqli($servername, $user, $password, $datenbank);
+
+                        $sql2 = "SELECT * FROM kunden";
+
+                        $erg2 = $connection2->query($sql2);
+                          while ($datensatz2 = $erg2->fetch_object()) {
+                            $daten2[] = $datensatz2;
+                          }
+                          
+                      ?>
+                      <table class="table text-dark mr-5">
+                        <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Vorname</th>
+                        <th scope="col">Nachname</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Handynummer</th>
+                        <th scope="col">Letzte Anmeldung</th>
+                        <th scope="col">Registriert seit</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    if(!empty($inhalt)){
+                    foreach ($daten2 as $inhalt) {
+                     
+                    ?>
+              
+                          <tr>
+                              <td>
+                              <form method="post" action="kunden.php">
+                                  <div class="input-group mb-3">
+                                    <input type="text" hidden name="toDeleteID" value=<?php echo $inhalt->kd_id;?>>
+                                    <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
+                                  </div>
+                                </form>
+                              </td>
+
+                              <th scope="row"> <?php echo $inhalt->kd_id; ?></th>
+                              <td>
+                                  <?php echo $inhalt->kd_vorname; ?>
+                              </td>
+                              <td>
+                                  <?php echo $inhalt->kd_nachname; ?>
+                              </td>
+                              <td>
+                                  <?php echo $inhalt->kd_email; ?>
+                              </td>
+                              <td>
+                                  <?php echo $inhalt->kd_handy; ?>
+                              </td>
+                              <td>
+                              <p><span id="lastSeen"><input type="button" onclick="lastSeen()"></p>
+                              <script>
+                                function lastSeen() {
+                                  const xmlhttp = new XMLHttpRequest();
+                                  xmlhttp.onload = function() {
+                                    document.getElementById("lastSeen").innerHTML = this.responseText;
+                                  }
+                                  xmlhttp.open("GET", 'supportPages/lastSeen.php?kd_anmeldeDatum=$inhalt->kd_anmeldedatum');
+                                  xmlhttp.send();
+                                }
+                                </script>
+                              </td>
+                              <td>
+                                  <?php echo $inhalt->kd_registrierdatum; ?>
+                              </td>            
+                        </tr>
+                    <?php
+                    }
+                  }
+                    $connection2->close();
+                    ?>
+                    </tbody>
+                    </table>
+
+      </section>
+      
+
    </div>   
    <footer class="p-5 bg-dark text-white text-center position-relative">
       <div class="container">

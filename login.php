@@ -24,13 +24,17 @@ $ergebnis = $connection ->query($sql);
 
 if($ergebnis->num_rows == 1){
     $i = $ergebnis->fetch_assoc();
-    echo "Hallo: ID:".$i["kd_id"]." Name: ".$i["kd_vorname"]." ".$i["kd_nachname"];
+    //Speicher die Daten in der Session
     $_SESSION['loggedin'] = true;
     $_SESSION['id'] = $i["kd_id"];
     $_SESSION['vorname'] = $i["kd_vorname"];
     $_SESSION['nachname'] = $i["kd_nachname"];
     $_SESSION['email'] = $i["kd_email"];
     $_SESSION['handy'] = $i["kd_handy"];
+    //Update in der Datenbank die letzte Anmeldung
+    $kdID = $i["kd_id"];
+    $sqlupdate = "update kunden set kd_anmeldedatum =CURRENT_TIMESTAMP where kd_id = $kdID";
+    $connection -> query($sqlupdate);
     //Schliesse Datenbank!
     $connection->close();
     header('Location: '."index.php");
