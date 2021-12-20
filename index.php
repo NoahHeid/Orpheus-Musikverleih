@@ -250,9 +250,20 @@
             <p>
               Wir bieten ihnen Instrumente, Beratung und Service von höchster Qualität. Bei Fragen aller Art stehen wir gerne zur Verfügung!
             </p>
+            <?php
+            if(isset($_SESSION['loggedin'])){
+              echo'
+              <a href="ausleihe.php" class="btn btn-warning mt-3">
+                <i class="bi bi-chevron-right"></i> Zur Ausleihe
+              </a>
+              ';
+            }else{
+              echo '
             <a href="#" class="btn btn-warning mt-3">
               <i class="bi bi-chevron-right"></i> Nimm Kontakt zu uns auf
-            </a>
+            </a>';
+            }
+            ?>
           </div>
           <div class="col-md">
             <img src="img/saxophon.jpeg" class="img-fluid" alt="" />
