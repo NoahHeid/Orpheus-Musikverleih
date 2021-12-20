@@ -309,7 +309,7 @@
       <!-- Kunden -->
       <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5">
         <div class="d-flex justify-content-center h2 text-dark">Kunden</div> 
-        <input type="button" onclick="lastSeen()">
+
         <?php
                         $servername = "localhost";
                         $user = "root";
@@ -370,17 +370,60 @@
                                   <?php echo $inhalt->kd_handy; ?>
                               </td>
                               <td>
-                              <p><span id="lastSeen"></p>
-                              <script>
-                                function lastSeen() {
-                                  const xmlhttp = new XMLHttpRequest();
-                                  xmlhttp.onload = function() {
-                                    document.getElementById("lastSeen").innerHTML = this.responseText;
+                              <?php
+
+                              $q = $inhalt->kd_anmeldedatum;
+
+                              // lookup all hints from array if $q is different from ""
+                              //echo $q;
+                              if($inhalt->kd_anmeldedatum == ""){
+                                  echo "Noch nie gesehen.";
+                              }
+                              else{
+                              $d = DateTime::createFromFormat('Y-m-d H:i:s', $q);
+                              $date = new DateTime();
+                              $differenz = $date->getTimestamp() - $d->getTimestamp();
+                              $seen = floor($differenz/60);
+                              $more = false;
+                              if($seen > 60) {
+                                  $more = true;
+                                  $hours = floor($seen/60);
+                                  $minutes = $seen-($hours*60);
+                                  if(($seen > 24) && ($more == true)) {
+                                      $days = floor(($seen/60)/24);
+                                      $hours = floor($seen/60)-($days*24);
                                   }
-                                  xmlhttp.open("GET", 'supportPages/lastSeen.php?kd_anmeldeDatum='.$inhalt->kd_anmeldedatum);
-                                  xmlhttp.send();
-                                }
-                                </script>
+                                  if($minutes == 1) {
+                                  $minute = ' Minute ';  
+                                  } else {
+                                  $minute = ' Minuten ';
+                                  }
+                                  if($hours == 1) {
+                                  $hour = ' Stunde ';  
+                                  } else {
+                                  $hour = ' Stunden ';
+                                  }
+                                  if($days == 1) {
+                                  $day = ' Tag ';  
+                                  } else {
+                                  $day = ' Tage ';
+                                  }
+                                  if($days > 0) {  
+                                  $seen = 'vor '. $days . $day . $hours . $hour . $minutes . $minute;
+                                  } else {
+                                  $seen = 'vor '. $hours . $hour . $minutes . $minute;
+                                  }
+                              } else {
+                                  if($seen == 1) {
+                                  $minute = ' minute ';  
+                                  } else {
+                                  $minute = ' minuten ';
+                                  }    
+                                  $seen = 'vor '.$seen . $minute;
+                                  }
+                                  echo $seen;
+                              }
+                              ?>
                               </td>
                               <td>
                                   <?php echo $inhalt->kd_registrierdatum; ?>

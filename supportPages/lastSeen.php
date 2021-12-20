@@ -2,7 +2,13 @@
 $q = $_REQUEST["kd_anmeldeDatum"];
 
 // lookup all hints from array if $q is different from ""
-echo $q;
+//echo $q;
+if($q == ""){
+    echo "Noch nie gesehen.";
+}
+else{
+
+
 $d = DateTime::createFromFormat('Y-m-d H:i:s', $q);
 $date = new DateTime();
 $differenz = $date->getTimestamp() - $d->getTimestamp();
@@ -45,4 +51,5 @@ if($seen > 60) {
     $seen = $seen . $minute . 'ago';
     }
     echo $seen;
+}
 ?>
