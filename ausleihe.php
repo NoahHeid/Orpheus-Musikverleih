@@ -115,9 +115,7 @@
             <div>
               <h1> <?php echo "Lieber ".$_SESSION['vorname']?>, viel Spaß beim Erkunden unseres <span class="text-warning"> Instrumentenparadises!</span></h1>
               <p class="lead my-4">
-
-              <em>Die Musik drückt das aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.</em> <br>
-              - Victor Hugo
+                  Bitte denke daran, dass nach einer Woche 
               </p>
 
             </div>
@@ -131,7 +129,7 @@
       </section>
 
       <!-- Geigenverleih -->
-      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5">
+      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5 border border-dark">
         <div class="container">
           <div class="d-sm-flex align-items-center justify-content-around">
             <div class="h1 text-dark text-center">Geigenverleih</div>
@@ -192,7 +190,7 @@
                                 </form>';
                                 }
                                 else{
-                                  echo 'leider bereits ausgeliehen!';
+                                  echo 'Leider bereits ausgeliehen!';
                                 }
                               }
                               
@@ -210,7 +208,7 @@
       </section>
 
       <!-- Harfenverleih -->
-      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5">
+      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5 border border-dark">
         <div class="container">
           <div class="d-sm-flex align-items-center justify-content-around">
                 <div>
@@ -263,7 +261,7 @@
                                 </form>';
                                 }
                                 else{
-                                  echo 'leider bereits ausgeliehen!';
+                                  echo 'Leider bereits ausgeliehen!';
                                 }
                               }
                               
