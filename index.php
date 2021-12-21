@@ -227,7 +227,7 @@
             <img src="img/orpheus-saga.jpg" class="img-fluid" alt="" />
           </div>
           <div class="col-md p-5">
-            <h2>Wer war Opheus?</h2>
+            <h2>Wer war Orpheus?</h2>
             <p class="lead">
               Orpheus war ein begnadeter Musiker aus der Antike. Seine Gabe war so groß, dass er sogar in der Gunst des Gottes Apollon stand.
             </p>
@@ -268,7 +268,7 @@
             }else{
               echo '
             <a href="#" class="btn btn-warning mt-3">
-              <i class="bi bi-chevron-right"></i> Nimm Kontakt zu uns auf
+              <i class="bi bi-chevron-right"></i> Logge dich ein
             </a>';
             }
             ?>
@@ -281,7 +281,7 @@
         <!-- Unsere Musikschule -->
         <div class="row align-items-center justify-content-between">
           <div class="col-md">
-            <img src="img/saxophon.jpeg" class="img-fluid" alt="" />
+            <img src="img/band-sw.jpeg" class="img-fluid" alt="" />
           </div>
           <div class="col-md p-5">
             <h2>Unsere Musikschule</h2>
@@ -292,9 +292,20 @@
             <p>
             Entdecke mit uns deine Talente und entfalte dein Potential. Wir bieten hervorragenden Unterricht in Violine, Klavier und Gesang!
             </p>
+            <?php
+            if(isset($_SESSION['loggedin'])){
+              echo'
+              <a href="ausleihe.php" class="btn btn-warning mt-3">
+                <i class="bi bi-chevron-right"></i> Zur Ausleihe
+              </a>
+              ';
+            }else{
+              echo '
             <a href="#" class="btn btn-warning mt-3">
-              <i class="bi bi-chevron-right"></i> Nimm Kontakt zu uns auf
-            </a>
+              <i class="bi bi-chevron-right"></i> Logge dich ein
+            </a>';
+            }
+            ?>
           </div>
         </div>
       </div>

@@ -322,7 +322,7 @@
       </section>  
       <!-- Kunden -->
       <section class="text-light p-5 p-lg-0 pt-lg-5 text-center d-flex justify-content-center text-sm-start bgmaincolor5">
-        <div class="col-10">
+        <div class="col-11">
         <div class="d-flex justify-content-center h2 text-dark">Kunden</div> 
 
         <?php
