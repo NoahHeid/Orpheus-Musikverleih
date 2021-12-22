@@ -451,6 +451,20 @@
       </div>
     </section>
 
+    <!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<title>roomtour</title>
+	<meta name="description" content="Kurzbeschreibung">
+	<link href="design.css" rel="stylesheet">
+</head>
+<body>
+<h1>roomtour</h1>
+<canvas id="leinwand"></canvas>
+</body>
+</html>
+
     <!-- Contact & Map -->
     <section class="p-5" id="kontakt">
       <div class="container">
