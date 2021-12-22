@@ -417,6 +417,7 @@
                   Noah Heidrich ist der Fachwelt als profilierter Violinist bekannt. 
                   Sein Repertoire reicht von klassischen Stücken bis zu moderner Pop-Musik. 
                   Stilistisch beeindruckt Heidrich durch die feine Eleganz seines Spiels und glänzt außerdem mit innovativen Interpretationen klassischer Werke.
+                  Als zweites Standbein baute er sich außerdem eine Karriere als bekannter Jazzsaxophonist 
                 </p>
                 <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
                 <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
@@ -437,8 +438,7 @@
                 />
                 <h3 class="card-title mb-3">Moritz Hussing</h3>
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Assumenda accusamus nobis sed cupiditate iusto? Quibusdam.
+                  Moritz Hussing 
                 </p>
                 <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
                 <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
