@@ -87,4 +87,16 @@
     background-color: var(--maincolor3);
   }
 
-  
+.btn-custom{
+  background-color: var(--maincolor1);
+  color: white;
+}
+
+.btn-custom:hover{
+  background: transparent;
+  color: #000;
+}
+.btn-custom:hover:before, 
+.btn-custom:hover:after{
+  transition: 800ms ease all;
+}

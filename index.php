@@ -14,6 +14,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -61,6 +63,22 @@
             <li class="nav-item">
               <a href="#kontakt" class="nav-link text-warning">Kontakt</a>
             </li>
+            <?php 
+                if($eingeloggt){
+                  echo '<li class="nav-item mx-2"><a href="ausleihe.php" class="nav-link text-warning"><u>Zur Ausleihe</u></a></li>';
+                }
+                
+              ?>
+            <!-- Admin Bereich -->
+            <?php
+            //Prüfe ob Kunden ID unter 3 ist, da nur Moritz und ich als Admins die IDs 1 und 2 haben können!
+            if($eingeloggt==true && $_SESSION['id']<3){
+              echo '<li class="nav-item">
+              <a href="admin.php" class="nav-link text-warning"><u>Admin Bereich</u></a>
+            </li>';
+            }
+            ?>
+
             <li class="nav-item mx-2">
               <?php 
                 if(!$eingeloggt){
@@ -122,15 +140,10 @@
 
     <!-- Newsletter -->
     <?php if(!isset($_SESSION['loggedin'])){echo '      
-    <section class="text-light p-5 bgmaincolor4">
+    <section class="text-light p-5 bgmaincolor4 shadow-md">
       <div class="container">
-        <div class="d-md-flex justify-content-between align-items-center">
-          <p class="mb-3 mb-md-0 text-dark text-underlined"><u>Registriere dich hier, um nichts mehr zu verpassen!</u></p>
-
-          <div class="input-group news-input">
-            <input type="text" class="form-control" placeholder="Email Addresse" />
-            <button class="btn bgmaincolor1 text-light btn-lg" type="button">Senden</button>
-          </div>
+        <div class="d-md-flex justify-content-center align-items-center ">
+          <div class="h3 text-align-center ">Bitte melde dich oben rechts an, um vollen Zugriff auf alle Elemente zu haben!</div>
         </div>
       </div>
     </section>
@@ -143,7 +156,7 @@
         <div class="row text-center g-4">
           <div class="h2">Unsere Unterrichtskonzepte passen sich flexibel an deine Bedürfnisse an!</div>
           <div class="col-md">
-            <div class="card bgmaincolor3 text-light">
+            <div class="card bgmaincolor3 text-light" style="height: auto;">
               <div class="card-body text-center">
                 
                 <div class="h1 mb-3">
@@ -158,14 +171,16 @@
                   alert("Bitte zur Terminplanung erst einloggen!");
                 }
                 </script>
-                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" onclick="alertNachricht");" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<a href="terminplanung.php#virtuell" class="btn btn-dark">Jetzt Termin vereinbaren</a>';}
+
+                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
+                else{echo '<as href="terminplanung.php#virtuell" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
                 ?>
+
               </div>
             </div>
           </div>
           <div class="col-md">
-            <div class="card bgmaincolor4 text-light">
+            <div class="card bgmaincolor4 text-light" style="height: auto;">
               <div class="card-body text-center">
                 <div class="h1 mb-3">
                   <i class="bi bi-person-square"></i>
@@ -174,12 +189,16 @@
                 <p class="card-text">
                   Mittwochs finden unsere Stunden als Hybridmodell statt. Hier kannst du entscheiden, von wo aus du teilnehmen möchtest!
                 </p>
-                <a href="terminplanung.php#hybrid" class="btn btn-dark">Jetzt Termin vereinbaren</a>
+
+                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
+                else{echo '<a href="terminplanung.php#hybrid" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
+                ?>
+
               </div>
             </div>
           </div>
           <div class="col-md">
-            <div class="card bgmaincolor3 text-light">
+            <div class="card bgmaincolor3 text-light" style="height: auto;">
               <div class="card-body text-center">
                 <div class="h1 mb-3">
                   <i class="bi bi-people"></i>
@@ -188,7 +207,11 @@
                 <p class="card-text">
                   Vor Ort ist maßgeschneiderte Förderung am Besten möglich. Deswegen findet jeden Dienstag, Donnerstag und Samstag Unterricht in Präsenz statt!
                 </p>
-                <a href="terminplanung.php#vorort" class="btn btn-dark">Jetzt Termin vereinbaren</a>
+
+                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
+                else{echo '<a href="terminplanung.php#vorort" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
+                ?>
+
               </div>
             </div>
           </div>
@@ -204,7 +227,7 @@
             <img src="img/orpheus-saga.jpg" class="img-fluid" alt="" />
           </div>
           <div class="col-md p-5">
-            <h2>Wer war Opheus?</h2>
+            <h2>Wer war Orpheus?</h2>
             <p class="lead">
               Orpheus war ein begnadeter Musiker aus der Antike. Seine Gabe war so groß, dass er sogar in der Gunst des Gottes Apollon stand.
             </p>
@@ -235,9 +258,20 @@
             <p>
               Wir bieten ihnen Instrumente, Beratung und Service von höchster Qualität. Bei Fragen aller Art stehen wir gerne zur Verfügung!
             </p>
-            <a href="#" class="btn btn-light mt-3">
-              <i class="bi bi-chevron-right"></i> Nimm Kontakt zu uns auf
-            </a>
+            <?php
+            if(isset($_SESSION['loggedin'])){
+              echo'
+              <a href="ausleihe.php" class="btn btn-warning mt-3">
+                <i class="bi bi-chevron-right"></i> Zur Ausleihe
+              </a>
+              ';
+            }else{
+              echo '
+            <a href="#" class="btn btn-warning mt-3">
+              <i class="bi bi-chevron-right"></i> Logge dich ein
+            </a>';
+            }
+            ?>
           </div>
           <div class="col-md">
             <img src="img/saxophon.jpeg" class="img-fluid" alt="" />
@@ -247,7 +281,7 @@
         <!-- Unsere Musikschule -->
         <div class="row align-items-center justify-content-between">
           <div class="col-md">
-            <img src="img/saxophon.jpeg" class="img-fluid" alt="" />
+            <img src="img/band-sw.jpeg" class="img-fluid" alt="" />
           </div>
           <div class="col-md p-5">
             <h2>Unsere Musikschule</h2>
@@ -258,9 +292,20 @@
             <p>
             Entdecke mit uns deine Talente und entfalte dein Potential. Wir bieten hervorragenden Unterricht in Violine, Klavier und Gesang!
             </p>
-            <a href="#" class="btn btn-light mt-3">
-              <i class="bi bi-chevron-right"></i> Nimm Kontakt zu uns auf
-            </a>
+            <?php
+            if(isset($_SESSION['loggedin'])){
+              echo'
+              <a href="ausleihe.php" class="btn btn-warning mt-3">
+                <i class="bi bi-chevron-right"></i> Zur Ausleihe
+              </a>
+              ';
+            }else{
+              echo '
+            <a href="#" class="btn btn-warning mt-3">
+              <i class="bi bi-chevron-right"></i> Logge dich ein
+            </a>';
+            }
+            ?>
           </div>
         </div>
       </div>
@@ -689,6 +734,13 @@
       echo '
       <script>
         alert("Diese Email wird bereits verwendet, bitte nutze eine andere Email Adresse!");
+      </script>
+      ';
+    }
+    if(isset($_POST['registrationErfolgreich'])){
+      echo '
+      <script>
+        alert("Registration erfolgreich! Bitte logge dich nun ein :)");
       </script>
       ';
     }
