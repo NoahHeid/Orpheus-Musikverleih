@@ -452,15 +452,19 @@
     </section>
 
     <!DOCTYPE html>
-<html lang="de">
-<head>
-	<meta charset="UTF-8">
-	<title>Roomtour Test</title>
-	<meta name="description" content="Kurzbeschreibung">
-	<link href="design.css" rel="stylesheet">
-</head>
+<html>
+  <head>
+	  <title>Roomtour Test</title>
+	  <meta charset="UTF-8" />
+    <style>
+      #roomtour {
+        border: 1px solid black;
+      }
+      </style>
+              
+  </head>
   <body>
-    <canvas id="canvas" width="800" height="200"></canvas>
+    <canvas id="canvas"></canvas>
     <script src="panorama.js"></script>
   </body>
 </html>
