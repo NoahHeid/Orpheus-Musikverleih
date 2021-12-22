@@ -451,6 +451,7 @@
       </div>
     </section>
 
+<!--
     <!DOCTYPE html>
 <html>
   <head>
@@ -468,6 +469,7 @@
     <script src="panorama.js"></script>
   </body>
 </html>
+-->
 
     <!-- Contact & Map -->
     <section class="p-5" id="kontakt">
