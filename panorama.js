@@ -1,6 +1,4 @@
-<canvas id="canvas" width="800" height="200"></canvas>
-
-<script>var img = new Image();
+var img = new Image();
 
 // User Variables - customize these to change the image being scrolled, its
 // direction, and the speed.
@@ -84,4 +82,4 @@ function draw() {
     ctx.drawImage(img, x, y,imgW, imgH);
     // amount to move
     x += dx;
-}</script>
+}

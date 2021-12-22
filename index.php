@@ -455,14 +455,14 @@
 <html lang="de">
 <head>
 	<meta charset="UTF-8">
-	<title>roomtour</title>
+	<title>Roomtour Test</title>
 	<meta name="description" content="Kurzbeschreibung">
 	<link href="design.css" rel="stylesheet">
 </head>
-<body>
-<h1>roomtour</h1>
-<canvas id="leinwand"></canvas>
-</body>
+  <body>
+    <canvas id="canvas" width="800" height="200"></canvas>
+    <script src="panorama.js"></script>
+  </body>
 </html>
 
     <!-- Contact & Map -->
