@@ -129,12 +129,47 @@
           </div>
         </div>
       </section>
+      
+      <!-- Button Reihe -->
+      <script>
+        function myFunction(id) {
+          var x = document.getElementById(id);
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+          if(document.getElementById("geigenSpalte").style.display===none && document.getElementById("harfenSpalte").style.display===none){
+            document.getElementById("instrumenteID") = "none";
+            console.log("Ausgeblendet!");
+          }
+          else{
+            document.getElementById("instrumenteID") = "block";
+          }
+        }
+      </script>
+      
+      <div class="row my-4">
+        <div class = "d-sm-flex align-items-center justify-content-center">  
+          <div class="col text-center">
+            <a class="btn btn-lg btn-dark" onclick="myFunction('geigenSpalte')">Blende Geigen aus</a>
+          </div>
+          <div class="col text-center">
+            <a class="btn btn-lg btn-dark" onclick="myFunction('kundenSpalte')">Blende Kunden aus</a>
+          </div>
+          <div class="col text-center">
+            <a class="btn btn-lg btn-dark" onclick="myFunction('harfenSpalte')">Blende Harfen aus</a>
+          </div>
+        </div>
+      </div>
+
+
       <!-- Instrumente -->
-      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5">
+      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5" id="instrumentenSpalte">
         <div class="row d-flex justify-content-around">
-                  <div class="d-flex justify-content-center h2 text-dark">Instrumente</div>
+                  <div class="d-flex justify-content-center h2 text-dark" id="instrumenteID">Instrumente</div>
                   <!-- Linke Spalte-->
-                  <div class="col-5">
+                  <div class="col-5" id="geigenSpalte">
                       <div class="text-center h3 text-dark">Geigen</div>
                       <?php
                         $servername = "localhost";
@@ -226,7 +261,7 @@
                     </form>
                   </div>
                 <!-- Rechte Spalte-->
-                  <div class="col-5">
+                  <div class="col-5" id="harfenSpalte">
                       <div class="text-center h3 text-dark">Harfen</div>
                       <?php
                         $servername = "localhost";
@@ -322,134 +357,133 @@
       </section>  
       <!-- Kunden -->
       <section class="text-light p-5 p-lg-0 pt-lg-5 text-center d-flex justify-content-center text-sm-start bgmaincolor5">
-        <div class="col-11">
-        <div class="d-flex justify-content-center h2 text-dark">Kunden</div> 
+        <div class="col-11" id="kundenSpalte">
+          <div class="d-flex justify-content-center h2 text-dark">Kunden</div> 
+          <?php
+                          $servername = "localhost";
+                          $user = "root";
+                          $password = "";
+                          $datenbank = "instrumente";
+                        
+                          $connection2 = new mysqli($servername, $user, $password, $datenbank);
 
-        <?php
-                        $servername = "localhost";
-                        $user = "root";
-                        $password = "";
-                        $datenbank = "instrumente";
-                      
-                        $connection2 = new mysqli($servername, $user, $password, $datenbank);
+                          $sql2 = "SELECT * FROM kunden";
 
-                        $sql2 = "SELECT * FROM kunden";
-
-                        $erg2 = $connection2->query($sql2);
-                          while ($datensatz2 = $erg2->fetch_object()) {
-                            $daten2[] = $datensatz2;
-                          }
-                          
-                      ?>
-                      <table class="table text-dark mr-5">
-                        <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Vorname</th>
-                        <th scope="col">Nachname</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Handynummer</th>
-                        <th scope="col">Letzte Anmeldung</th>
-                        <th scope="col">Registriert seit</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    if(!empty($inhalt)){
-                    foreach ($daten2 as $inhalt) {
-                     
-                    ?>
-              
-                          <tr>
-                              <td>
-                              <form method="post" action="kunden.php">
-                                  <div class="input-group mb-3">
-                                    <input type="text" hidden name="toDeleteID" value=<?php echo $inhalt->kd_id;?>>
-                                    <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
-                                  </div>
-                                </form>
-                              </td>
-
-                              <th scope="row"> <?php echo $inhalt->kd_id; ?></th>
-                              <td>
-                                  <?php echo $inhalt->kd_vorname; ?>
-                              </td>
-                              <td>
-                                  <?php echo $inhalt->kd_nachname; ?>
-                              </td>
-                              <td>
-                                  <?php echo $inhalt->kd_email; ?>
-                              </td>
-                              <td>
-                                  <?php echo $inhalt->kd_handy; ?>
-                              </td>
-                              <td>
-                              <?php
-
-                              $q = $inhalt->kd_anmeldedatum;
-
-                              // lookup all hints from array if $q is different from ""
-                              //echo $q;
-                              if($inhalt->kd_anmeldedatum == ""){
-                                  echo "Noch nie gesehen.";
-                              }
-                              else{
-                              $d = DateTime::createFromFormat('Y-m-d H:i:s', $q);
-                              $date = new DateTime();
-                              $differenz = $date->getTimestamp() - $d->getTimestamp();
-                              $seen = floor($differenz/60);
-                              $more = false;
-                              if($seen > 60) {
-                                  $more = true;
-                                  $hours = floor($seen/60);
-                                  $minutes = $seen-($hours*60);
-                                  if(($seen > 24) && ($more == true)) {
-                                      $days = floor(($seen/60)/24);
-                                      $hours = floor($seen/60)-($days*24);
-                                  }
-                                  if($minutes == 1) {
-                                  $minute = ' Minute ';  
-                                  } else {
-                                  $minute = ' Minuten ';
-                                  }
-                                  if($hours == 1) {
-                                  $hour = ' Stunde ';  
-                                  } else {
-                                  $hour = ' Stunden ';
-                                  }
-                                  if($days == 1) {
-                                  $day = ' Tag ';  
-                                  } else {
-                                  $day = ' Tage ';
-                                  }
-                                  if($days > 0) {  
-                                  $seen = 'vor '. $days . $day . $hours . $hour . $minutes . $minute;
-                                  } else {
-                                  $seen = 'vor '. $hours . $hour . $minutes . $minute;
-                                  }
-                              } else {
-                                  if($seen == 1) {
-                                  $minute = ' minute ';  
-                                  } else {
-                                  $minute = ' minuten ';
-                                  }    
-                                  $seen = 'vor '.$seen . $minute;
-                                  }
-                                  echo $seen;
-                              }
-                              ?>
-                              </td>
-                              <td>
-                                  <?php echo $inhalt->kd_registrierdatum; ?>
-                              </td>            
+                          $erg2 = $connection2->query($sql2);
+                            while ($datensatz2 = $erg2->fetch_object()) {
+                              $daten2[] = $datensatz2;
+                            }
+                            
+                        ?>
+                        <table class="table text-dark mr-5">
+                          <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">ID</th>
+                          <th scope="col">Vorname</th>
+                          <th scope="col">Nachname</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Handynummer</th>
+                          <th scope="col">Letzte Anmeldung</th>
+                          <th scope="col">Registriert seit</th>
                         </tr>
-                    <?php
+                      </thead>
+                      <tbody>
+                      <?php
+                      if(!empty($inhalt)){
+                      foreach ($daten2 as $inhalt) {
+                      
+                      ?>
+                
+                            <tr>
+                                <td>
+                                <form method="post" action="kunden.php">
+                                    <div class="input-group mb-3">
+                                      <input type="text" hidden name="toDeleteID" value=<?php echo $inhalt->kd_id;?>>
+                                      <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
+                                    </div>
+                                  </form>
+                                </td>
+
+                                <th scope="row"> <?php echo $inhalt->kd_id; ?></th>
+                                <td>
+                                    <?php echo $inhalt->kd_vorname; ?>
+                                </td>
+                                <td>
+                                    <?php echo $inhalt->kd_nachname; ?>
+                                </td>
+                                <td>
+                                    <?php echo $inhalt->kd_email; ?>
+                                </td>
+                                <td>
+                                    <?php echo $inhalt->kd_handy; ?>
+                                </td>
+                                <td>
+                                <?php
+
+                                $q = $inhalt->kd_anmeldedatum;
+
+                                // lookup all hints from array if $q is different from ""
+                                //echo $q;
+                                if($inhalt->kd_anmeldedatum == ""){
+                                    echo "Noch nie gesehen.";
+                                }
+                                else{
+                                $d = DateTime::createFromFormat('Y-m-d H:i:s', $q);
+                                $date = new DateTime();
+                                $differenz = $date->getTimestamp() - $d->getTimestamp();
+                                $seen = floor($differenz/60);
+                                $more = false;
+                                if($seen > 60) {
+                                    $more = true;
+                                    $hours = floor($seen/60);
+                                    $minutes = $seen-($hours*60);
+                                    if(($seen > 24) && ($more == true)) {
+                                        $days = floor(($seen/60)/24);
+                                        $hours = floor($seen/60)-($days*24);
+                                    }
+                                    if($minutes == 1) {
+                                    $minute = ' Minute ';  
+                                    } else {
+                                    $minute = ' Minuten ';
+                                    }
+                                    if($hours == 1) {
+                                    $hour = ' Stunde ';  
+                                    } else {
+                                    $hour = ' Stunden ';
+                                    }
+                                    if($days == 1) {
+                                    $day = ' Tag ';  
+                                    } else {
+                                    $day = ' Tage ';
+                                    }
+                                    if($days > 0) {  
+                                    $seen = 'vor '. $days . $day . $hours . $hour . $minutes . $minute;
+                                    } else {
+                                    $seen = 'vor '. $hours . $hour . $minutes . $minute;
+                                    }
+                                } else {
+                                    if($seen == 1) {
+                                    $minute = ' minute ';  
+                                    } else {
+                                    $minute = ' minuten ';
+                                    }    
+                                    $seen = 'vor '.$seen . $minute;
+                                    }
+                                    echo $seen;
+                                }
+                                ?>
+                                </td>
+                                <td>
+                                    <?php echo $inhalt->kd_registrierdatum; ?>
+                                </td>            
+                          </tr>
+                      <?php
+                      }
                     }
-                  }
-                    $connection2->close();
-                    ?>
-                    </tbody>
+                      $connection2->close();
+                      ?>
+                      </tbody>
                     </table>
         </div>
       </section>

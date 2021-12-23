@@ -115,7 +115,7 @@
             <div>
               <h1> <?php echo "Lieber ".$_SESSION['vorname']?>, viel Spaß beim Erkunden unseres <span class="text-warning"> Instrumentenparadises!</span></h1>
               <p class="lead my-4">
-                  Bitte denke daran, dass nach einer Woche 
+                  Bitte denke daran, dass nach einer Woche die Instrumente zurückgegeben werden müssen!
               </p>
 
             </div>

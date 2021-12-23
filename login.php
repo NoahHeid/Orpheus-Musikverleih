@@ -3,7 +3,7 @@ session_start();
 //Hole Values aus der Form
 $email = $_POST['user'];
 $pass = $_POST['pass'];
-
+$checkCookie = $_POST['checkCookie'];
 
 //Verbinde zum Server und wähle eine Datenbank aus
 $servername = "localhost";
