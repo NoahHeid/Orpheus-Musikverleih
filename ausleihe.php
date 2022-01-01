@@ -184,13 +184,20 @@
                                 if($inhalt->kd_id == $_SESSION['id']){
                                   echo '<form method="post" action="geigen.php">
                                   <div class="input-group mb-3">
-                                    <input type="text" hidden name="ggID" value='.$inhalt->gg_id.'>
-                                    <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Zurückgeben" name="zurückgeben" id="zurückgeben">
+                                    <input type="text" hidden name="ggID" value='.$inhalt->gg_id.'>';
+                                    $date = new DateTime();
+                                    if($date->getTimestamp() - strtotime($inhalt->gg_ausleihdatum)>604800){
+                                     echo '<input type="submit" class="btn-sm bg-transparent btn-outline-danger"  value="Zurückgeben (Überfällig!)" name="zurückgeben" id="zurückgeben">';
+                                    }
+                                    else{
+                                      echo '<input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Zurückgeben" name="zurückgeben" id="zurückgeben">';
+                                    }
+                                    echo '
                                   </div>
                                 </form>';
                                 }
                                 else{
-                                  echo 'Leider bereits ausgeliehen!';
+                                  echo 'Leider bereits ausgeliehen! Seit: '.strtotime($inhalt->gg_ausleihdatum);
                                 }
                               }
                               
@@ -255,8 +262,15 @@
                                 if($inhalt2->kd_id == $_SESSION['id']){
                                   echo '<form method="post" action="harfen.php">
                                   <div class="input-group mb-3">
-                                    <input type="text" hidden name="hfID" value='.$inhalt2->hf_id.'>
-                                    <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Zurückgeben" name="zurückgeben" id="zurückgeben">
+                                    <input type="text" hidden name="hfID" value='.$inhalt2->hf_id.'>';
+                                    $date = new DateTime();
+                                    if($date->getTimestamp() - strtotime($inhalt2->hf_ausleihdatum)>604800){
+                                     echo '<input type="submit" class="btn-sm bg-transparent btn-outline-danger"  value="Zurückgeben (Überfällig!)" name="zurückgeben" id="zurückgeben">';
+                                    }
+                                    else{
+                                      echo '<input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Zurückgeben" name="zurückgeben" id="zurückgeben">';
+                                    }
+                                    echo '
                                   </div>
                                 </form>';
                                 }

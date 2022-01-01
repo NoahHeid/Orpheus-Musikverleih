@@ -115,7 +115,7 @@
             <div>
               <h1> <?php echo "Liebe*r ".$_SESSION['vorname']?>, viel Spaß beim Meistern deines <span class="text-warning"> Instruments!</span></h1>
               <p class="lead my-4">
-                  BLUB
+                  *Hier bitte was schlaues schreiben @Moritz*
               </p>
 
             </div>
@@ -129,16 +129,16 @@
       </section>
 
       <!-- Online -->
-      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor2" id="online">
+      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor3" id="online">
         <div class="container">
           <div class="d-sm-flex align-items-center justify-content-between">
-            
+            <div class="text-align-center">Online</div>
           </div>
         </div>
       </section>
 
         <!-- Hybrid -->
-        <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor2" id="hybrid">
+        <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor4" id="hybrid">
         <div class="container">
           <div class="d-sm-flex align-items-center justify-content-between">
             
@@ -147,7 +147,7 @@
       </section>
 
         <!-- Präsenz -->
-        <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor2" id="vorort">
+        <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5" id="vorort">
         <div class="container">
           <div class="d-sm-flex align-items-center justify-content-between">
             
