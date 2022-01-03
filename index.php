@@ -496,25 +496,8 @@
       </div>
     </section>
 
-<!--
-    <!DOCTYPE html>
-<html>
-  <head>
-	  <title>Roomtour Test</title>
-	  <meta charset="UTF-8" />
-    <style>
-      #roomtour {
-        border: 1px solid black;
-      }
-      </style>
-              
-  </head>
-  <body>
     <canvas id="canvas"></canvas>
     <script src="panorama.js"></script>
-  </body>
-</html>
--->
 
     <!-- Contact & Map -->
     <section class="p-5" id="kontakt">
