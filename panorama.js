@@ -1,11 +1,11 @@
 var img = new Image();
 img.src = 'img/roomtour.png';
 var canvasResp = document.getElementById('canvas-resp');
-var speed = 50; // lower is faster
+var speed = 50; //Je niedriger, desto schneller!
 var scale = canvasResp.height/616;
-var y = -4.5; // vertical offset
+var y = -4.5;
 
-// Main program
+// Hauptprogramm
 var CanvasXSize = canvasResp.width;
 var CanvasYSize = canvasResp.height;
 var dx = 0.5;
@@ -21,61 +21,45 @@ img.onload = function() {
     imgH = img.height * scale;
 
     if (imgW > CanvasXSize) {
-        // image larger than canvas
         x = CanvasXSize - imgW;
     }
     if (imgW > CanvasXSize) {
-        // image width larger than canvas
         clearX = imgW;
     } else {
         clearX = CanvasXSize;
     }
     if (imgH > CanvasYSize) {
-        // image height larger than canvas
         clearY = imgH;
     } else {
         clearY = CanvasYSize;
     }
 
-    // get canvas context
     ctx = document.getElementById('canvas-resp').getContext('2d');
 
-    // set refresh rate
     return setInterval(draw, speed);
 }
 
 function draw() {
-    ctx.clearRect(0, 0, clearX, clearY); // clear the canvas
-
-    // if image is <= Canvas Size
+    ctx.clearRect(0, 0, clearX, clearY);
     if (imgW <= CanvasXSize) {
-        // reset, start from beginning
         if (x > CanvasXSize) {
             x = -imgW + x;
         }
-        // draw additional image1
         if (x > 0) {
             ctx.drawImage(img, -imgW + x, y, imgW, imgH);
         }
-        // draw additional image2
         if (x - imgW > 0) {
             ctx.drawImage(img, -imgW * 2 + x, y, imgW, imgH);
         }
     }
-
-    // image is > Canvas Size
     else {
-        // reset, start from beginning
         if (x > (CanvasXSize)) {
             x = CanvasXSize - imgW;
         }
-        // draw additional image
         if (x > (CanvasXSize-imgW)) {
             ctx.drawImage(img, x - imgW + 1, y, imgW, imgH);
         }
     }
-    // draw image
     ctx.drawImage(img, x, y,imgW, imgH);
-    // amount to move
     x += dx;
 }
