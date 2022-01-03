@@ -496,8 +496,13 @@
       </div>
     </section>
 
-    <canvas id="canvas"></canvas>
-    <script src="panorama.js"></script>
+    <!-- Panorama -->
+    <section class="p-5" id="panorama">
+     
+      <canvas id="canvas"></canvas>
+      <script src="panorama.js"></script>
+   
+    </section>
 
     <!-- Contact & Map -->
     <section class="p-5" id="kontakt">
