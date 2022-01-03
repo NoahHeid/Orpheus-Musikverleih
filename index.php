@@ -173,7 +173,7 @@
                 </script>
 
                 <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<as href="terminplanung.php#virtuell" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
+                else{echo '<as href="terminbuchung.php#online" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
                 ?>
 
               </div>
@@ -191,7 +191,7 @@
                 </p>
 
                 <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<a href="terminplanung.php#hybrid" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
+                else{echo '<a href="terminbuchung.php#hybrid" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
                 ?>
 
               </div>
@@ -209,7 +209,7 @@
                 </p>
 
                 <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<a href="terminplanung.php#vorort" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
+                else{echo '<a href="terminbuchung.php#vorort" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
                 ?>
 
               </div>
@@ -295,8 +295,8 @@
             <?php
             if(isset($_SESSION['loggedin'])){
               echo'
-              <a href="ausleihe.php" class="btn btn-warning mt-3">
-                <i class="bi bi-chevron-right"></i> Zur Ausleihe
+              <a href="terminbuchung.php" class="btn btn-warning mt-3">
+                <i class="bi bi-chevron-right"></i> Zur Terminbuchung
               </a>
               ';
             }else{
@@ -602,6 +602,10 @@
                 Close
               </button>
               <input type="submit" value="Login" class="btn btn-warning" />
+              <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" value="cookieErlaubt" name="checkCookie" id="checkCookie">
+                <label class="form-check-label" for="checkCookie">Automatisch anmelden (verwendet Cookies)</label>
+              </div>
             </form>
         </div>
           
