@@ -497,15 +497,25 @@
     </section>
 
     <!-- Panorama -->
-    <section class="p-5" id="panorama">
-     
-      <canvas id="canvas"></canvas>
-      <script src="panorama.js"></script>
-   
+    <section class="p-5 bgmaincolor5">
+    <div class="container">
+        <div class="row g-4">
+          <div class="col-md">
+            <h2 class="text-center text-black">Unser Store</h2>
+              <p class="lead text-center text-black mb-5">
+                Hier findet jeder Musikliebhaber seinen Traum!
+              </p>
+            <div id="canvasdiv">
+              <canvas id="canvas-resp"></canvas>
+            </div>
+            <script src="panorama.js"></script>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Contact & Map -->
-    <section class="p-5" id="kontakt">
+    <section class="p-5 bgmaincolor4" id="kontakt">
       <div class="container">
         <div class="row g-4">
           <div class="col-md">

@@ -67,6 +67,11 @@
       width: 50%;
     }
   }
+  
+  #canvas-resp {
+    width: 100%;
+    
+  }
 
   .bgmaincolor1{
       background-color: var(--maincolor1);

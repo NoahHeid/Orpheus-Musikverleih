@@ -1,18 +1,14 @@
 var img = new Image();
-
-// User Variables - customize these to change the image being scrolled, its
-// direction, and the speed.
-
 img.src = 'img/roomtour.png';
-var CanvasXSize = 800;
-var CanvasYSize = 200;
-var speed = 30; // lower is faster
-var scale = 1.05;
+var canvasResp = document.getElementById('canvas-resp');
+var speed = 50; // lower is faster
+var scale = canvasResp.height/616;
 var y = -4.5; // vertical offset
 
 // Main program
-
-var dx = 0.75;
+var CanvasXSize = canvasResp.width;
+var CanvasYSize = canvasResp.height;
+var dx = 0.5;
 var imgW;
 var imgH;
 var x = 0;
@@ -42,7 +38,7 @@ img.onload = function() {
     }
 
     // get canvas context
-    ctx = document.getElementById('canvas').getContext('2d');
+    ctx = document.getElementById('canvas-resp').getContext('2d');
 
     // set refresh rate
     return setInterval(draw, speed);
