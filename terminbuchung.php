@@ -41,8 +41,7 @@
     <title>Orpheus Musikverleih</title>
   </head>
   <body>
-    <div class="bgmaincolor5">
-
+    <div class="bgmaincolor4">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bgmaincolor1">
         <div class="container">
@@ -100,9 +99,6 @@
                           </li>';
                   }
                 ?>
-                
-              
-              
             </ul>
           </div>
         </div>
@@ -129,31 +125,92 @@
       </section>
 
       <!-- Online -->
-      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor3" id="online">
+      <section class="text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5" id="online">
         <div class="container">
           <div class="d-sm-flex align-items-center justify-content-between">
             <div class="text-align-center">Online</div>
+            <?php
+              function connectDatabase(){
+                $servername = "localhost";
+                $user = "root";
+                $password = "";
+                $datenbank = "instrumente";
+                return new mysqli($servername, $user, $password, $datenbank);
+              }
+              $connection = connectDatabase();
+              $sql = "SELECT * FROM musikschulstunden";
+              if ($erg = $connection->query($sql)) {
+                while ($datensatz = $erg->fetch_object()) {
+                  $daten[] = $datensatz;
+                }
+              }
+            ?>
+            <table class="table text-dark mr-5">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Teilnehmer 1</th>
+                  <th scope="col">Teilnehmer 2</th>
+                  <th scope="col">Teilnehmer 3</th>
+                  <th scope="col">Teilnehmer 4</th>
+                  <th scope="col">Teilnehmer 5</th>
+                  <th scope="col">Datum</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                  foreach ($daten as $inhalt) {
+                ?>
+                <tr>
+                  <th scope="row"> 
+                    <?php echo $inhalt->stunden_id; ?>
+                  </th>
+                  <td>
+                    <?php echo $inhalt->kd_id1; ?>
+                  </td>  
+                  <td>
+                    <?php echo $inhalt->kd_id2; ?>
+                  </td>  
+                  <td>
+                    <?php echo $inhalt->kd_id3; ?>
+                  </td>  
+                  <td>
+                    <?php echo $inhalt->kd_id4; ?>
+                  </td>  
+                  <td>
+                    <?php echo $inhalt->kd_id5; ?>
+                  </td>  
+                  <td>
+                    <?php echo date("H:i", strtotime($inhalt->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($inhalt->stunden_zeitpunkt)); ?>
+                  </td>  
+                </tr>
+                <?php
+                  }
+                ?>
+              </tbody>
+            </table>
+
           </div>
         </div>
-      </section>
+        </section>
 
         <!-- Hybrid -->
-        <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor4" id="hybrid">
+        <section class="text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor4" id="hybrid">
         <div class="container">
           <div class="d-sm-flex align-items-center justify-content-between">
-            
+          <div class="text-align-center">Hybrid</div>
           </div>
         </div>
-      </section>
+        </section>
 
         <!-- Präsenz -->
-        <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5" id="vorort">
+        <section class="text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5" id="vorort">
         <div class="container">
           <div class="d-sm-flex align-items-center justify-content-between">
-            
+          <div class="text-align-center">Vor Ort</div>
           </div>
         </div>
-      </section>
-
-    </body>
-    </html>
+        </section>
+    </div>
+  </body>
+</html>

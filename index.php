@@ -173,7 +173,7 @@
                 </script>
 
                 <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<as href="terminbuchung.php#online" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
+                else{echo '<a href="terminbuchung.php#online" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
                 ?>
 
               </div>
