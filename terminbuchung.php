@@ -112,7 +112,7 @@
             <div>
               <h1> <?php echo "Liebe*r ".$_SESSION['vorname']?>, viel Spaß beim Meistern deines <span class="text-warning"> Instruments!</span></h1>
               <p class="lead my-4">
-                  *Hier bitte was schlaues schreiben @Moritz*
+                  Herzlichen Glückwunsch, der erste SChritt ist fast getan. Wir freuen uns auf dich!
               </p>
 
             </div>

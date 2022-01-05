@@ -359,9 +359,9 @@
             >
               <div class="accordion-body">
                 Die Preise für die einzelnen Stunden sind abhänig vom gewählten Instrument und dem Level der Lernenden:<br>
-                Violine: 40 € für Anfänger, 50 € für Fortgeschrittene<br>
-                Klavier: 35 € für Anfänger, 45 € für Fortgeschrittene<br>
-                Gesang: 40 € für jedes Level
+                Harfe: 40 € für Anfänger, 50 € für Fortgeschrittene<br>
+                Violine: 35 € für Anfänger, 45 € für Fortgeschrittene<br>
+                Die Leihgebühr für Instrumente beträgt 25 € pro Woche<br>
                 
               </div>
             </div>
@@ -462,7 +462,7 @@
                   Noah Heidrich ist der Fachwelt als profilierter Violinist bekannt. 
                   Sein Repertoire reicht von klassischen Stücken bis zu moderner Pop-Musik. 
                   Stilistisch beeindruckt Heidrich durch die feine Eleganz seines Spiels und glänzt außerdem mit innovativen Interpretationen klassischer Werke.
-                  Als zweites Standbein baute er sich außerdem eine Karriere als bekannter Jazzsaxophonist 
+                  Als zweites Standbein baute er sich außerdem eine Karriere als bekannter Jazzsaxophonist auf.
                 </p>
                 <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
                 <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
@@ -483,7 +483,9 @@
                 />
                 <h3 class="card-title mb-3">Moritz Hussing</h3>
                 <p class="card-text">
-                  Moritz Hussing 
+                  Moritz Hussing erlernte das Harfenspiel im zarten Alter von 2 Jahren. Über die Jahre konnte er sich einen reichen Erfahrugnsschatz aneignen.
+                  Sein Spiel ist geprägt durch gewagte Interpretationen und herrausragende technische Klasse. 2017 wurde Hussing durch die Aufnahme in die Hall of Fame der Meister
+                  des modernen Harfenspiels eine große Ehre zu Teil.
                 </p>
                 <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
                 <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
@@ -687,8 +689,18 @@
             ></button>
           </div>
           <div class="modal-body">
-            <p class="lead">Wer war dieser begnadete Musiker?</p>
-            <p>Orpheus war...</p>
+            <p class="lead">Orpheus und die Musik</p>
+            <p>Orpheus war ein begnadeter Musiker und Sänger der antiken griechischen Sagenwelt. Sein Gesang war so schön,
+               dass sogar Tiere, Pflanzen und Steine davon berührt wurden. Auch stand Orpheus in der Gunst des Gottes Apollon,
+               von dem er einst eine göttliche Lyra geschenkt bekam, die dieser widerum von seinem Halbbruder Hermes erhalten hatte.
+               Als Eurydike, Orpheus Frau, eines Tages tragisch und viel zu früh verstarb machte sich Orpheus auf den Weg die Götter um Hilfe zu bitten.
+               Lange sang und flehte er, bis sich die Götter schließlich erweichen ließen.
+               Ihm wurde gestattet Eurydike aus der Unterwelt zurückzuholen, nur dürfe er sich den Weg zurück an die Oberfläche über
+               niemals umdrehen.
+               Auf dem langen Weg durch die Stille hinter ihm verunsichert hielt Orpheus es kurz vor Erreichen des Ziels jedoch nicht mehr aus.
+               Er drehte sich um und sah nur noch, wie Eurydike von der Dunkelheit hinter ihnen verschlungen wurde und verschwand.
+               Abermals versuchte er die Götter durch Singen und Flehen zu erweichen, dieses Mal jedoch ohne Erfolg...
+            </p>
           </div>
           <div class="modal-footer">
             <button
