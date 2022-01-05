@@ -37,7 +37,8 @@
       href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link href='fullcalendar/main.css' rel='stylesheet' />
+
     <title>Orpheus Musikverleih</title>
   </head>
   <body>
@@ -127,69 +128,138 @@
       <!-- Online -->
       <section class="text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5" id="online">
         <div class="container">
-          <div class="d-sm-flex align-items-center justify-content-between">
-            <div class="text-align-center">Online</div>
-            <?php
-              function connectDatabase(){
-                $servername = "localhost";
-                $user = "root";
-                $password = "";
-                $datenbank = "instrumente";
-                return new mysqli($servername, $user, $password, $datenbank);
-              }
-              $connection = connectDatabase();
-              $sql = "SELECT * FROM musikschulstunden";
-              if ($erg = $connection->query($sql)) {
-                while ($datensatz = $erg->fetch_object()) {
-                  $daten[] = $datensatz;
+          <div class="h2 text-center">Online</div>
+          <div class="row">
+            <div class="col-sm">
+              <?php
+                function connectDatabase(){
+                  $servername = "localhost";
+                  $user = "root";
+                  $password = "";
+                  $datenbank = "instrumente";
+                  return new mysqli($servername, $user, $password, $datenbank);
                 }
-              }
-            ?>
-            <table class="table text-dark mr-5">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Teilnehmer 1</th>
-                  <th scope="col">Teilnehmer 2</th>
-                  <th scope="col">Teilnehmer 3</th>
-                  <th scope="col">Teilnehmer 4</th>
-                  <th scope="col">Teilnehmer 5</th>
-                  <th scope="col">Datum</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                  foreach ($daten as $inhalt) {
-                ?>
-                <tr>
-                  <th scope="row"> 
-                    <?php echo $inhalt->stunden_id; ?>
-                  </th>
-                  <td>
-                    <?php echo $inhalt->kd_id1; ?>
-                  </td>  
-                  <td>
-                    <?php echo $inhalt->kd_id2; ?>
-                  </td>  
-                  <td>
-                    <?php echo $inhalt->kd_id3; ?>
-                  </td>  
-                  <td>
-                    <?php echo $inhalt->kd_id4; ?>
-                  </td>  
-                  <td>
-                    <?php echo $inhalt->kd_id5; ?>
-                  </td>  
-                  <td>
-                    <?php echo date("H:i", strtotime($inhalt->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($inhalt->stunden_zeitpunkt)); ?>
-                  </td>  
-                </tr>
-                <?php
+                function SQL($sql){
+                  $datenIstLeer = true;
+                  $connection = connectDatabase();
+                  if ($erg = $connection->query($sql)) {
+                    while ($datensatz = $erg->fetch_object()) {
+                      $datenIstLeer = false;
+                      $daten[] = $datensatz;
+                    }
                   }
-                ?>
-              </tbody>
-            </table>
-
+                  if($datenIstLeer){
+                    return null;
+                  }
+                  else{
+                    return $daten;
+                  }
+                  
+                }
+              $musikschulDaten = SQL("SELECT * FROM musikschulstunden");
+              ?>
+              <table class="table text-dark mr-5">
+                <thead>
+                  <tr>
+                    <th scope="col">Lehrkraft</th>
+                    <th scope="col">Teilnehmer 1</th>
+                    <th scope="col">Teilnehmer 2</th>
+                    <th scope="col">Teilnehmer 3</th>
+                    <th scope="col">Teilnehmer 4</th>
+                    <th scope="col">Teilnehmer 5</th>
+                    <th scope="col">Datum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                    //Zeige die nächsten Stunden als erstes an!
+                    function vergleicheTimestamp($a, $b){
+                      return strcmp($a->stunden_zeitpunkt, $b->stunden_zeitpunkt);
+                    }
+                    usort($musikschulDaten, "vergleicheTimestamp");
+                    foreach ($musikschulDaten as $inhalt) {
+                      if($inhalt->stunden_ort=="online"){
+                  ?>
+                  <tr>
+                    <!-- Lehrkraft -->
+                    <th scope="row"> 
+                      <?php 
+                        $lehrer = $inhalt->kd_idLehrkraft; 
+                        $lehrkraftdaten = SQL("SELECT * FROM kunden where $lehrer= `kd_id`");
+                        if($lehrkraftdaten[0]!=null){
+                          echo $lehrkraftdaten[0]->kd_vorname." ".$lehrkraftdaten[0]->kd_nachname;
+                        }
+                        else{
+                          echo "-";
+                        }                      
+                      ?>
+                    </th>
+                    <td>
+                      <?php 
+                        $schueler1daten = SQL("SELECT * FROM kunden where $inhalt->kd_id1= `kd_id`");
+                        if($schueler1daten[0]!=null){
+                          echo $schueler1daten[0]->kd_vorname." ".$schueler1daten[0]->kd_nachname;
+                        }
+                        else{
+                          echo "-";
+                        }
+                      ?>
+                    </td>  
+                    <td>
+                      <?php 
+                          $schueler2daten = SQL("SELECT * FROM kunden where $inhalt->kd_id2= `kd_id`");
+                          if($schueler2daten[0]!=null){
+                            echo $schueler2daten[0]->kd_vorname." ".$schueler2daten[0]->kd_nachname;
+                          }
+                          else{
+                            echo "-";
+                          }
+                        ?>  
+                    </td>  
+                    <td>
+                    <?php 
+                          $schueler3daten = SQL("SELECT * FROM kunden where $inhalt->kd_id3= `kd_id`");
+                          if($schueler3daten[0]!=null){
+                            echo $schueler3daten[0]->kd_vorname." ".$schueler3daten[0]->kd_nachname;
+                          }
+                          else{
+                            echo "-";
+                          }
+                        ?>  
+                    </td>  
+                    <td>
+                    <?php 
+                          $schueler4daten = SQL("SELECT * FROM kunden where $inhalt->kd_id4= `kd_id`");
+                          if($schueler4daten[0]!=null){
+                            echo $schueler4daten[0]->kd_vorname." ".$schueler4daten[0]->kd_nachname;
+                          }
+                          else{
+                            echo "-";
+                          }
+                        ?>  
+                    </td>  
+                    <td>
+                    <?php 
+                          $schueler5daten = SQL("SELECT * FROM kunden where $inhalt->kd_id5= `kd_id`");
+                          if($schueler5daten[0]!=null){
+                            echo $schueler5daten[0]->kd_vorname." ".$schueler5daten[0]->kd_nachname;
+                          }
+                          else{
+                            echo "-";
+                          }
+                        ?>  
+                    </td>  
+                    <td>
+                      <?php echo date("H:i", strtotime($inhalt->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($inhalt->stunden_zeitpunkt)); ?>
+                    </td>  
+                  </tr>
+                  <?php
+                    }
+                  }
+                  ?>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         </section>

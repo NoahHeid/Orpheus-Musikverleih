@@ -62,7 +62,7 @@ else{
         </script>
     <body onload="redirect1()">
     <form action="index.php" method="post" id="myform">
-    <input type="text" id="registrationErfolgreich" name="registrationErfolgreich" value="true" hidden><br>
+    <input type="text" id="registrationErfolgreich" name="registrationErfolgreich" value="registrationErfolgreich" hidden><br>
     <input type="submit" name="Submit1" hidden>
     </form>;';
       header('Location: '."index.php");
