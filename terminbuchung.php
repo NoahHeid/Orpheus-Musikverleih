@@ -112,7 +112,7 @@
             <div>
               <h1> <?php echo "Liebe*r ".$_SESSION['vorname']?>, viel Spaß beim Meistern deines <span class="text-warning"> Instruments!</span></h1>
               <p class="lead my-4">
-                  Herzlichen Glückwunsch, der erste SChritt ist fast getan. Wir freuen uns auf dich!
+                  Herzlichen Glückwunsch, der erste Schritt ist fast getan. Wir freuen uns auf dich!
               </p>
 
             </div>
@@ -308,47 +308,143 @@
                     </td>  
                     <td>
                     <?php 
-                          $schueler3daten = SQL("SELECT * FROM kunden where $inhalt->kd_id3= `kd_id`");
-                          if($schueler3daten[0]!=null){
-                            echo $schueler3daten[0]->kd_vorname." ".$schueler3daten[0]->kd_nachname;
+                      //Schüler 3
+                      $schueler3daten = SQL("SELECT * FROM kunden where $inhalt->kd_id3= `kd_id`");
+                      //Wenn ein Schüler bereits die Stunde besucht:
+                      if($schueler3daten[0]!=null){
+                        if($schueler3daten[0]->kd_id==$_SESSION['id']){
+                          echo '
+                          <form method="post" action="apiTerminbuchen.php">
+                            <div class="input-group mb-3">
+                              <input type="text" hidden name="austragenKundenID" value='.$_SESSION['id'].'>
+                              <input type="text" hidden name="austragenStundenID" value='.$inhalt->stunden_id.'>
+                              <input type="text" hidden name="austragenKundenStelle" value="kd_id'.(gibAnzahlSchüler($inhalt)).'">
+                              <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Austragen" name="austragen" id="austragen">
+                            </div>
+                          </form>
+                          ';
+                        }
+                        else{
+                          echo $schueler3daten[0]->kd_vorname." ".$schueler3daten[0]->kd_nachname;
+                        }
+                        
+                      }
+                      //Wenn bisher kein Schüler die Stunde besucht
+                      else{
+                        if(gibAnzahlSchüler($inhalt)==2){
+                          //Wenn der Schüler bereits woanders eingetragen ist:
+                          if($schueler2daten[0]->kd_id!=$_SESSION['id']){
+                            echo '
+                            <form method="post" action="apiTerminbuchen.php">
+                              <div class="input-group mb-3">
+                                <input type="text" hidden name="eintragenKundenID" value='.$_SESSION['id'].'>
+                                <input type="text" hidden name="eintragenStundenID" value='.$inhalt->stunden_id.'>
+                                <input type="text" hidden name="eintragenKundenStelle" value="kd_id'.(gibAnzahlSchüler($inhalt)+1).'">
+                                <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Eintragen" name="eintragen" id="eintragen">
+                              </div>
+                            </form>
+                            ';
+                          }else{
+                            echo "-";
                           }
-                          else{
-                            if(gibAnzahlSchüler($inhalt)==2){
-                              echo "join Button";
-                            }else{
-                              echo "-";
-                            }
-                          }
+                        }else{
+                          echo "-";
+                        }
+                      }
                         ?>  
                     </td>  
                     <td>
                     <?php 
-                          $schueler4daten = SQL("SELECT * FROM kunden where $inhalt->kd_id4= `kd_id`");
-                          if($schueler4daten[0]!=null){
+                      //Schüler 4
+                        $schueler4daten = SQL("SELECT * FROM kunden where $inhalt->kd_id4= `kd_id`");
+                        //Wenn ein Schüler bereits die Stunde besucht:
+                        if($schueler4daten[0]!=null){
+                          if($schueler4daten[0]->kd_id==$_SESSION['id']){
+                            echo '
+                            <form method="post" action="apiTerminbuchen.php">
+                              <div class="input-group mb-3">
+                                <input type="text" hidden name="austragenKundenID" value='.$_SESSION['id'].'>
+                                <input type="text" hidden name="austragenStundenID" value='.$inhalt->stunden_id.'>
+                                <input type="text" hidden name="austragenKundenStelle" value="kd_id'.(gibAnzahlSchüler($inhalt)).'">
+                                <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Austragen" name="austragen" id="austragen">
+                              </div>
+                            </form>
+                            ';
+                          }
+                          else{
                             echo $schueler4daten[0]->kd_vorname." ".$schueler4daten[0]->kd_nachname;
                           }
-                          else{
-                            if(gibAnzahlSchüler($inhalt)==3){
-                              echo "join Button";
+                          
+                        }
+                        //Wenn bisher kein Schüler die Stunde besucht
+                        else{
+                          if(gibAnzahlSchüler($inhalt)==3){
+                            //Wenn der Schüler bereits woanders eingetragen ist:
+                            if($schueler3daten[0]->kd_id!=$_SESSION['id']){
+                              echo '
+                              <form method="post" action="apiTerminbuchen.php">
+                                <div class="input-group mb-3">
+                                  <input type="text" hidden name="eintragenKundenID" value='.$_SESSION['id'].'>
+                                  <input type="text" hidden name="eintragenStundenID" value='.$inhalt->stunden_id.'>
+                                  <input type="text" hidden name="eintragenKundenStelle" value="kd_id'.(gibAnzahlSchüler($inhalt)+1).'">
+                                  <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Eintragen" name="eintragen" id="eintragen">
+                                </div>
+                              </form>
+                              ';
                             }else{
                               echo "-";
                             }
+                          }else{
+                            echo "-";
                           }
+                        }
                         ?>  
                     </td>  
                     <td>
                     <?php 
-                          $schueler5daten = SQL("SELECT * FROM kunden where $inhalt->kd_id5= `kd_id`");
-                          if($schueler5daten[0]!=null){
-                            echo $schueler5daten[0]->kd_vorname." ".$schueler5daten[0]->kd_nachname;
+                      //Schüler 5
+                        $schueler5daten = SQL("SELECT * FROM kunden where $inhalt->kd_id5= `kd_id`");
+                        //Wenn ein Schüler bereits die Stunde besucht:
+                        if($schueler5daten[0]!=null){
+                          if($schueler5daten[0]->kd_id==$_SESSION['id']){
+                            echo '
+                            <form method="post" action="apiTerminbuchen.php">
+                              <div class="input-group mb-3">
+                                <input type="text" hidden name="austragenKundenID" value='.$_SESSION['id'].'>
+                                <input type="text" hidden name="austragenStundenID" value='.$inhalt->stunden_id.'>
+                                <input type="text" hidden name="austragenKundenStelle" value="kd_id'.(gibAnzahlSchüler($inhalt)).'">
+                                <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Austragen" name="austragen" id="austragen">
+                              </div>
+                            </form>
+                            ';
                           }
                           else{
-                            if(gibAnzahlSchüler($inhalt)==4){
-                              echo "join Button";
+                            echo $schueler5daten[0]->kd_vorname." ".$schueler5daten[0]->kd_nachname;
+                          }
+                          
+                        }
+                        //Wenn bisher kein Schüler die Stunde besucht
+                        else{
+                          if(gibAnzahlSchüler($inhalt)==4){
+                            //Wenn der Schüler bereits woanders eingetragen ist:
+                            if($schueler4daten[0]->kd_id!=$_SESSION['id']){
+                              echo '
+                              <form method="post" action="apiTerminbuchen.php">
+                                <div class="input-group mb-3">
+                                  <input type="text" hidden name="eintragenKundenID" value='.$_SESSION['id'].'>
+                                  <input type="text" hidden name="eintragenStundenID" value='.$inhalt->stunden_id.'>
+                                  <input type="text" hidden name="eintragenKundenStelle" value="kd_id'.(gibAnzahlSchüler($inhalt)+1).'">
+                                  <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Eintragen" name="eintragen" id="eintragen">
+                                </div>
+                              </form>
+                              ';
                             }else{
                               echo "-";
                             }
+                          }else{
+                            echo "-";
                           }
+                        }
                         ?>  
                     </td>  
                     <td>
