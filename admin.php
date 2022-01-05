@@ -355,136 +355,273 @@
                   </div>
         </div>
       </section>  
+
+      <!-- Musikstunden -->
+      <section class="text-light p-5 p-lg-0 pt-lg-5 text-center d-flex justify-content-center text-sm-start bgmaincolor5">
+        <div class="col-11" id="musikstundenSpalte">
+          <div class="d-flex justify-content-center h2 text-dark">Musikstunden
+          </div> 
+          <?php
+            function connectDatabase(){
+              $servername = "localhost";
+              $user = "root";
+              $password = "";
+              $datenbank = "instrumente";
+              return new mysqli($servername, $user, $password, $datenbank);
+            }
+            function SQL($sql){
+              $datenIstLeer = true;
+              $connection = connectDatabase();
+              if ($erg = $connection->query($sql)) {
+                while ($datensatz = $erg->fetch_object()) {
+                  $datenIstLeer = false;
+                  $daten[] = $datensatz;
+                }
+              }
+              if($datenIstLeer){
+                return null;
+              }
+              else{
+                return $daten;
+              }
+              
+            }
+          $musikschulDaten = SQL("SELECT * FROM musikschulstunden");
+          ?>
+          <table class="table text-dark mr-5">
+            <thead>
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Lehrkraft</th>
+                <th scope="col">Teilnehmer 1</th>
+                <th scope="col">Teilnehmer 2</th>
+                <th scope="col">Teilnehmer 3</th>
+                <th scope="col">Teilnehmer 4</th>
+                <th scope="col">Teilnehmer 5</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                //Zeige die nächsten Stunden als erstes an!
+                function vergleicheTimestamp($a, $b){
+                  return strcmp($a->stunden_zeitpunkt, $b->stunden_zeitpunkt);
+                }
+                usort($musikschulDaten, "vergleicheTimestamp");
+                foreach ($musikschulDaten as $inhalt) {
+                  if($inhalt->stunden_ort=="online"){
+              ?>
+              <tr>
+                <!-- Lehrkraft -->
+                <th scope ="row">
+                  <?php echo date("H:i", strtotime($inhalt->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($inhalt->stunden_zeitpunkt)); ?>
+                </th>
+                <td> 
+                  <?php 
+                    $lehrer = $inhalt->kd_idLehrkraft; 
+                    $lehrkraftdaten = SQL("SELECT * FROM kunden where $lehrer= `kd_id`");
+                    if($lehrkraftdaten[0]!=null){
+                      echo $lehrkraftdaten[0]->kd_vorname." ".$lehrkraftdaten[0]->kd_nachname;
+                    }
+                    else{
+                      echo "-";
+                    }                      
+                  ?>
+                </td>
+                <td>
+                  <?php 
+                    $schueler1daten = SQL("SELECT * FROM kunden where $inhalt->kd_id1= `kd_id`");
+                    if($schueler1daten[0]!=null){
+                      echo $schueler1daten[0]->kd_vorname." ".$schueler1daten[0]->kd_nachname;
+                    }
+                    else{
+                      echo "-";
+                    }
+                  ?>
+                </td>  
+                <td>
+                  <?php 
+                      $schueler2daten = SQL("SELECT * FROM kunden where $inhalt->kd_id2= `kd_id`");
+                      if($schueler2daten[0]!=null){
+                        echo $schueler2daten[0]->kd_vorname." ".$schueler2daten[0]->kd_nachname;
+                      }
+                      else{
+                        echo "-";
+                      }
+                    ?>  
+                </td>  
+                <td>
+                <?php 
+                      $schueler3daten = SQL("SELECT * FROM kunden where $inhalt->kd_id3= `kd_id`");
+                      if($schueler3daten[0]!=null){
+                        echo $schueler3daten[0]->kd_vorname." ".$schueler3daten[0]->kd_nachname;
+                      }
+                      else{
+                        echo "-";
+                      }
+                    ?>  
+                </td>  
+                <td>
+                <?php 
+                      $schueler4daten = SQL("SELECT * FROM kunden where $inhalt->kd_id4= `kd_id`");
+                      if($schueler4daten[0]!=null){
+                        echo $schueler4daten[0]->kd_vorname." ".$schueler4daten[0]->kd_nachname;
+                      }
+                      else{
+                        echo "-";
+                      }
+                    ?>  
+                </td>  
+                <td>
+                <?php 
+                      $schueler5daten = SQL("SELECT * FROM kunden where $inhalt->kd_id5= `kd_id`");
+                      if($schueler5daten[0]!=null){
+                        echo $schueler5daten[0]->kd_vorname." ".$schueler5daten[0]->kd_nachname;
+                      }
+                      else{
+                        echo "-";
+                      }
+                    ?>  
+                </td>  
+  
+              </tr>
+              <?php
+                }
+              }
+              ?>
+            </tbody>
+          </table>
+            
+        </div>
+      </section>
+      
       <!-- Kunden -->
       <section class="text-light p-5 p-lg-0 pt-lg-5 text-center d-flex justify-content-center text-sm-start bgmaincolor5">
         <div class="col-11" id="kundenSpalte">
           <div class="d-flex justify-content-center h2 text-dark">Kunden</div> 
           <?php
-                          $servername = "localhost";
-                          $user = "root";
-                          $password = "";
-                          $datenbank = "instrumente";
-                        
-                          $connection2 = new mysqli($servername, $user, $password, $datenbank);
+            $servername = "localhost";
+            $user = "root";
+            $password = "";
+            $datenbank = "instrumente";
+          
+            $connection2 = new mysqli($servername, $user, $password, $datenbank);
 
-                          $sql2 = "SELECT * FROM kunden";
+            $sql2 = "SELECT * FROM kunden";
 
-                          $erg2 = $connection2->query($sql2);
-                            while ($datensatz2 = $erg2->fetch_object()) {
-                              $daten2[] = $datensatz2;
-                            }
-                            
-                        ?>
-                        <table class="table text-dark mr-5">
-                          <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">ID</th>
-                          <th scope="col">Vorname</th>
-                          <th scope="col">Nachname</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Handynummer</th>
-                          <th scope="col">Letzte Anmeldung</th>
-                          <th scope="col">Registriert seit</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php
-                      if(!empty($inhalt)){
-                      foreach ($daten2 as $inhalt) {
-                      
-                      ?>
-                
-                            <tr>
-                                <td>
-                                <form method="post" action="kunden.php">
-                                    <div class="input-group mb-3">
-                                      <input type="text" hidden name="toDeleteID" value=<?php echo $inhalt->kd_id;?>>
-                                      <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
-                                    </div>
-                                  </form>
-                                </td>
+            $erg2 = $connection2->query($sql2);
+              while ($datensatz2 = $erg2->fetch_object()) {
+                $daten2[] = $datensatz2;
+              }
+              
+          ?>
+          <table class="table text-dark mr-5">
+            <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Vorname</th>
+            <th scope="col">Nachname</th>
+            <th scope="col">Email</th>
+            <th scope="col">Handynummer</th>
+            <th scope="col">Letzte Anmeldung</th>
+            <th scope="col">Registriert seit</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php
+        if(!empty($inhalt)){
+        foreach ($daten2 as $inhalt) {
+        ?>
+              <tr>
+                  <td>
+                  <form method="post" action="kunden.php">
+                      <div class="input-group mb-3">
+                        <input type="text" hidden name="toDeleteID" value=<?php echo $inhalt->kd_id;?>>
+                        <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
+                      </div>
+                    </form>
+                  </td>
+                  <th scope="row"> <?php echo $inhalt->kd_id; ?></th>
+                  <td>
+                      <?php echo $inhalt->kd_vorname; ?>
+                  </td>
+                  <td>
+                      <?php echo $inhalt->kd_nachname; ?>
+                  </td>
+                  <td>
+                      <?php echo $inhalt->kd_email; ?>
+                  </td>
+                  <td>
+                      <?php echo $inhalt->kd_handy; ?>
+                  </td>
+                  <td>
+                  <?php
 
-                                <th scope="row"> <?php echo $inhalt->kd_id; ?></th>
-                                <td>
-                                    <?php echo $inhalt->kd_vorname; ?>
-                                </td>
-                                <td>
-                                    <?php echo $inhalt->kd_nachname; ?>
-                                </td>
-                                <td>
-                                    <?php echo $inhalt->kd_email; ?>
-                                </td>
-                                <td>
-                                    <?php echo $inhalt->kd_handy; ?>
-                                </td>
-                                <td>
-                                <?php
+                  $q = $inhalt->kd_anmeldedatum;
 
-                                $q = $inhalt->kd_anmeldedatum;
-
-                                // lookup all hints from array if $q is different from ""
-                                //echo $q;
-                                if($inhalt->kd_anmeldedatum == ""){
-                                    echo "Noch nie gesehen.";
-                                }
-                                else{
-                                $d = DateTime::createFromFormat('Y-m-d H:i:s', $q);
-                                $date = new DateTime();
-                                $differenz = $date->getTimestamp() - $d->getTimestamp();
-                                $seen = floor($differenz/60);
-                                $more = false;
-                                if($seen > 60) {
-                                    $more = true;
-                                    $hours = floor($seen/60);
-                                    $minutes = $seen-($hours*60);
-                                    if(($seen > 24) && ($more == true)) {
-                                        $days = floor(($seen/60)/24);
-                                        $hours = floor($seen/60)-($days*24);
-                                    }
-                                    if($minutes == 1) {
-                                    $minute = ' Minute ';  
-                                    } else {
-                                    $minute = ' Minuten ';
-                                    }
-                                    if($hours == 1) {
-                                    $hour = ' Stunde ';  
-                                    } else {
-                                    $hour = ' Stunden ';
-                                    }
-                                    if($days == 1) {
-                                    $day = ' Tag ';  
-                                    } else {
-                                    $day = ' Tage ';
-                                    }
-                                    if($days > 0) {  
-                                    $seen = 'vor '. $days . $day . $hours . $hour . $minutes . $minute;
-                                    } else {
-                                    $seen = 'vor '. $hours . $hour . $minutes . $minute;
-                                    }
-                                } else {
-                                    if($seen == 1) {
-                                    $minute = ' minute ';  
-                                    } else {
-                                    $minute = ' minuten ';
-                                    }    
-                                    $seen = 'vor '.$seen . $minute;
-                                    }
-                                    echo $seen;
-                                }
-                                ?>
-                                </td>
-                                <td>
-                                    <?php echo $inhalt->kd_registrierdatum; ?>
-                                </td>            
-                          </tr>
-                      <?php
+                  // lookup all hints from array if $q is different from ""
+                  //echo $q;
+                  if($inhalt->kd_anmeldedatum == ""){
+                      echo "Noch nie gesehen.";
+                  }
+                  else{
+                  $d = DateTime::createFromFormat('Y-m-d H:i:s', $q);
+                  $date = new DateTime();
+                  $differenz = $date->getTimestamp() - $d->getTimestamp();
+                  $seen = floor($differenz/60);
+                  $more = false;
+                  if($seen > 60) {
+                      $more = true;
+                      $hours = floor($seen/60);
+                      $minutes = $seen-($hours*60);
+                      if(($seen > 24) && ($more == true)) {
+                          $days = floor(($seen/60)/24);
+                          $hours = floor($seen/60)-($days*24);
                       }
-                    }
-                      $connection2->close();
-                      ?>
-                      </tbody>
-                    </table>
+                      if($minutes == 1) {
+                      $minute = ' Minute ';  
+                      } else {
+                      $minute = ' Minuten ';
+                      }
+                      if($hours == 1) {
+                      $hour = ' Stunde ';  
+                      } else {
+                      $hour = ' Stunden ';
+                      }
+                      if($days == 1) {
+                      $day = ' Tag ';  
+                      } else {
+                      $day = ' Tage ';
+                      }
+                      if($days > 0) {  
+                      $seen = 'vor '. $days . $day . $hours . $hour . $minutes . $minute;
+                      } else {
+                      $seen = 'vor '. $hours . $hour . $minutes . $minute;
+                      }
+                  } else {
+                      if($seen == 1) {
+                      $minute = ' minute ';  
+                      } else {
+                      $minute = ' minuten ';
+                      }    
+                      $seen = 'vor '.$seen . $minute;
+                      }
+                      echo $seen;
+                  }
+                  ?>
+                  </td>
+                  <td>
+                      <?php echo date("d.m.y", strtotime($inhalt->kd_registrierdatum))." um ".date("H:i", strtotime($inhalt->kd_registrierdatum))." Uhr"; ?>
+                  </td>            
+            </tr>
+          <?php
+          }
+        }
+        $connection2->close();
+        ?>
+        </tbody>
+      </table>
         </div>
       </section>
       
