@@ -476,7 +476,7 @@
             <div class="card bg-light">
               <div class="card-body text-center">
                 <img
-                  src="https://randomuser.me/api/portraits/men/11.jpg"
+                  src="img/moritz.png"
                   class="rounded-circle mb-3"
                   style="width: 150px; height: 150px;"
                   alt=""
