@@ -11,7 +11,7 @@
     else{
       $eingeloggt = false;
     }
-    if(!$eingeloggt){
+    if(!$eingeloggt || $_SESSION['id']>2){
       echo "header('Location: '.'index.php');";
     }
 ?>
@@ -37,12 +37,11 @@
       href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
       rel="stylesheet"
     />
-    <link href='fullcalendar/main.css' rel='stylesheet' />
-
+    <link rel="stylesheet" href="style.css" />
     <title>Orpheus Musikverleih</title>
   </head>
   <body>
-    <div class="bgmaincolor4">
+  <div class="bgmaincolor4">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bgmaincolor1">
         <div class="container">
@@ -73,33 +72,34 @@
             </li>';
             }
             ?>
-              <li class="nav-item mx-2">
-                <?php 
-                  if(!$eingeloggt){
-                    echo '<button
+            <li class="nav-item mx-2">
+              <?php 
+                if(!$eingeloggt){
+                  echo '<button
+                  class="btn btn-warning btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#anmelden"
+                  
+                > Anmelden
+                </button>
+                </li>
+                <li class="nav-item">
+                  <button
                     class="btn btn-warning btn-sm"
                     data-bs-toggle="modal"
-                    data-bs-target="#anmelden"
-                    
-                  > Anmelden
-                  </button>
-                  </li>
-                  <li class="nav-item">
-                    <button
-                      class="btn btn-warning btn-sm"
-                      data-bs-toggle="modal"
-                      data-bs-target="#registrieren"
-                    >Registrieren
-                  </button>
-                  </li>';
-                  }
-                  else{
-                    echo '<form action="logout.php">
-                            <button type="submit" class="btn btn-warning btn-sm" >Abmelden</button>
-                          </form>
-                          </li>';
-                  }
-                ?>
+                    data-bs-target="#registrieren"
+                  >Registrieren
+                </button>
+                </li>';
+                }
+                else{
+                  echo '
+                    <form action="logout.php">
+                      <button type="submit" class="btn btn-warning btn-sm" >Abmelden</button>
+                    </form>
+                    </li>';
+                }
+              ?>
             </ul>
           </div>
         </div>
@@ -176,9 +176,32 @@
                     function vergleicheTimestamp($a, $b){
                       return strcmp($a->stunden_zeitpunkt, $b->stunden_zeitpunkt);
                     }
+                    //Gib die Anzahl der Schüler an
+                    function gibAnzahlSchüler($inhalt){
+                      if($inhalt->kd_id1 == 0){
+                        return 0;
+                      }
+                      if($inhalt->kd_id2 == 0){
+                        return 1;
+                      }
+                      if($inhalt->kd_id3 == 0){
+                        return 2;
+                      }
+                      if($inhalt->kd_id4 == 0){
+                        return 3;
+                      }
+                      if($inhalt->kd_id5 == 0){
+                        return 4;
+                      }
+                      if($inhalt->kd_id5 == 1){
+                        return 5;
+                      }
+                    }
+
                     usort($musikschulDaten, "vergleicheTimestamp");
                     foreach ($musikschulDaten as $inhalt) {
                       if($inhalt->stunden_ort=="online"){
+                        gibAnzahlSchüler($inhalt);
                   ?>
                   <tr>
                     <!-- Lehrkraft -->
@@ -196,24 +219,91 @@
                     </th>
                     <td>
                       <?php 
+                      //Schüler 1
                         $schueler1daten = SQL("SELECT * FROM kunden where $inhalt->kd_id1= `kd_id`");
+                        //Wenn ein Schüler bereits die Stunde besucht:
                         if($schueler1daten[0]!=null){
-                          echo $schueler1daten[0]->kd_vorname." ".$schueler1daten[0]->kd_nachname;
+                          if($schueler1daten[0]->kd_id==$_SESSION['id']){
+                            echo '
+                            <form method="post" action="apiTerminbuchen.php">
+                              <div class="input-group mb-3">
+                                <input type="text" hidden name="austragenKundenID" value='.$_SESSION['id'].'>
+                                <input type="text" hidden name="austragenStundenID" value='.$inhalt->stunden_id.'>
+                                <input type="text" hidden name="austragenKundenStelle" value="kd_id'.(gibAnzahlSchüler($inhalt)).'">
+                                <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Austragen" name="austragen" id="austragen">
+                              </div>
+                            </form>
+                            ';
+                          }
+                          else{
+                            echo $schueler1daten[0]->kd_vorname." ".$schueler1daten[0]->kd_nachname;
+                          }
+                          
                         }
+                        //Wenn bisher kein Schüler die Stunde besucht
                         else{
-                          echo "-";
+                          if(gibAnzahlSchüler($inhalt)==0){
+                            echo '
+                            <form method="post" action="apiTerminbuchen.php">
+                              <div class="input-group mb-3">
+                                <input type="text" hidden name="eintragenKundenID" value='.$_SESSION['id'].'>
+                                <input type="text" hidden name="eintragenStundenID" value='.$inhalt->stunden_id.'>
+                                <input type="text" hidden name="eintragenKundenStelle" value="kd_id'.(gibAnzahlSchüler($inhalt)+1).'">
+                                <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Eintragen" name="eintragen" id="eintragen">
+                              </div>
+                            </form>
+                            ';
+                          }else{
+                            echo "-";
+                          }
                         }
                       ?>
                     </td>  
                     <td>
                       <?php 
-                          $schueler2daten = SQL("SELECT * FROM kunden where $inhalt->kd_id2= `kd_id`");
-                          if($schueler2daten[0]!=null){
-                            echo $schueler2daten[0]->kd_vorname." ".$schueler2daten[0]->kd_nachname;
+                      //Schüler 2
+                        $schueler2daten = SQL("SELECT * FROM kunden where $inhalt->kd_id2= `kd_id`");
+                        //Wenn ein Schüler bereits die Stunde besucht:
+                        if($schueler2daten[0]!=null){
+                          if($schueler2daten[0]->kd_id==$_SESSION['id']){
+                            echo '
+                            <form method="post" action="apiTerminbuchen.php">
+                              <div class="input-group mb-3">
+                                <input type="text" hidden name="austragenKundenID" value='.$_SESSION['id'].'>
+                                <input type="text" hidden name="austragenStundenID" value='.$inhalt->stunden_id.'>
+                                <input type="text" hidden name="austragenKundenStelle" value="kd_id'.(gibAnzahlSchüler($inhalt)).'">
+                                <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Austragen" name="austragen" id="austragen">
+                              </div>
+                            </form>
+                            ';
                           }
                           else{
+                            echo $schueler2daten[0]->kd_vorname." ".$schueler2daten[0]->kd_nachname;
+                          }
+                          
+                        }
+                        //Wenn bisher kein Schüler die Stunde besucht
+                        else{
+                          if(gibAnzahlSchüler($inhalt)==1){
+                            //Wenn der Schüler bereits woanders eingetragen ist:
+                            if($schueler1daten[0]->kd_id!=$_SESSION['id']){
+                              echo '
+                              <form method="post" action="apiTerminbuchen.php">
+                                <div class="input-group mb-3">
+                                  <input type="text" hidden name="eintragenKundenID" value='.$_SESSION['id'].'>
+                                  <input type="text" hidden name="eintragenStundenID" value='.$inhalt->stunden_id.'>
+                                  <input type="text" hidden name="eintragenKundenStelle" value="kd_id'.(gibAnzahlSchüler($inhalt)+1).'">
+                                  <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Eintragen" name="eintragen" id="eintragen">
+                                </div>
+                              </form>
+                              ';
+                            }else{
+                              echo "-";
+                            }
+                          }else{
                             echo "-";
                           }
+                        }
                         ?>  
                     </td>  
                     <td>
@@ -223,7 +313,11 @@
                             echo $schueler3daten[0]->kd_vorname." ".$schueler3daten[0]->kd_nachname;
                           }
                           else{
-                            echo "-";
+                            if(gibAnzahlSchüler($inhalt)==2){
+                              echo "join Button";
+                            }else{
+                              echo "-";
+                            }
                           }
                         ?>  
                     </td>  
@@ -234,7 +328,11 @@
                             echo $schueler4daten[0]->kd_vorname." ".$schueler4daten[0]->kd_nachname;
                           }
                           else{
-                            echo "-";
+                            if(gibAnzahlSchüler($inhalt)==3){
+                              echo "join Button";
+                            }else{
+                              echo "-";
+                            }
                           }
                         ?>  
                     </td>  
@@ -245,7 +343,11 @@
                             echo $schueler5daten[0]->kd_vorname." ".$schueler5daten[0]->kd_nachname;
                           }
                           else{
-                            echo "-";
+                            if(gibAnzahlSchüler($inhalt)==4){
+                              echo "join Button";
+                            }else{
+                              echo "-";
+                            }
                           }
                         ?>  
                     </td>  
