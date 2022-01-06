@@ -61,6 +61,7 @@
             <?php 
                 if($eingeloggt){
                   echo '<li class="nav-item mx-2"><a href="ausleihe.php" class="nav-link text-warning"><u>Zur Ausleihe</u></a></li>';
+                  echo '<li class="nav-item mx-2"><a href="terminbuchung.php" class="nav-link text-warning"><u>Zur Terminbuchung</u></a></li>';
                 }
                 
               ?>
@@ -115,7 +116,7 @@
             <div>
               <h1> <?php echo "Lieber ".$_SESSION['vorname']?>, viel Spaß beim Erkunden unseres <span class="text-warning"> Instrumentenparadises!</span></h1>
               <p class="lead my-4">
-                  Bitte denke daran, dass nach einer Woche die Instrumente zurückgegeben werden müssen!
+                  Bitte denk daran, dass die Instrumente nach einer Woche zurückgegeben werden müssen!
               </p>
 
             </div>

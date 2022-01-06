@@ -61,6 +61,7 @@
             <?php 
                 if($eingeloggt){
                   echo '<li class="nav-item mx-2"><a href="ausleihe.php" class="nav-link text-warning"><u>Zur Ausleihe</u></a></li>';
+                  echo '<li class="nav-item mx-2"><a href="terminbuchung.php" class="nav-link text-warning"><u>Zur Terminbuchung</u></a></li>';
                 }
                 
               ?>
