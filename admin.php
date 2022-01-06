@@ -177,27 +177,9 @@
           <!-- Linke Spalte-->
           <div class="col-5" id="geigenSpalte">
               <div class="text-center h3 text-dark">Geigen</div>
-              <?php
-                $servername = "localhost";
-                $user = "root";
-                $password = "";
-                $datenbank = "instrumente";
-              
-                $connection1 = new mysqli($servername, $user, $password, $datenbank);
-                $sql1 = "SELECT * FROM geigen";
-                if ($erg1 = $connection1->query($sql1)) {
-                  if ($erg1->num_rows) {
-                  // print_r($erg->num_rows);
-                  $ds_gesamt = $erg1->num_rows;
-                  $erg1->free();
-                }
-                if ($erg1 = $connection1->query($sql1)) {
-                  while ($datensatz1 = $erg1->fetch_object()) {
-                    $daten1[] = $datensatz1;
-                  }
-                }
-              }
-              
+              <?php      
+                $sqlGeigen = "SELECT * FROM geigen";
+                $geigenDaten = SQL($sqlGeigen);
               ?>
               <table class="table text-dark mr-5">
                 <thead>
@@ -210,51 +192,50 @@
               </tr>
             </thead>
             <tbody>
-            <?php
-            foreach ($daten1 as $inhalt1) {
-            ?>
-      
-                  <tr>
-                      <td>
-                      
-                      <form method="post" action="geigen.php">
-                          <div class="input-group mb-3">
-                            <input type="text" hidden name="toDeleteID" value=<?php echo $inhalt1->gg_id;?>>
-                            <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
-                          </div>
-                        </form>
-                      
+              <?php
+                foreach ($geigenDaten as $geige) {
+              ?>
+              <tr>
+                <td>
+                  <!--Hier der Button, um eine Geige zu löschen -->
+                  <form method="post" action="geigen.php">
+                    <div class="input-group mb-3">
+                      <input type="text" hidden name="toDeleteID" value=<?php echo $geige->gg_id;?>>
+                      <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
+                    </div>
+                  </form>
+                </td>
+                
+                <!-- Geigen ID anzeigen -->
+                <th scope="row"> <?php echo $geige->gg_id; ?></th>
+                
+                <!-- Geigen Name anzeigen-->
+                <td>
+                  <?php echo $geige->gg_name; ?>
+                </td>
+                <!-- Geigen Kunde ausfindig machen und eventuell Namen ausgeben, ansonsten "Auf Lager" -->
+                <td>
+                  <?php 
+                    $geigenKundeID = $geige->kd_id; 
+                    $geigenKundenSQL = "SELECT `kd_vorname`, `kd_nachname` FROM `kunden` WHERE `kd_id` = $geigenKundeID";
+                    $geigenKunde = SQL($geigenKundenSQL);
+                    if($geigenKunde == NULL){
+                      echo "Auf Lager";
+                    }
+                    else{
+                      echo $geigenKunde[0]->kd_vorname." ".$geigenKunde[0]->kd_nachname;
+                    }
+                  ?>
+                </td> 
 
-                      </td>
-
-                      <th scope="row"> <?php echo $inhalt1->gg_id; ?></th>
-                      <td>
-                          <?php echo $inhalt1->gg_name; ?>
-                      </td>
-                      <td>
-                      <?php $kunde1 = $inhalt1->kd_id; 
-                          if($erg1 = $connection1->query("SELECT `kd_vorname`, `kd_nachname` FROM `kunden` WHERE `kd_id` = $kunde1")){
-                            if($erg1->num_rows > 0){
-                              $kundendaten1 = $erg1->fetch_object();
-                              echo $kundendaten1->kd_vorname." ".$kundendaten1->kd_nachname;
-                            }
-                            else{
-                              echo "Auf Lager";
-                            }
-                          }else{
-                            echo "keine Connection zur Kundendatenbank";
-                          }
-                          
-                          ?>
-                      </td> 
-                      <td>
-                          <?php echo $inhalt1->gg_ausleihdatum; ?>
-                      </td>               
-                </tr>
-            <?php
-            }
-            
-            ?>
+                <!-- Geigen Ausleihdatum anzeigen-->
+                <td>
+                      <?php echo $geige->gg_ausleihdatum; ?>
+                </td>               
+              </tr>
+              <?php
+                }  
+              ?>
             </tbody>
             </table>
               <form method="post" action="geigen.php">
@@ -264,8 +245,8 @@
                     <input type="submit" class="btn btn-warning"/>
                   </div>
                 </div>
-            </form>
-          </div>
+              </form>
+        </div>
         <!-- Rechte Spalte-->
           <div class="col-5" id="harfenSpalte">
               <div class="text-center h3 text-dark">Harfen</div>
