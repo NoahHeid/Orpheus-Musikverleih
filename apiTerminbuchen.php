@@ -28,5 +28,6 @@
         header('Location: '."terminbuchung.php");
         die();
     }
+    
 
 ?>

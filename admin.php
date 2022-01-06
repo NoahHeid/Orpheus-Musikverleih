@@ -491,10 +491,47 @@
               ?>
             </tbody>
           </table>
-            
         </div>
       </section>
-      
+      <!-- Neue Musikstunde! -->
+      <section class="text-dark justify-content-center p-5 p-lg-0 pt-lg-5" id="neueStundeEinstellen">
+      <div class="col-11">
+      <form>
+        <div class="row">
+          <div class="h5 text-center">Neue Musikstunde</div>
+        </div>
+        <div class="row justify-content-between">
+          <div class="col-3">
+          <label for="datum">Datum</label>
+            <input type="text" class="form-control" placeholder="Jahr-Monat-Tag Stunde:Minute:Sekunde" id=datum>
+          </div>
+          <div class="col-3">
+            <label for="ort">Ort</label>
+            <select id="ort" class="form-control">
+              <option selected hidden>Wähle...</option>
+              <option>Online</option>
+              <option>Hybrid</option>
+              <option>Vor Ort</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <label for="lehrer">Ort</label>
+            <select id="lehrer" class="form-control" required>
+              <option selected hidden>Wähle...</option>
+              <option>Moritz Hussing</option>
+              <option>Noah Heidrich</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-1">
+            <input type="submit" value="Hinzufügen" class="btn btn-warning mt-4"/>
+          </div>
+        </div>
+      </form>
+      </div>
+      </section>
+
       <!-- Kunden -->
       <section class="text-light p-5 p-lg-0 pt-lg-5 text-center d-flex justify-content-center text-sm-start bgmaincolor5">
         <div class="col-11" id="kundenSpalte">
