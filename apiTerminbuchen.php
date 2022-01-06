@@ -34,14 +34,14 @@
         $ort = $_POST['ort'];
         $map = getMap();
         if($map[$lehrer] =="error" || $map[$ort]=="error"){
-            
+
         }
         $sql = "INSERT INTO `musikschulstunden`(`kd_idLehrkraft`, `stunden_zeitpunkt`, `stunden_ort`) VALUES ('$map[$lehrer]','$datum','$map[$ort]')";
         echo $sql;
-       // $connection->query($sql);
-        //$connection->close();
-       // header('Location: '."admin.php");
-        //die();
+        $connection->query($sql);
+        $connection->close();
+        header('Location: '."admin.php");
+        die();
     }
 
     if(isset($_POST['alteStundeLöschen'])){

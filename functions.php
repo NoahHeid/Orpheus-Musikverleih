@@ -1,4 +1,5 @@
 <?php
+    //Stelle Verbindung zur Datenbank her!
     function connectDatabase(){
     $servername = "localhost";
     $user = "root";
@@ -6,7 +7,8 @@
     $datenbank = "instrumente";
     return new mysqli($servername, $user, $password, $datenbank);
     }
-    
+
+    //Liefert auf eine SQL Anfrage einen Array, mit allen Objekten, oder NULL als Return-Wert!
     function SQL($sql){
     $datenIstLeer = true;
     $connection = connectDatabase();
@@ -23,5 +25,10 @@
     return $daten;
     }
 
+    }
+
+    //Wird genutzt um die Timestamps zu sortieren.
+    function vergleicheTimestamp($a, $b){
+        return strcmp($a->stunden_zeitpunkt, $b->stunden_zeitpunkt);
     }
 ?>
