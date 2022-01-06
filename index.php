@@ -582,11 +582,19 @@
             <form action="login.php" method="POST" >
               <div class="mb-3">
                 <label for="user" class="col-form-label">Email</label>
-                <input type="text" class="form-control" id="user" name="user" required/>
+                <input type="text" class="form-control" id="user" name="user" value="<?php 
+                if(isset($_COOKIE['user'])){
+                  echo $_COOKIE['user'];
+                }
+                ?>" required/>
               </div>
               <div class="mb-3">
                 <label for="pass" class="col-form-label">Passwort:</label>
-                <input type="password" class="form-control" id="pass" name="pass" required/>
+                <input type="password" class="form-control" id="pass" required name="pass" value="<?php 
+                if(isset($_COOKIE['password'])){
+                  echo $_COOKIE['password'];
+                }
+                ?>" />
               </div>
               <button
                 type="button"

@@ -31,6 +31,16 @@ if($ergebnis->num_rows == 1){
     $_SESSION['nachname'] = $i["kd_nachname"];
     $_SESSION['email'] = $i["kd_email"];
     $_SESSION['handy'] = $i["kd_handy"];
+    if(isset($_POST['checkCookie'])){
+        setcookie("user", $email);
+        setcookie("password", $pass);
+    }else{
+        unset($_COOKIE["user"]);
+        unset($_COOKIE["password"]);
+        setcookie("user", "", time()-3600);
+        setcookie("password", "", time()-3600);
+    }
+
     //Update in der Datenbank die letzte Anmeldung
     $kdID = $i["kd_id"];
     $sqlupdate = "update kunden set kd_anmeldedatum =CURRENT_TIMESTAMP where kd_id = $kdID";
