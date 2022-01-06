@@ -28,6 +28,34 @@
         header('Location: '."terminbuchung.php");
         die();
     }
-    
+    if(isset($_POST['neueStundeHinzufügen'])){
+        $datum = $_POST['datum'];
+        $lehrer = $_POST['lehrer'];
+        $ort = $_POST['ort'];
+        $map = getMap();
+        $sql = "INSERT INTO `musikschulstunden`(`kd_idLehrkraft`, `stunden_zeitpunkt`, `stunden_ort`) VALUES ('$map[$lehrer]','$datum','$map[$ort]')";
+        echo $sql;
+        $connection->query($sql);
+        $connection->close();
+        header('Location: '."admin.php");
+        die();
+    }
+
+    if(isset($_POST['alteStundeLöschen'])){
+        
+        
+        $sql = "DELETE FROM `musikschulstunden` WHERE `stunden_id` = $id";
+    }
+
+    function getMap(){
+        //"Noah Heidrich"->1, "Moritz Hussing"->2, "Online"->"online", "Hybrid"->"hybrid", "Vor Ort"-> "vorort"
+        $map = array();
+        $map["Noah Heidrich"] = 1;
+        $map["Moritz Hussing"] = 2;
+        $map["Online"] =    "online";
+        $map["Hybrid"]=     "hybrid";
+        $map["Vor Ort"] =   "vorort";
+        return $map;
+    }
 
 ?>
