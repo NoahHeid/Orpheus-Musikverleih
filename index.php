@@ -409,7 +409,7 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
-                Nachdem du dich oben auf dieser Website angemeldet hast steht dir die Option <em>Jetzt Termin vereinbaren</em> zur Verfügung.
+                Nachdem du dich oben auf dieser Website angemeldet hast steht dir die Option <a href="#" style="color: #9a8c98"><em>Jetzt Termin vereinbaren</em></a> zur Verfügung.
                 Hier wählst du nun einfach das von dir gewünschte Unterrichtsmodell aus und vereinbarst mit unseren fachkompetenten Lehrenden den für dich optimalen Termin.
               </div>
             </div>
@@ -432,7 +432,7 @@
               data-bs-parent="#questions"
             >
               <div class="accordion-body">
-                Ganz unten auf dieser Website findest du alle Informationen bezüglich der Anfahrt und Kontaktaufnahme.
+              <a href="#kontakt" style="color:  #9a8c98"><em>Hier</em></a> findest du alle Informationen bezüglich der Anfahrt und Kontaktaufnahme.
                 Bei Fragen aller Art melde dich gerne bei uns!
               </div>
             </div>
@@ -544,7 +544,27 @@
         
         <img src="img/man_gitarre.jpg" class="img-fluid" alt="Gitarre">
       </div>
-    </section> 
+    </section>
+
+    <!-- Impressum -->
+    <section id="impressum" class="p-5 bgmaincolor1">
+      <div class="container">
+        <h2 class="text-left text-white">Impressum</h2>
+        <p class="text-left text-white">Angaben gemäß § 5 TMG</p>
+        <p class="text-left text-white">Noah Heidrich <br>
+      Mozartstraße 41<br> 
+      55283 Nierstein <br></p>
+    <p class="text-left text-white"> <strong>Vertreten durch: </strong><br>
+      Noah Heidrich<br>
+      Moritz Hussing<br></p>
+    <p class="text-left text-white"><strong>Kontakt:</strong> <br>
+      Telefon: 06133-5757802 <br>
+      E-Mail: <a href='mailto:musikservice@orpheus.de'>musikservice@orpheus.de</a></br></p>
+    <p class="text-left text-white"><strong>Haftungsausschluss: </strong><br><br><strong>Urheberrecht</strong><br><br>
+      Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+      Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet.
+      Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p><br>
+  </div>
 
     <!-- Footer -->
     <footer class="p-5 bg-dark text-white text-center position-relative">
