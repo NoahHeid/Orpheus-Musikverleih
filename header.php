@@ -82,31 +82,30 @@
                     }
                 ?>
 
-                <li class="nav-item mx-2">
+                <!-- Anmelde-, Abmelde- und Registrationsbutton -->
                 <?php 
                     if(!$eingeloggt){
-                    echo '<button
-                    class="btn btn-warning btn-sm"
-                    data-bs-toggle="modal"
-                    data-bs-target="#anmelden"
-                    
-                    > Anmelden
-                    </button>
-                    </li>
-                    <li class="nav-item">
-                    <button
-                        class="btn btn-warning btn-sm"
-                        data-bs-toggle="modal"
-                        data-bs-target="#registrieren"
-                    >Registrieren
-                    </button>
-                    </li>';
-                    }
-                    else{
-                    echo '<form action="logout.php">
-                            <button type="submit" class="btn btn-warning btn-sm" >Abmelden</button>
+                        echo 
+                        '
+                            <li class="nav-item mx-2">
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#anmelden"> 
+                                    Anmelden 
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#registrieren">
+                                    Registrieren
+                                </button>
+                            </li>
+                        ';
+                    } else {
+                    echo 
+                    '   
+                        <li class="nav-item mx-2">
+                            <form action="logout.php">
+                                <button type="submit" class="btn btn-warning btn-sm" >Abmelden</button>
                             </form>
-                            </li>';
+                        </li>';
                     }
                 ?>
             </ul>

@@ -9,9 +9,7 @@
     include "header.php";
 ?>
     <!-- Showcase -->
-    <section
-      class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor1"
-    >
+    <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor1">
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
@@ -23,25 +21,25 @@
             </p>
 
           </div>
-          <img
-            class="img-fluid w-25 d-none d-sm-block"
-            src="img/310984.svg"
-            alt=""
-          />
+          <img class="img-fluid w-25 d-none d-sm-block" src="img/310984.svg" alt="" />
         </div>
       </div>
     </section>
 
-    <!-- Newsletter -->
-    <?php if(!isset($_SESSION['loggedin'])){echo '      
-    <section class="text-light p-5 bgmaincolor4 shadow-md">
-      <div class="container">
-        <div class="d-md-flex justify-content-center align-items-center ">
-          <div class="h3 text-align-center ">Bitte melde dich oben rechts an, um vollen Zugriff auf alle Elemente zu haben!</div>
-        </div>
-      </div>
-    </section>
-    ';}
+    <!-- Reminder sich anzumelden -->
+    <?php 
+      if(!isset($_SESSION['loggedin']))
+      {
+        echo '      
+          <section class="text-light p-5 bgmaincolor4 shadow-md">
+            <div class="container">
+              <div class="d-md-flex justify-content-center align-items-center ">
+                <div class="h3 text-align-center ">Bitte melde dich oben rechts an, um vollen Zugriff auf alle Elemente zu haben!</div>
+              </div>
+            </div>
+          </section>
+        ';
+      }
     ?>
 
     <!-- Terminplanung Musikschule -->
@@ -49,30 +47,36 @@
       <div class="container">
         <div class="row text-center g-4">
           <div class="h2">Unsere Unterrichtskonzepte passen sich flexibel an deine Bedürfnisse an!</div>
+
+          <!-- Virtuelle Musikstunden -->
           <div class="col-md">
             <div class="card bgmaincolor3 text-light" style="height: auto;">
               <div class="card-body text-center">
-                
                 <div class="h1 mb-3">
                   <i class="bi bi-laptop"></i>
                 </div>
                 <h3 class="card-title mb-3">Virtuell</h3>
-                <p class="card-text">
-                  Die Pandemie fordert uns alle heraus. Daher bieten wir Montags und Freitags Musikunterricht über Zoom an!
-                </p>
+                <p class="card-text">Die Pandemie fordert uns alle heraus. Daher bieten wir Montags und Freitags Musikunterricht über Zoom an!</p>
                 <script>
-                function alertNachricht(){
-                  alert("Bitte zur Terminplanung erst einloggen!");
-                }
+                  function bitteErsteinloggenAlert(){
+                    alert("Bitte zur Terminplanung erst einloggen!");
+                  }
                 </script>
-
-                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<a href="terminbuchung.php#online" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
+                <?php 
+                  if(!isset($_SESSION['loggedin']))
+                  {
+                    echo '<input type="button" class="btn btn-custom" onclick="bitteErsteinloggenAlert()" value="Zur Buchung bitte erst einloggen" />';
+                  }
+                  else
+                  {
+                    echo '<a href="terminbuchung.php#online" class="btn btn-custom">Jetzt Termin vereinbaren</a>';
+                  }
                 ?>
-
               </div>
             </div>
           </div>
+
+          <!-- Hybride Musikstunden -->
           <div class="col-md">
             <div class="card bgmaincolor4 text-light" style="height: auto;">
               <div class="card-body text-center">
@@ -80,17 +84,22 @@
                   <i class="bi bi-person-square"></i>
                 </div>
                 <h3 class="card-title mb-3">Hybrid</h3>
-                <p class="card-text">
-                  Mittwochs finden unsere Stunden als Hybridmodell statt. Hier kannst du entscheiden, von wo aus du teilnehmen möchtest!
-                </p>
-
-                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<a href="terminbuchung.php#hybrid" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
+                <p class="card-text">Mittwochs finden unsere Stunden als Hybridmodell statt. Hier kannst du entscheiden, von wo aus du teilnehmen möchtest!</p>
+                <?php 
+                  if(!isset($_SESSION['loggedin']))
+                  {
+                    echo '<input type="button" class="btn btn-custom" onclick="bitteErsteinloggenAlert()" value="Zur Buchung bitte erst einloggen" />';
+                  }
+                  else
+                  {
+                    echo '<a href="terminbuchung.php#hybrid" class="btn btn-custom">Jetzt Termin vereinbaren</a>';
+                  }
                 ?>
-
               </div>
             </div>
           </div>
+
+          <!-- Vor Ort Musikstunden -->
           <div class="col-md">
             <div class="card bgmaincolor3 text-light" style="height: auto;">
               <div class="card-body text-center">
@@ -98,17 +107,21 @@
                   <i class="bi bi-people"></i>
                 </div>
                 <h3 class="card-title mb-3">Vor Ort</h3>
-                <p class="card-text">
-                  Vor Ort ist maßgeschneiderte Förderung am Besten möglich. Deswegen findet jeden Dienstag, Donnerstag und Samstag Unterricht in Präsenz statt!
-                </p>
-
-                <?php if(!isset($_SESSION['loggedin'])){echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';}
-                else{echo '<a href="terminbuchung.php#vorort" class="btn btn-custom">Jetzt Termin vereinbaren</a>';}
+                <p class="card-text">Vor Ort ist maßgeschneiderte Förderung am Besten möglich. Deswegen findet jeden Dienstag, Donnerstag und Samstag Unterricht in Präsenz statt!</p>
+                <?php 
+                  if(!isset($_SESSION['loggedin']))
+                  {
+                    echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';
+                  }
+                  else
+                  {
+                    echo '<a href="terminbuchung.php#vorort" class="btn btn-custom">Jetzt Termin vereinbaren</a>';
+                  }
                 ?>
-
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -118,21 +131,12 @@
       <div class="container">
         <div class="row align-items-center justify-content-between">
           <div class="col-md">
-            <img src="img/orpheus-saga.jpg" class="img-fluid" alt="" />
+            <img src="img/orpheus-saga.jpg" class="img-fluid" alt="orpheus-saga" />
           </div>
           <div class="col-md p-5">
             <h2>Wer war Orpheus?</h2>
-            <p class="lead">
-              Orpheus war ein begnadeter Musiker aus der Antike. Seine Gabe war so groß, dass er sogar in der Gunst des Gottes Apollon stand.
-            </p>
-            <p>
-
-            </p>
-            <button
-              class="btn btn-warning btn-lg"
-              data-bs-toggle="modal"
-              data-bs-target="#orpheusMehr"
-            >
+            <p class="lead">Orpheus war ein begnadeter Musiker aus der Antike. Seine Gabe war so groß, dass er sogar in der Gunst des Gottes Apollon stand.</p>
+            <button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#orpheusMehr">
               <i class="bi bi-chevron-right"></i> Erfahre mehr
             </button>
           </div>
@@ -140,31 +144,33 @@
       </div>
     </section>
 
-    <!-- Unser Instrumentverleih -->
+    <!-- Unser Angebot -->
     <section class="p-5 bgmaincolor1 text-light">
       <div class="container">
+
+        <!-- Unser Instrumentverleih -->
         <div class="row align-items-center justify-content-between">
           <div class="col-md p-5">
             <h2>Unser Instrumentverleih</h2>
-            <p class="lead">
-             Das richtige Instrument ist Voraussetzung für das Realisieren der eigenen musikalischen Ziele und Träume.
-            </p>
-            <p>
-              Wir bieten ihnen Instrumente, Beratung und Service von höchster Qualität. Bei Fragen aller Art stehen wir gerne zur Verfügung!
-            </p>
+            <p class="lead">Das richtige Instrument ist Voraussetzung für das Realisieren der eigenen musikalischen Ziele und Träume.</p>
+            <p>Wir bieten ihnen Instrumente, Beratung und Service von höchster Qualität. Bei Fragen aller Art stehen wir gerne zur Verfügung!</p>
             <?php
-            if(isset($_SESSION['loggedin'])){
-              echo'
-              <a href="ausleihe.php" class="btn btn-warning mt-3">
-                <i class="bi bi-chevron-right"></i> Zur Ausleihe
-              </a>
-              ';
-            }else{
-              echo '
-            <a href="#" class="btn btn-warning mt-3">
-              <i class="bi bi-chevron-right"></i> Logge dich ein
-            </a>';
-            }
+              //Wenn die Person eingeloggt ist, dann bringe sie zur Ausleihe. Ansonsten fordere sie auf, sich einzuloggen!
+              if(isset($_SESSION['loggedin']))
+              {
+                echo '
+                <a href="ausleihe.php" class="btn btn-warning mt-3">
+                  <i class="bi bi-chevron-right"></i> Zur Ausleihe
+                </a>
+                ';
+              }else
+              {
+                echo '
+                  <a href="#" class="btn btn-warning mt-3">
+                    <i class="bi bi-chevron-right"></i> Logge dich ein
+                  </a>
+                ';
+              }
             ?>
           </div>
           <div class="col-md">
@@ -179,26 +185,26 @@
           </div>
           <div class="col-md p-5">
             <h2>Unsere Musikschule</h2>
-            <p class="lead">
-            <em>Musik allein ist die Weltsprache und braucht nicht übersetzt zu werden.</em><br>
-            - Berthold Auerbach
-            </p>
-            <p>
-            Entdecke mit uns deine Talente und entfalte dein Potential. Wir bieten hervorragenden Unterricht in Violine, Klavier und Gesang!
-            </p>
+            <p class="lead"><em>Musik allein ist die Weltsprache und braucht nicht übersetzt zu werden.</em><br>- Berthold Auerbach</p>
+            <p>Entdecke mit uns deine Talente und entfalte dein Potential. Wir bieten hervorragenden Unterricht in Violine, Klavier und Gesang!</p>
             <?php
-            if(isset($_SESSION['loggedin'])){
-              echo'
-              <a href="terminbuchung.php" class="btn btn-warning mt-3">
-                <i class="bi bi-chevron-right"></i> Zur Terminbuchung
-              </a>
-              ';
-            }else{
-              echo '
-            <a href="#" class="btn btn-warning mt-3">
-              <i class="bi bi-chevron-right"></i> Logge dich ein
-            </a>';
-            }
+              if(isset($_SESSION['loggedin']))
+              {
+                echo
+                '
+                  <a href="terminbuchung.php" class="btn btn-warning mt-3">
+                    <i class="bi bi-chevron-right"></i> Zur Terminbuchung
+                  </a>
+                ';
+              }
+              else
+              {
+                echo '
+                  <a href="#" class="btn btn-warning mt-3">
+                    <i class="bi bi-chevron-right"></i> Logge dich ein
+                  </a>
+                ';
+              }
             ?>
           </div>
         </div>
