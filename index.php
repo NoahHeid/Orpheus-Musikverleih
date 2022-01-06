@@ -464,10 +464,7 @@
                   Stilistisch beeindruckt Heidrich durch die feine Eleganz seines Spiels und glänzt außerdem mit innovativen Interpretationen klassischer Werke.
                   Als zweites Standbein baute er sich außerdem eine Karriere als bekannter Jazzsaxophonist auf.
                 </p>
-                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
-                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
-                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                <a href="https://www.linkedin.com/in/noah-heidrich-4b30301bb/"><i class="bi bi-linkedin text-dark mx-1"></i></a>
               </div>
             </div>
           </div>
@@ -487,10 +484,7 @@
                   Sein Spiel ist geprägt durch gewagte Interpretationen und herrausragende technische Klasse. 2017 wurde Hussing durch die Aufnahme in die Hall of Fame der Meister
                   des modernen Harfenspiels eine große Ehre zu Teil.
                 </p>
-                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
-                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
-                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                <a href="https://www.linkedin.com/in/moritz-hussing-4847a822a/"><i class="bi bi-linkedin text-dark mx-1"></i></a>
               </div>
             </div>
           </div>
