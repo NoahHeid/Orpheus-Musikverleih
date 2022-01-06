@@ -6,115 +6,8 @@
     else{
       $eingeloggt = false;
     }
-
+    include "header.php";
 ?>
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
-    />
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Orpheus Musikverleih</title>
-  </head>
-  <body>
-  <div class="bgmaincolor5">
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bgmaincolor1">
-      <div class="container">
-        <a href="index.php" class="navbar-brand"><img src="img/OrpheusLogoKleinTransparentGoldeneSchrift.png" alt="Logo" style="width: 150px"></a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navmenu"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navmenu">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a href="#orpheus" class="nav-link text-warning">Orpheus</a>
-            </li>
-            <li class="nav-item">
-              <a href="#faq" class="nav-link text-warning">FAQ</a>
-            </li>
-            <li class="nav-item">
-              <a href="#werwirsind" class="nav-link text-warning">Wer wir sind</a>
-            </li>
-            <li class="nav-item">
-              <a href="#kontakt" class="nav-link text-warning">Kontakt</a>
-            </li>
-            <?php 
-                if($eingeloggt){
-                  echo '<li class="nav-item mx-2"><a href="ausleihe.php" class="nav-link text-warning"><u>Zur Ausleihe</u></a></li>';
-                  echo '<li class="nav-item mx-2"><a href="terminbuchung.php" class="nav-link text-warning"><u>Zur Terminbuchung</u></a></li>';
-                }
-                
-              ?>
-            <!-- Admin Bereich -->
-            <?php
-            //Prüfe ob Kunden ID unter 3 ist, da nur Moritz und ich als Admins die IDs 1 und 2 haben können!
-            if($eingeloggt==true && $_SESSION['id']<3){
-              echo '<li class="nav-item">
-              <a href="admin.php" class="nav-link text-warning"><u>Admin Bereich</u></a>
-            </li>';
-            }
-            ?>
-
-            <li class="nav-item mx-2">
-              <?php 
-                if(!$eingeloggt){
-                  echo '<button
-                  class="btn btn-warning btn-sm"
-                  data-bs-toggle="modal"
-                  data-bs-target="#anmelden"
-                  
-                > Anmelden
-                </button>
-                </li>
-                <li class="nav-item">
-                  <button
-                    class="btn btn-warning btn-sm"
-                    data-bs-toggle="modal"
-                    data-bs-target="#registrieren"
-                  >Registrieren
-                </button>
-                </li>';
-                }
-                else{
-                  echo '<form action="logout.php">
-                          <button type="submit" class="btn btn-warning btn-sm" >Abmelden</button>
-                        </form>
-                        </li>';
-                }
-              ?>
-              
-            
-            
-          </ul>
-        </div>
-      </div>
-    </nav>
-
     <!-- Showcase -->
     <section
       class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor1"
@@ -534,6 +427,17 @@
           </div>
           <div class="col-md">
             <div id="map"></div>
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+              <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+              <script>
+                mapboxgl.accessToken ='pk.eyJ1IjoiYnRyYXZlcnN5IiwiYSI6ImNrbmh0dXF1NzBtbnMyb3MzcTBpaG10eXcifQ.h5ZyYCglnMdOLAGGiL1Auw'
+                var map = new mapboxgl.Map({
+                  container: 'map',
+                  style: 'mapbox://styles/mapbox/streets-v11',
+                  center: [8.336097717285156, 49.86569595336914],
+                  zoom: 14,
+                })
+              </script>
           </div>
         </div>
       </div>
@@ -546,159 +450,9 @@
         <img src="img/man_gitarre.jpg" class="img-fluid" alt="Gitarre">
       </div>
     </section>
-
-    <!-- Impressum -->
-    <section id="impressum" class="p-5 bgmaincolor1">
-      <div class="container">
-        <h2 class="text-left text-white">Impressum</h2>
-        <p class="text-left text-white">Angaben gemäß § 5 TMG</p>
-        <p class="text-left text-white">Noah Heidrich <br>
-          Mozartstraße 41<br> 
-          55283 Nierstein <br>
-        </p>
-        <p class="text-left text-white"> <strong>Vertreten durch: </strong><br>
-          Noah Heidrich<br>
-          Moritz Hussing<br>
-        </p>
-        <p class="text-left text-white"><strong>Kontakt:</strong> <br>
-          Telefon: 06133-5757802 <br>
-          E-Mail: <a href='mailto:musikservice@orpheus.de'>musikservice@orpheus.de</a></br>
-        </p>
-        <p class="text-left text-white"><strong>Haftungsausschluss: </strong><br><br><strong>Urheberrecht</strong><br><br>
-          Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
-          Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet.
-          Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
-        </p>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="p-5 bg-dark text-white text-center position-relative">
-      <div class="container">
-        <p class="lead">Copyright &copy; 2021 Noah Heidrich, Moritz Hussing</p>
-
-        <a href="#" class="position-absolute bottom-0 end-0 p-5">
-          <i class="bi bi-arrow-up-circle h1"></i>
-        </a>
-      </div>
-    </footer>
-
-    <!-- Modal Hier Anmelden -->
-    <div
-      class="modal fade"
-      id="anmelden"
-      tabindex="-1"
-      aria-labelledby="enrollLabel"
-      aria-hidden="true"
-    >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="enrollLabel">Anmelden</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-
-          <form action="login.php" method="POST" >
-            <div class="mb-3">
-              <label for="user" class="col-form-label">Email</label>
-              <input type="text" class="form-control" id="user" name="user" value="<?php 
-              if(isset($_COOKIE['user'])){
-                echo $_COOKIE['user'];
-              }
-              ?>" required/>
-            </div>
-            <div class="mb-3">
-              <label for="pass" class="col-form-label">Passwort:</label>
-              <input type="password" class="form-control" id="pass" required name="pass" value="<?php 
-              if(isset($_COOKIE['password'])){
-                echo $_COOKIE['password'];
-              }
-              ?>" />
-            </div>
-            <div class="form-check mt-2">
-              <input class="form-check-input" type="checkbox" value="checkCookie" name="checkCookie" id="checkCookie">
-              <label class="form-check-label" for="checkCookie">Daten speichern (verwendet Cookies)</label>
-            </div>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <input type="submit" value="Login" class="btn btn-warning" />
-
-          </form>
-      </div>
-        
-      </div>
-    </div>
-    </div>
-
-    <!-- Modal Hier Registrieren -->
-    <div
-      class="modal fade"
-      id="registrieren"
-      tabindex="-1"
-      aria-labelledby="enrollLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="enrollLabel">Registrieren</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-            </div>
-            <div class="modal-body">
-
-              <form action="registrieren.php" method="POST">
-                <div class="mb-3">
-                  <label for="vorname" class="col-form-label">Vorname:</label>
-                  <input type="text" class="form-control" id="vorname" name="vorname" required/>
-                </div>
-                <div class="mb-3">
-                  <label for="nachname" class="col-form-label">Nachname:</label>
-                  <input type="text" class="form-control" id="nachname" name="nachname" required/>
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="col-form-label"> Email </label>
-                  <input type="email" class="form-control" id="email" name="email" required/>
-                </div>
-                <div class="mb-3">
-                  <label for="pass" class="col-form-label">Passwort:</label>
-                  <input type="password" class="form-control" id="pass" name="pass" required/>
-                </div>
-                <div class="mb-3">
-                  <label for="telefonnummer" class="col-form-label">Telefonnummer:</label>
-                  <input type="tel" class="form-control" id="telefonnummer" name="telefonnummer" required/>
-                </div>
-                <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                >
-                Close
-                </button>
-                <input type="submit" value="Registrieren" class="btn btn-warning" />
-              </form>
-          </div>
-        </div>
-      </div>
-    </div>
     
     <!-- Modal Mehr erfahren über Orpheus -->
-    <div
+     <div
       class="modal fade"
       id="orpheusMehr"
       tabindex="-1"
@@ -738,54 +492,12 @@
             >
               Schließen
             </button>
-            
           </div>
         </div>
       </div>
     </div>
 
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-
-    <script>
-      mapboxgl.accessToken =
-        'pk.eyJ1IjoiYnRyYXZlcnN5IiwiYSI6ImNrbmh0dXF1NzBtbnMyb3MzcTBpaG10eXcifQ.h5ZyYCglnMdOLAGGiL1Auw'
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [8.336097717285156, 49.86569595336914],
-        zoom: 14,
-      })
-    </script>
-  
-  </div>
-  <?php
-    if(isset($_POST['anmeldeFehler'])){
-      echo '
-      <script>
-        alert("Falsche Einlogdaten!");
-      </script>
-      ';
-    }
-    if(isset($_POST['emailExistiert'])){
-      echo '
-      <script>
-        alert("Diese Email wird bereits verwendet, bitte nutze eine andere Email Adresse!");
-      </script>
-      ';
-    }
-    if(isset($_POST['registrationErfolgreich'])){
-      echo '
-      <script>
-        alert("Registration erfolgreich! Bitte logge dich nun ein :)");
-      </script>
-      ';
-    }
-  ?>
-  </body>
-</html>
+<?php
+  include("footer.php");
+?>
+   

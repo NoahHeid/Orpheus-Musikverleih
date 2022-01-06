@@ -504,128 +504,82 @@
         <div class="col-11" id="kundenSpalte">
           <div class="d-flex justify-content-center h2 text-dark">Kunden</div> 
           <?php
-            $servername = "localhost";
-            $user = "root";
-            $password = "";
-            $datenbank = "instrumente";
-          
-            $connection2 = new mysqli($servername, $user, $password, $datenbank);
-
-            $sql2 = "SELECT * FROM kunden";
-
-            $erg2 = $connection2->query($sql2);
-              while ($datensatz2 = $erg2->fetch_object()) {
-                $daten2[] = $datensatz2;
-              }
-              
+            $sqlKunden = "SELECT * FROM kunden";
+            $kundenDaten = SQL($sqlKunden);
           ?>
           <table class="table text-dark mr-5">
             <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">ID</th>
-            <th scope="col">Vorname</th>
-            <th scope="col">Nachname</th>
-            <th scope="col">Email</th>
-            <th scope="col">Handynummer</th>
-            <th scope="col">Letzte Anmeldung</th>
-            <th scope="col">Registriert seit</th>
-          </tr>
-        </thead>
-        <tbody>
-        <?php
-        if(!empty($inhalt)){
-        foreach ($daten2 as $inhalt) {
-        ?>
               <tr>
-                  <td>
-                  <form method="post" action="kunden.php">
-                      <div class="input-group mb-3">
-                        <input type="text" hidden name="toDeleteID" value=<?php echo $inhalt->kd_id;?>>
-                        <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
-                      </div>
-                    </form>
-                  </td>
-                  <th scope="row"> <?php echo $inhalt->kd_id; ?></th>
-                  <td>
-                      <?php echo $inhalt->kd_vorname; ?>
-                  </td>
-                  <td>
-                      <?php echo $inhalt->kd_nachname; ?>
-                  </td>
-                  <td>
-                      <?php echo $inhalt->kd_email; ?>
-                  </td>
-                  <td>
-                      <?php echo $inhalt->kd_handy; ?>
-                  </td>
-                  <td>
-                  <?php
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">Vorname</th>
+                <th scope="col">Nachname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Handynummer</th>
+                <th scope="col">Letzte Anmeldung</th>
+                <th scope="col">Registriert seit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                foreach ($kundenDaten as $kunde) 
+                {
+              ?>
+                  <tr>
+                    <!-- Kunde löschen -->
+                    <td>
+                      <form method="post" action="kunden.php">
+                          <div class="input-group mb-3">
+                            <input type="text" hidden name="toDeleteID" value=<?php echo $kunde->kd_id;?>>
+                            <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
+                          </div>
+                        </form>
+                      </td>
 
-                  $q = $inhalt->kd_anmeldedatum;
+                      <!-- Kunden ID -->
+                      <th scope="row"> 
+                        <?php echo $kunde->kd_id; ?>
+                      </th>
 
-                  // lookup all hints from array if $q is different from ""
-                  //echo $q;
-                  if($inhalt->kd_anmeldedatum == ""){
-                      echo "Noch nie gesehen.";
-                  }
-                  else{
-                  $d = DateTime::createFromFormat('Y-m-d H:i:s', $q);
-                  $date = new DateTime();
-                  $differenz = $date->getTimestamp() - $d->getTimestamp();
-                  $seen = floor($differenz/60);
-                  $more = false;
-                  if($seen > 60) {
-                      $more = true;
-                      $hours = floor($seen/60);
-                      $minutes = $seen-($hours*60);
-                      if(($seen > 24) && ($more == true)) {
-                          $days = floor(($seen/60)/24);
-                          $hours = floor($seen/60)-($days*24);
-                      }
-                      if($minutes == 1) {
-                      $minute = ' Minute ';  
-                      } else {
-                      $minute = ' Minuten ';
-                      }
-                      if($hours == 1) {
-                      $hour = ' Stunde ';  
-                      } else {
-                      $hour = ' Stunden ';
-                      }
-                      if($days == 1) {
-                      $day = ' Tag ';  
-                      } else {
-                      $day = ' Tage ';
-                      }
-                      if($days > 0) {  
-                      $seen = 'vor '. $days . $day . $hours . $hour . $minutes . $minute;
-                      } else {
-                      $seen = 'vor '. $hours . $hour . $minutes . $minute;
-                      }
-                  } else {
-                      if($seen == 1) {
-                      $minute = ' minute ';  
-                      } else {
-                      $minute = ' minuten ';
-                      }    
-                      $seen = 'vor '.$seen . $minute;
-                      }
-                      echo $seen;
-                  }
-                  ?>
-                  </td>
-                  <td>
-                      <?php echo date("d.m.y", strtotime($inhalt->kd_registrierdatum))." um ".date("H:i", strtotime($inhalt->kd_registrierdatum))." Uhr"; ?>
-                  </td>            
-            </tr>
-          <?php
-          }
-        }
-        $connection2->close();
-        ?>
-        </tbody>
-      </table>
+                      <!-- Kunden Vorname -->
+                      <td>
+                          <?php echo $kunde->kd_vorname; ?>
+                      </td>
+
+                      <!-- Kunden Nachname -->
+                      <td>
+                          <?php echo $kunde->kd_nachname; ?>
+                      </td>
+
+                      <!-- Kunden Email -->
+                      <td>
+                          <?php echo $kunde->kd_email; ?>
+                      </td>
+
+                      <!-- Kunden Handynummer -->
+                      <td>
+                          <?php echo $kunde->kd_handy; ?>
+                      </td>
+
+                      <!-- Letzte Anmeldung des Kunden -->
+                      <td>
+                        <?php
+                        $q = $kunde->kd_anmeldedatum;
+                        $letzteAnmeldung = letzteAnmeldung($q);
+                        echo $letzteAnmeldung;
+                      ?>
+                      </td>
+
+                      <!-- Registrationszeitpunkt -->
+                      <td>
+                          <?php echo date("d.m.y", strtotime($kunde->kd_registrierdatum))." um ".date("H:i", strtotime($kunde->kd_registrierdatum))." Uhr"; ?>
+                      </td>            
+                  </tr>
+              <?php
+                }
+              ?>
+            </tbody>
+          </table>
         </div>
       </section>
       
