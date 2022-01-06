@@ -336,6 +336,7 @@
           <table class="table text-dark mr-5">
             <thead>
               <tr>
+                <th scope="col">Löschen</th>
                 <th scope="col">Datum</th>
                 <th scope="col">Lehrkraft</th>
                 <th scope="col">Teilnehmer 1</th>
@@ -355,6 +356,16 @@
                   {
               ?>
                       <tr>
+                        <!--Hier der Button, um eine Stunde zu löschen -->
+                        <td>
+                          <form method="post" action="apiTerminbuchen.php">
+                            <div class="input-group mb-3">
+                              <input type="text" hidden name="toDeleteID" value=<?php echo $musikStunde->stunden_id;?>>
+                              <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="stundeLöschen" id="stundeLöschen">
+                            </div>
+                          </form>
+                        </td>
+
                         <!-- Datum der Stunde -->
                         <th scope ="row">
                           <?php echo date("H:i", strtotime($musikStunde->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($musikStunde->stunden_zeitpunkt)); ?>
@@ -449,7 +460,7 @@
         </div>
       </section>
 
-      <!-- Neue Musikstunde! -->
+      <!-- Neue Musikstunde! (Kann über den Button ausgeblendet werden) -->
       <section class="p-5 p-lg-0 pt-lg-5 text-center d-flex text-sm-start bgmaincolor5 text-dark justify-content-center">
         <div class="col-11" id="neueStundeEinstellen">
           <form method="post" action="apiTerminbuchen.php">
