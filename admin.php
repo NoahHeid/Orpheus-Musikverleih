@@ -1,4 +1,4 @@
-<?php
+<?php 
     session_start();
     if(isset($_SESSION['loggedin'])){
       if($_SESSION['loggedin']==TRUE){
@@ -14,6 +14,7 @@
     if(!$eingeloggt || $_SESSION['id']>2){
       echo "header('Location: '.'index.php');";
     }
+    include 'functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -367,30 +368,7 @@
           <div class="d-flex justify-content-center h2 text-dark">Musikstunden
           </div> 
           <?php
-            function connectDatabase(){
-              $servername = "localhost";
-              $user = "root";
-              $password = "";
-              $datenbank = "instrumente";
-              return new mysqli($servername, $user, $password, $datenbank);
-            }
-            function SQL($sql){
-              $datenIstLeer = true;
-              $connection = connectDatabase();
-              if ($erg = $connection->query($sql)) {
-                while ($datensatz = $erg->fetch_object()) {
-                  $datenIstLeer = false;
-                  $daten[] = $datensatz;
-                }
-              }
-              if($datenIstLeer){
-                return null;
-              }
-              else{
-                return $daten;
-              }
-              
-            }
+          
           $musikschulDaten = SQL("SELECT * FROM musikschulstunden");
           ?>
           <table class="table text-dark mr-5">
