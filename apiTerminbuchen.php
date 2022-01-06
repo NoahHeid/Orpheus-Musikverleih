@@ -33,23 +33,27 @@
         $lehrer = $_POST['lehrer'];
         $ort = $_POST['ort'];
         $map = getMap();
+        if($map[$lehrer] =="error" || $map[$ort]=="error"){
+            
+        }
         $sql = "INSERT INTO `musikschulstunden`(`kd_idLehrkraft`, `stunden_zeitpunkt`, `stunden_ort`) VALUES ('$map[$lehrer]','$datum','$map[$ort]')";
         echo $sql;
-        $connection->query($sql);
-        $connection->close();
-        header('Location: '."admin.php");
-        die();
+       // $connection->query($sql);
+        //$connection->close();
+       // header('Location: '."admin.php");
+        //die();
     }
 
     if(isset($_POST['alteStundeLöschen'])){
         
-        
+
         $sql = "DELETE FROM `musikschulstunden` WHERE `stunden_id` = $id";
     }
 
     function getMap(){
         //"Noah Heidrich"->1, "Moritz Hussing"->2, "Online"->"online", "Hybrid"->"hybrid", "Vor Ort"-> "vorort"
         $map = array();
+        $map["Wähle..."] = "error";
         $map["Noah Heidrich"] = 1;
         $map["Moritz Hussing"] = 2;
         $map["Online"] =    "online";

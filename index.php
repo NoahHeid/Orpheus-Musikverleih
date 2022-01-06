@@ -590,54 +590,54 @@
       aria-labelledby="enrollLabel"
       aria-hidden="true"
     >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="enrollLabel">Anmelden</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
 
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="enrollLabel">Anmelden</h5>
+          <form action="login.php" method="POST" >
+            <div class="mb-3">
+              <label for="user" class="col-form-label">Email</label>
+              <input type="text" class="form-control" id="user" name="user" value="<?php 
+              if(isset($_COOKIE['user'])){
+                echo $_COOKIE['user'];
+              }
+              ?>" required/>
+            </div>
+            <div class="mb-3">
+              <label for="pass" class="col-form-label">Passwort:</label>
+              <input type="password" class="form-control" id="pass" required name="pass" value="<?php 
+              if(isset($_COOKIE['password'])){
+                echo $_COOKIE['password'];
+              }
+              ?>" />
+            </div>
+            <div class="form-check mt-2">
+              <input class="form-check-input" type="checkbox" value="checkCookie" name="checkCookie" id="checkCookie">
+              <label class="form-check-label" for="checkCookie">Daten speichern (verwendet Cookies)</label>
+            </div>
             <button
               type="button"
-              class="btn-close"
+              class="btn btn-secondary"
               data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
+            >
+              Close
+            </button>
+            <input type="submit" value="Login" class="btn btn-warning" />
 
-            <form action="login.php" method="POST" >
-              <div class="mb-3">
-                <label for="user" class="col-form-label">Email</label>
-                <input type="text" class="form-control" id="user" name="user" value="<?php 
-                if(isset($_COOKIE['user'])){
-                  echo $_COOKIE['user'];
-                }
-                ?>" required/>
-              </div>
-              <div class="mb-3">
-                <label for="pass" class="col-form-label">Passwort:</label>
-                <input type="password" class="form-control" id="pass" required name="pass" value="<?php 
-                if(isset($_COOKIE['password'])){
-                  echo $_COOKIE['password'];
-                }
-                ?>" />
-              </div>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <input type="submit" value="Login" class="btn btn-warning" />
-              <div class="form-check mt-2">
-                <input class="form-check-input" type="checkbox" value="cookieErlaubt" name="checkCookie" id="checkCookie">
-                <label class="form-check-label" for="checkCookie">Automatisch anmelden (verwendet Cookies)</label>
-              </div>
-            </form>
-        </div>
-          
-        </div>
+          </form>
       </div>
+        
+      </div>
+    </div>
     </div>
 
     <!-- Modal Hier Registrieren -->

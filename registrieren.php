@@ -27,69 +27,51 @@ if($connection->connect_error){
 $sql = "SELECT * FROM kunden WHERE kd_email = '$email'";
 $ergebnis = $connection ->query($sql);
 
-//Wenn mehr als einmal diese Mail in der Database ist_
+//Wenn diese Email bereits vorhanden ist, gib eine Fehlermeldung!
 if($ergebnis->num_rows > 0){
-    echo "Email gibts schon";
-    while($i = $ergebnis->fetch_assoc()){
-        echo "Hallo: ID:".$i["kd_id"]." Name: ".$i["kd_vorname"]." ".$i["kd_nachname"]." ID: ".$i["kd_id"];
-    }
     session_destroy();
     $connection->close();
     echo '
     <script>
-           function redirect1()
+           function kehreZurückEmailDoppelt()
            {
-               document.getElementById("myform").submit();
+              alert("Email bereits vorhanden!");
+              location.replace("index.php");
            }
    </script>
-    <body onload="redirect1()">
-    <form action="index.php" method="post" id="myform">
-       <input type="text" id="emailExistiert" name="emailExistiert" value="true" hidden><br>
-       <input type="submit" name="Submit1" hidden>
-   </form>';
-
-
+  <body onload="kehreZurückEmailDoppelt()">';
 }
+//Ansonsten, lege einen neuen Nutzer an und führe den Nutzer zurück auf die richtige Seite.
 else{
-    $sql = "INSERT INTO kunden (kd_vorname, kd_nachname, kd_email, kd_handy, kd_kennwort) VALUES ('$vorname', '$nachname', '$email', '$tel', '$pass')";
+    $hash = md5($pass);
+    $sql = "INSERT INTO kunden (kd_vorname, kd_nachname, kd_email, kd_handy, kd_kennwort) VALUES ('$vorname', '$nachname', '$email', '$tel', '$hash')";
     if ($connection->query($sql) === TRUE) {
-      echo 'Registration erfolgreich!
+      echo '
       <script>
-      function redirect1()
+      function kehreZurückErfolg()
       {
-          document.getElementById("myform").submit();
+        alert("Registration erfolgreich. Bitte logge dich nun ein '.$vorname.'!");
+        location.replace("index.php");
       }
-        </script>
-    <body onload="redirect1()">
-    <form action="index.php" method="post" id="myform">
-    <input type="text" id="registrationErfolgreich" name="registrationErfolgreich" value="registrationErfolgreich" hidden><br>
-    <input type="submit" name="Submit1" hidden>
-    </form>;';
-      header('Location: '."index.php");
-      die();
-    } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      </script>
+      ';
+      $connection->close();
+      echo '<body onload="kehreZurückErfolg()">';
+    } 
+    //Wenn es einen Fehler bei der Connection gab, gib ihn aus
+    else {
+      echo '
+      <script>
+      function kehreZurückFehler()
+      {
+        alert("Error");
+        location.replace("index.php");
+      }
+      </script>
+      <body onload="kehreZurückFehler()">';
+      $connection->close();
     }
-    $connection->close();
 }
-
-
-
-/*
-echo '
-    <script>
-           
-           function redirect1()
-           {
-               document.getElementById("myform").submit();
-           }
-   </script>
-    <body onload="alert("Fehler")">
-    <form action="index.php" method="POST" id="myform">
-       <input type="text" id="emailExistiertBereits" name="emailExistiert" value="true" hidden><br>
-       <input type="submit" name="Submit1" hidden>
-   </form>';
-*/
 ?>
 
 

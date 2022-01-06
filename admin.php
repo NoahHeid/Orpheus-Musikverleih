@@ -512,8 +512,8 @@
           </div>
           <div class="col-3">
             <label for="ort">Ort</label>
-            <select id="ort" name="ort" class="form-control">
-              <option selected hidden>Wähle...</option>
+            <select id="ort" name="ort" class="form-control" required>
+              <option selected disabled>Wähle...</option>
               <option>Online</option>
               <option>Hybrid</option>
               <option>Vor Ort</option>
@@ -522,7 +522,7 @@
           <div class="col-3">
             <label for="lehrer">Lehrer</label>
             <select id="lehrer" name="lehrer" class="form-control" required>
-              <option selected hidden>Wähle...</option>
+              <option selected hidden disabled>Wähle...</option>
               <option>Moritz Hussing</option>
               <option>Noah Heidrich</option>
             </select>
