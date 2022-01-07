@@ -1,10 +1,6 @@
 <?php
-    $servername = "localhost";
-    $user = "root";
-    $password = "";
-    $datenbank = "instrumente";
-
-    $connection = new mysqli($servername, $user, $password, $datenbank);
+    include "functions.php";
+    $connection = connectDatabase();
 
     //Sich selbst in eine Stunde eintragen!
     if(isset($_POST['eintragen'])){

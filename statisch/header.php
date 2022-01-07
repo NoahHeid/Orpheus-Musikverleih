@@ -36,20 +36,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-                <!-- Wenn man eingeloggt ist, kann man hiermit auf die Buttons zur Ausleihe und zur Terminbuchung klicken. Ist man nicht eingeloggt, wird dies nicht angezeigt. -->
-                <?php 
-                    if($eingeloggt){
-                        echo '
-                            <li class="nav-item mx-2">
-                                <a href="ausleihe.php" class="nav-link text-warning"><u>Zur Ausleihe</u></a>
-                            </li>
-                            <li class="nav-item mx-2">
-                                <a href="terminbuchung.php" class="nav-link text-warning"><u>Zur Terminbuchung</u></a>
-                            </li>
-                        ';
-                        }
-                ?>
-
+                
                 <!-- Woher unser Name kommt -->
                 <li class="nav-item">
                     <a href="index.php#orpheus" class="nav-link text-warning">Orpheus</a>
@@ -69,6 +56,20 @@
                 <li class="nav-item">
                     <a href="index.php#kontakt" class="nav-link text-warning">Kontakt</a>
                 </li>
+
+                <!-- Wenn man eingeloggt ist, kann man hiermit auf die Buttons zur Ausleihe und zur Terminbuchung klicken. Ist man nicht eingeloggt, wird dies nicht angezeigt. -->
+                <?php 
+                    if($eingeloggt){
+                        echo '
+                            <li class="nav-item mx-2">
+                                <a href="ausleihe.php" class="nav-link text-warning">Zur Ausleihe</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a href="terminbuchung.php" class="nav-link text-warning">Zur Terminbuchung</a>
+                            </li>
+                        ';
+                        }
+                ?>
 
                 <!-- Admin Bereich -->
                 <?php

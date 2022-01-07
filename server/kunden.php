@@ -29,21 +29,42 @@
     }
 
     //Einen Nutzer einloggen
-    if(isset($_POST['login'])){
+    if(isset($_POST['login']))
+    {
         //Hole Values aus der Form
         $email = $_POST['user'];
         $pass = $_POST['pass'];
-        if(isset($checkCookie)){
-            $checkCookie = $_POST['checkCookie'];  
+        if(isset($_POST['checkCookie'])){
+            $checkCookie = true;
         }
-
+        else{
+            $checkCookie = false;
+        }
         $hash = md5($pass);
         $kundenSQL = "SELECT * FROM kunden WHERE kd_email = '$email' AND kd_kennwort = '$hash'";
         $ergebnis = SQL($kundenSQL);
 
         //Wenn $ergebnis[0] einen Wert hat, dann war die Anmeldung erfolgreich. Ansonsten gab es keinen Nutzer mit den Anmeldedaten!
         if($ergebnis[0]!=NULL){
-            setzeSessionUndCookie($ergebnis[0], $email, $pass);
+            //Setze die Session
+            $_SESSION['loggedin'] = true;
+            $_SESSION['id'] = $ergebnis[0]->kd_id;
+            $_SESSION['vorname'] =$ergebnis[0]->kd_vorname;
+            $_SESSION['nachname'] = $ergebnis[0]->kd_nachname;
+            $_SESSION['email'] = $ergebnis[0]->kd_email;
+            $_SESSION['handy'] = $ergebnis[0]->kd_handy;
+    
+            //Setze den Cookie für einen Monat
+            if($checkCookie){
+                setcookie('email', $email, time()+259200);
+                setcookie('password', $pass, time()+259200);
+            }
+            else{
+                unset($_COOKIE['email']);
+                unset($_COOKIE['password']);
+                setcookie('email', "", time()-3600);
+                setcookie('password', "", time()-3600);
+            }
             //Update nun auch die letzte Anmeldung in der Datenbank!
             $kdID = $ergebnis[0]->kd_id;
             $sqlupdate = "update kunden set kd_anmeldedatum =CURRENT_TIMESTAMP where kd_id = $kdID";
@@ -55,7 +76,7 @@
                 <script>
                 function kehreZurückErfolg()
                 {
-                    alert("Anmelden erfolgreich. Schön dich zu sehen '.$_SESSION['vorname'].'!");
+                    alert("Anmelden erfolgreich. Schön dich zu sehen '.$_SESSION["vorname"].'!");
                     location.replace("../index.php");
                 }
                 </script>
