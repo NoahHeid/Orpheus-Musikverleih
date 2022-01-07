@@ -32,6 +32,26 @@
         return strcmp($a->stunden_zeitpunkt, $b->stunden_zeitpunkt);
     }
 
+    //Schaue ob ein Instrument beim Kunden überfällig ist
+    function prüfeÜberfälligkeit($kundenID){
+        $überfälligeInstrumente = array();
+        //Geigen
+        $geigen = SQL("SELECT * FROM geigen WHERE kd_id = $kundenID");
+        $date = new DateTime();
+        foreach($geigen as $geige){
+            if($date->getTimestamp() - strtotime($geige->gg_ausleihdatum) > 604800){
+              array_push($überfälligeInstrumente, $geige);
+            }
+        }
+        $harfen = SQL("SELECT * FROM harfen WHERE kd_id = $kundenID");
+        foreach($harfen as $harfe){
+            if($date->getTimestamp() - strtotime($harfe->hf_ausleihdatum) > 604800){
+              array_push($überfälligeInstrumente, $harfe);
+            }
+        }
+        return $überfälligeInstrumente;
+
+    }
     //Wird genutzt um einen Timestamp in das Format "Vor XY Tagen und 22 Stunden" zu formatieren
     function letzteAnmeldung($q){
         if($q == "")

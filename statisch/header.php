@@ -24,6 +24,7 @@
   <!-- Hier beginnt der Body, dieser wird hier in der header.php geöffnet, aber dafür dann auch in der footer.php wieder geschlossen! -->
   <body class = "bgmaincolor5">
 
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bgmaincolor1">
       <div class="container">

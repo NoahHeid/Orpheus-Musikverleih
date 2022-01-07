@@ -57,14 +57,18 @@
     
             //Setze den Cookie
             if($checkCookie){
-                setcookie('email', $email, time()+3600, '/');
-                setcookie('password', $pass, time()+3600, '/');
+                setcookie('email', $email, time()+3600, '/', null);
+                setcookie('password', $pass, time()+3600, '/', null);
+                setcookie('checkBoxCookie', true, time()+3600, '/', null);
             }
             else{
+                echo "Else";
                 unset($_COOKIE['email']);
                 unset($_COOKIE['password']);
-                setcookie('email', "", time()-3600);
-                setcookie('password', "", time()-3600);
+                unset($_COOKIE['checkBoxCookie']);
+                setcookie('email', '', time()-3600,  '/', null);
+                setcookie('password', '', time()-3600,  '/', null);
+                setcookie('checkBoxCookie', '', time()-3600,  '/', null);
             }
             //Update nun auch die letzte Anmeldung in der Datenbank!
             $kdID = $ergebnis[0]->kd_id;
@@ -77,7 +81,7 @@
                 <script>
                 function kehreZurückErfolg()
                 {
-                    alert("Anmelden erfolgreich. Schön dich zu sehen '.$_COOKIE["email"].'!");
+                    alert("Anmelden erfolgreich. Schön dich zu sehen '.$_SESSION["vorname"].'!");
                     location.replace("../index.php");
                 }
                 </script>
