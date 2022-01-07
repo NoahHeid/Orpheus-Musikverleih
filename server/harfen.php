@@ -11,7 +11,7 @@
         $sql = "DELETE FROM `harfen` WHERE `hf_id` = $toDelete";
         $connection->query($sql);
         $connection->close();
-        header('Location: '."admin.php");
+        header('Location: '."../admin.php");
         die();
     }
 
@@ -20,7 +20,7 @@
         $sql ="INSERT INTO `harfen` (`hf_id`, `hf_name`, `hf_ausleihdatum`, `kd_id`) VALUES (NULL, '$harfenname', NULL, '')";
         $connection->query($sql);
         $connection->close();
-        header('Location: '."admin.php");
+        header('Location: '."../admin.php");
         die();
     }
 
@@ -30,7 +30,7 @@ if(isset($_POST['ausleihen'])){
     $sql = "UPDATE harfen SET hf_ausleihdatum=CURRENT_TIMESTAMP,kd_id=$kdID WHERE hf_id = $auszuleihenID";
     $connection->query($sql);
     $connection->close();
-    header('Location: '."ausleihe.php");
+    header('Location: '."../ausleihe.php");
     die();
 }
 if(isset($_POST['zurückgeben'])){
@@ -38,7 +38,7 @@ if(isset($_POST['zurückgeben'])){
     $sql = "UPDATE harfen SET hf_ausleihdatum=NULL,kd_id=0 WHERE hf_id = $zurückgebenID";
     $connection->query($sql);
     $connection->close();
-    header('Location: '."ausleihe.php");
+    header('Location: '."../ausleihe.php");
     die();
 }
 

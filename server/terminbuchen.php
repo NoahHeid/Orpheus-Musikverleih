@@ -15,7 +15,7 @@
         echo $sql;
         $connection->query($sql);
         $connection->close();
-        header('Location: '."terminbuchung.php");
+        header('Location: '."../terminbuchung.php");
         die();
     }
 
@@ -28,7 +28,7 @@
         echo $sql;
         $connection->query($sql);
         $connection->close();
-        header('Location: '."terminbuchung.php");
+        header('Location: '."../terminbuchung.php");
         die();
     }
 
@@ -45,7 +45,7 @@
         echo $sql;
         $connection->query($sql);
         $connection->close();
-        header('Location: '."admin.php");
+        header('Location: '."../admin.php");
         die();
     }
 
@@ -56,7 +56,7 @@
         echo $sql;
         $connection->query($sql);
         $connection->close();
-        header('Location: '."admin.php");
+        header('Location: '."../admin.php");
         die();
     }
 

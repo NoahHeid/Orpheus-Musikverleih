@@ -55,8 +55,9 @@
         </div>
         <div class="modal-body">
 
-          <form action="login.php" method="POST" >
+          <form action="server/kunden.php" method="POST" >
             <div class="mb-3">
+              <input type="text" hidden name="login">
               <label for="user" class="col-form-label">Email</label>
               <input type="text" class="form-control" id="user" name="user" value="<?php 
               if(isset($_COOKIE['user'])){
@@ -113,7 +114,8 @@
             </div>
             <div class="modal-body">
 
-              <form action="registrieren.php" method="POST">
+              <form action="server/kunden.php" method="POST">
+                <input type="text" hidden id="registrieren" name="registrieren"/>
                 <div class="mb-3">
                   <label for="vorname" class="col-form-label">Vorname:</label>
                   <input type="text" class="form-control" id="vorname" name="vorname" required/>

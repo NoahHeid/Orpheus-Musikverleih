@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="statisch/style.css"/>
 
     <!--Title der bspw im Tab angezeigt wird -->
     <title>Orpheus Musikverleih</title>
@@ -102,8 +102,9 @@
                     echo 
                     '   
                         <li class="nav-item mx-2">
-                            <form action="logout.php">
-                                <button type="submit" class="btn btn-warning btn-sm" >Abmelden</button>
+                            <form action="server/kunden.php" method="post">
+                                <input type="text" hidden name="logout"></input>
+                                <button type="submit" class="btn btn-warning btn-sm">Abmelden</button>
                             </form>
                         </li>';
                     }

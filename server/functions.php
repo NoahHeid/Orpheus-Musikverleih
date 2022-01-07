@@ -1,11 +1,11 @@
 <?php
     //Stelle Verbindung zur Datenbank her!
     function connectDatabase(){
-    $servername = "localhost";
-    $user = "root";
-    $password = "";
-    $datenbank = "instrumente";
-    return new mysqli($servername, $user, $password, $datenbank);
+        $servername = "localhost";
+        $user = "root";
+        $password = "";
+        $datenbank = "instrumente";
+        return new mysqli($servername, $user, $password, $datenbank);
     }
 
     //Liefert auf eine SQL Anfrage einen Array, mit allen Objekten, oder NULL als Return-Wert!
@@ -13,10 +13,10 @@
     $datenIstLeer = true;
     $connection = connectDatabase();
     if ($erg = $connection->query($sql)) {
-    while ($datensatz = $erg->fetch_object()) {
-        $datenIstLeer = false;
-        $daten[] = $datensatz;
-    }
+        while ($datensatz = $erg->fetch_object()) {
+            $datenIstLeer = false;
+            $daten[] = $datensatz;
+        }
     }
     if($datenIstLeer){
     return null;
@@ -87,4 +87,26 @@
                 return $seen;
         }
     }
+
+    function setzeSessionUndCookie($kunde, $email, $pass){
+        //Setze die Session
+        $_SESSION['loggedin'] = true;
+        $_SESSION['id'] = $kunde->kd_id;
+        $_SESSION['vorname'] =$kunde->kd_vorname;
+        $_SESSION['nachname'] = $kunde->kd_nachname;
+        $_SESSION['email'] = $kunde->kd_email;
+        $_SESSION['handy'] = $kunde->kd_handy;
+
+        //Setze den Cookie
+        if(isset($_POST['checkCookie'])){
+            setcookie("user", $email);
+            setcookie("password", $pass);
+        }else{
+            unset($_COOKIE["user"]);
+            unset($_COOKIE["password"]);
+            setcookie("user", "", time()-3600);
+            setcookie("password", "", time()-3600);
+        }
+    }
+
 ?>
