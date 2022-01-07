@@ -216,73 +216,48 @@
       <div class="container">
         <h2 class="text-center mb-4">Frequently Asked Questions</h2>
         <div class="accordion accordion-flush" id="questions">
-          <!-- Item 1 -->
+
+          <!-- Kann trotz Corona Musikuntericht stattfinden? -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#question-one"
-              >
-               Kann trotz Corona Musikuntericht stattfinden?
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question-one">
+                Kann trotz Corona Musikuntericht stattfinden?
               </button>
             </h2>
-            <div
-              id="question-one"
-              class="accordion-collapse collapse"
-              data-bs-parent="#questions"
-            >
-              <div class="accordion-body">
+            <div id="question-one" class="accordion-collapse collapse" data-bs-parent="#questions">
+              <div class="accordion-body"> 
                 Ja! Unter Einhaltung der aktuell gültigen Hygiene- und Sicherheitsmaßnahmen kann wie gewohnt Unterricht in Präsenz stattfinden.
                 Ergänzend dazu bieten wir auch ein Hybridmodell an, bei dem einige Lernende vor Ort teilnehmen und andere über Zoom zugeschaltet werden.
                 Außerdem ist auch das Modell Stunden vollständig Online abzuhalten in unserem Angebot enthalten.
               </div>
             </div>
           </div>
-          <!-- Item 2 -->
+
+          <!-- Wie viel kosten die Stunden? -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#question-two"
-              >
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question-two">
                 Wie viel kosten die Stunden?
               </button>
             </h2>
-            <div
-              id="question-two"
-              class="accordion-collapse collapse"
-              data-bs-parent="#questions"
-            >
+            <div id="question-two" class="accordion-collapse collapse" data-bs-parent="#questions">
               <div class="accordion-body">
                 Die Preise für die einzelnen Stunden sind abhänig vom gewählten Instrument und dem Level der Lernenden:<br>
                 Harfe: 40 € für Anfänger, 50 € für Fortgeschrittene<br>
                 Violine: 35 € für Anfänger, 45 € für Fortgeschrittene<br>
                 Die Leihgebühr für Instrumente beträgt 25 € pro Woche<br>
-                
               </div>
             </div>
           </div>
-          <!-- Item 3 -->
+
+          <!-- Was benötige ich? -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#question-three"
-              >
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question-three" >
                Was benötige ich?
               </button>
             </h2>
-            <div
-              id="question-three"
-              class="accordion-collapse collapse"
-              data-bs-parent="#questions"
-            >
+            <div id="question-three" class="accordion-collapse collapse" data-bs-parent="#questions" >
               <div class="accordion-body">
                 Natürlich am Wichtigsten: Das gewünschte Instrument! Hierbei kannst du entweder dein eigenes mitbringen,
                 oder unseren Verleihservice in Anspruch nehmen. 
@@ -291,55 +266,40 @@
               </div>
             </div>
           </div>
-          <!-- Item 4 -->
+
+          <!-- Wie melde ich mich an? -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#question-four"
-              >
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question-four" >
                 Wie melde ich mich an?
               </button>
             </h2>
-            <div
-              id="question-four"
-              class="accordion-collapse collapse"
-              data-bs-parent="#questions"
-            >
+            <div id="question-four" class="accordion-collapse collapse" data-bs-parent="#questions" >
               <div class="accordion-body">
                 Nachdem du dich oben auf dieser Website angemeldet hast steht dir die Option <a href="#" style="color: #9a8c98"><em>Jetzt Termin vereinbaren</em></a> zur Verfügung.
                 Hier wählst du nun einfach das von dir gewünschte Unterrichtsmodell aus und vereinbarst mit unseren fachkompetenten Lehrenden den für dich optimalen Termin.
               </div>
             </div>
           </div>
-          <!-- Item 5 -->
+
+          <!-- Wie kann ich euch erreichen? -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#question-five"
-              >
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question-five" >
                 Wie kann ich euch erreichen?
               </button>
             </h2>
-            <div
-              id="question-five"
-              class="accordion-collapse collapse"
-              data-bs-parent="#questions"
-            >
+            <div id="question-five" class="accordion-collapse collapse" data-bs-parent="#questions" >
               <div class="accordion-body">
-              <a href="#kontakt" style="color:  #9a8c98"><em>Hier</em></a> findest du alle Informationen bezüglich der Anfahrt und Kontaktaufnahme.
-                Bei Fragen aller Art melde dich gerne bei uns!
+                <a href="#kontakt" style="color:  #9a8c98"><em>Hier</em></a> findest du alle Informationen bezüglich der Anfahrt und Kontaktaufnahme. Bei Fragen aller Art melde dich gerne bei uns!
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
+
   <!-- Wer wir sind -->
     <section id="werwirsind" class="p-5 bgmaincolor1">
       <div class="container">
@@ -348,15 +308,12 @@
           Unser Team überzeugt mit jahrelanger musikalischer Erfahrung und Referenzen der bekanntesten Opernhäuser dieser Welt.
         </p>
         <div class="row g-4">
+
+          <!-- Noah Heidrich -->
           <div class="col-md-6 col-lg-6">
             <div class="card bg-light">
               <div class="card-body text-center">
-                <img
-                  src="img/noah.jpeg"
-                  class="rounded-circle mb-3"
-                  style="width: 150px; height: 150px;"
-                  alt=""
-                />
+                <img src="img/noah.jpeg" class="rounded-circle mb-3" style="width: 150px; height: 150px;" alt="NoahHeidrich" />
                 <h3 class="card-title mb-3">Noah Heidrich</h3>
                 <p class="card-text">
                   Noah Heidrich ist der Fachwelt als profilierter Violinist bekannt. 
@@ -368,16 +325,12 @@
               </div>
             </div>
           </div>
-
+          
+          <!-- Moritz Hussing -->
           <div class="col-md-6 col-lg-6">
             <div class="card bg-light">
               <div class="card-body text-center">
-                <img
-                  src="img/moritz.png"
-                  class="rounded-circle mb-3"
-                  style="width: 150px; height: 150px;"
-                  alt=""
-                />
+                <img src="img/moritz.png" class="rounded-circle mb-3" style="width: 150px; height: 150px;" alt="MoritzHussing" />
                 <h3 class="card-title mb-3">Moritz Hussing</h3>
                 <p class="card-text">
                   Moritz Hussing erlernte das Harfenspiel im zarten Alter von 2 Jahren. Über die Jahre konnte er sich einen reichen Erfahrugnsschatz aneignen.
@@ -388,6 +341,7 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -398,9 +352,10 @@
         <div class="row g-4">
           <div class="col-md">
             <h2 class="text-center text-black">Unser Store</h2>
-              <p class="lead text-center text-black mb-5">
-                Hier findet jeder Musikliebhaber seinen Traum!
-              </p>
+            <p class="lead text-center text-black mb-5">
+              Hier findet jeder Musikliebhaber seinen Traum!
+            </p>
+            <!-- Hier ist das Canvas initialisiert -->
             <div id="canvasdiv">
               <canvas id="canvas-resp"></canvas>
             </div>
@@ -410,10 +365,12 @@
       </div>
     </section>
 
-    <!-- Contact & Map -->
+    <!-- Kontakt & Map -->
     <section class="p-5 bgmaincolor4" id="kontakt">
       <div class="container">
         <div class="row g-4">
+
+          <!-- Kontaktinfo -->
           <div class="col-md">
             <h2 class="text-center mb-4">Kontakt Info und Anfahrt</h2>
             <ul class="list-group list-group-flush lead">
@@ -431,51 +388,46 @@
               </li>
             </ul>
           </div>
+
+          <!-- Karte, nutzt die Mapbox Api, um eine Karte darzustellen -->
           <div class="col-md">
             <div id="map"></div>
-              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-              <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-              <script>
-                mapboxgl.accessToken ='pk.eyJ1IjoiYnRyYXZlcnN5IiwiYSI6ImNrbmh0dXF1NzBtbnMyb3MzcTBpaG10eXcifQ.h5ZyYCglnMdOLAGGiL1Auw'
-                var map = new mapboxgl.Map({
-                  container: 'map',
-                  style: 'mapbox://styles/mapbox/streets-v11',
-                  center: [8.336097717285156, 49.86569595336914],
-                  zoom: 14,
-                })
-              </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+            <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+            <script>
+              mapboxgl.accessToken ='pk.eyJ1IjoiYnRyYXZlcnN5IiwiYSI6ImNrbmh0dXF1NzBtbnMyb3MzcTBpaG10eXcifQ.h5ZyYCglnMdOLAGGiL1Auw'
+              var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [8.336097717285156, 49.86569595336914],
+                zoom: 14,
+              })
+            </script>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Grosses Bild -->
+    <!-- Grosses Bild von Gitaristen -->
     <section class="p-5" id="bild">
       <div class="container">
-        
         <img src="img/man_gitarre.jpg" class="img-fluid" alt="Gitarre">
       </div>
     </section>
     
     <!-- Modal Mehr erfahren über Orpheus -->
-     <div
-      class="modal fade"
-      id="orpheusMehr"
-      tabindex="-1"
-      aria-labelledby="orpheusMehr"
-      aria-hidden="true"
-    >
+     <div class="modal fade" id="orpheusMehr" tabindex="-1" aria-labelledby="orpheusMehr" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
+
+          <!-- Modal Header -->
           <div class="modal-header">
             <h5 class="modal-title" id="orpheusMehr">Mehr über Orpheus</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
           </div>
+
+          <!-- Modal Body -->
           <div class="modal-body">
             <p class="lead">Orpheus und die Musik</p>
             <p>Orpheus war ein begnadeter Musiker und Sänger der antiken griechischen Sagenwelt. Sein Gesang war so schön,
@@ -490,20 +442,20 @@
                Abermals versuchte er die Götter durch Singen und Flehen zu erweichen, dieses Mal jedoch ohne Erfolg...
             </p>
           </div>
+
+          <!-- Modal Footer -->
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >
               Schließen
             </button>
           </div>
+
         </div>
       </div>
     </div>
 
 <?php
+  //Wird die Fußleiste und das Impressum setzen
   include("footer.php");
 ?>
    

@@ -52,22 +52,22 @@
 
                 <!-- Woher unser Name kommt -->
                 <li class="nav-item">
-                    <a href="#orpheus" class="nav-link text-warning">Orpheus</a>
+                    <a href="index.php#orpheus" class="nav-link text-warning">Orpheus</a>
                 </li>
 
                 <!-- FAQ -->
                 <li class="nav-item">
-                    <a href="#faq" class="nav-link text-warning">FAQ</a>
+                    <a href="index.php#faq" class="nav-link text-warning">FAQ</a>
                 </li>
 
                 <!-- Wer wir sind -->
                 <li class="nav-item">
-                    <a href="#werwirsind" class="nav-link text-warning">Wer wir sind</a>
+                    <a href="index.php#werwirsind" class="nav-link text-warning">Wer wir sind</a>
                 </li>
 
                 <!-- Wie man uns Kontaktieren kann -->
                 <li class="nav-item">
-                    <a href="#kontakt" class="nav-link text-warning">Kontakt</a>
+                    <a href="index.php#kontakt" class="nav-link text-warning">Kontakt</a>
                 </li>
 
                 <!-- Admin Bereich -->
