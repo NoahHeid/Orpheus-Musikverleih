@@ -34,6 +34,7 @@
         //Hole Values aus der Form
         $email = $_POST['user'];
         $pass = $_POST['pass'];
+        
         if(isset($_POST['checkCookie'])){
             $checkCookie = true;
         }
@@ -54,10 +55,10 @@
             $_SESSION['email'] = $ergebnis[0]->kd_email;
             $_SESSION['handy'] = $ergebnis[0]->kd_handy;
     
-            //Setze den Cookie für einen Monat
+            //Setze den Cookie
             if($checkCookie){
-                setcookie('email', $email);
-                setcookie('password', $pass);
+                setcookie('email', $email, time()+3600, '/');
+                setcookie('password', $pass, time()+3600, '/');
             }
             else{
                 unset($_COOKIE['email']);

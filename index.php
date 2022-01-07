@@ -26,7 +26,6 @@
 
 <!-- Reminder sich anzumelden -->
 <?php 
- echo array_values($_COOKIE);
   if(!isset($_SESSION['loggedin']))
   {
     echo '      

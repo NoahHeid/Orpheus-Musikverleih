@@ -15,12 +15,9 @@
                 <label for="user" class="col-form-label">Email</label>
                 <input type="text" class="form-control" id="user" name="user" value="<?php 
                
-                if(!empty($_COOKIE))
+                if(isset($_COOKIE['email']))
                 {
                     echo $_COOKIE['email'];
-                }
-                else{
-                    echo "Cookie leer";
                 }
                 ?>" required/>
             </div>
@@ -29,7 +26,7 @@
                 <input type="password" class="form-control" id="pass" required name="pass" value="<?php 
                 if(isset($_COOKIE['password']))
                 {
-                    echo "Cookie existiert";
+                    echo $_COOKIE['password'];
                 }
                 ?>" />
             </div>

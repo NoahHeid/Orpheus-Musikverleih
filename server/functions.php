@@ -8,7 +8,7 @@
         return new mysqli($servername, $user, $password, $datenbank);
     }
 
-    //Liefert auf eine SQL Anfrage einen Array, mit allen Objekten, oder NULL als Return-Wert!
+    //Liefert auf eine SQL Anfrage einen Array, mit allen Objekten. Ist das Array leer, wird NULL als Return-Wert zurückgegeben!
     function SQL($sql){
     $datenIstLeer = true;
     $connection = connectDatabase();
