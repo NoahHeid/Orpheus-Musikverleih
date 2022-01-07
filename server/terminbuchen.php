@@ -6,6 +6,7 @@
 
     $connection = new mysqli($servername, $user, $password, $datenbank);
 
+    //Sich selbst in eine Stunde eintragen!
     if(isset($_POST['eintragen'])){
         $kdID = $_POST['eintragenKundenID'];
         $stID = $_POST['eintragenStundenID'];
@@ -14,9 +15,11 @@
         echo $sql;
         $connection->query($sql);
         $connection->close();
-        header('Location: '."terminbuchung.php");
+        header('Location: '."../terminbuchung.php");
         die();
     }
+
+    //Sich selbst aus einer Stunde austragen!
     if(isset($_POST['austragen'])){
         $kdID = $_POST['austragenKundenID'];
         $stID = $_POST['austragenStundenID'];
@@ -25,29 +28,36 @@
         echo $sql;
         $connection->query($sql);
         $connection->close();
-        header('Location: '."terminbuchung.php");
+        header('Location: '."../terminbuchung.php");
         die();
     }
+
+    //Adminbereich: Neue Stunde anlegen
     if(isset($_POST['neueStundeHinzufügen'])){
         $datum = $_POST['datum'];
         $lehrer = $_POST['lehrer'];
         $ort = $_POST['ort'];
+
+        //Übersetzt die Attribute aus der POST Request zu den richtigen Attributen, die in der Datenbank hinterlegt sind.
         $map = getMap();
-        if($map[$lehrer] =="error" || $map[$ort]=="error"){
-            
-        }
+        
         $sql = "INSERT INTO `musikschulstunden`(`kd_idLehrkraft`, `stunden_zeitpunkt`, `stunden_ort`) VALUES ('$map[$lehrer]','$datum','$map[$ort]')";
         echo $sql;
-       // $connection->query($sql);
-        //$connection->close();
-       // header('Location: '."admin.php");
-        //die();
+        $connection->query($sql);
+        $connection->close();
+        header('Location: '."../admin.php");
+        die();
     }
 
-    if(isset($_POST['alteStundeLöschen'])){
-        
-
+    //Adminbereich: Stunde aus der Datenbank löschen
+    if(isset($_POST['stundeLöschen'])){
+        $id = $_POST['toDeleteID'];
         $sql = "DELETE FROM `musikschulstunden` WHERE `stunden_id` = $id";
+        echo $sql;
+        $connection->query($sql);
+        $connection->close();
+        header('Location: '."../admin.php");
+        die();
     }
 
     function getMap(){

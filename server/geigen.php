@@ -1,17 +1,13 @@
 <?php
-    $servername = "localhost";
-    $user = "root";
-    $password = "";
-    $datenbank = "instrumente";
-
-    $connection = new mysqli($servername, $user, $password, $datenbank);
+    include "functions.php";
+    $connection = connectDatabase();
 
     if(isset($_POST['delete'])){
         $toDelete = $_POST['toDeleteID'];
         $sql = "DELETE FROM `geigen` WHERE `gg_id` = $toDelete";
         $connection->query($sql);
         $connection->close();
-        header('Location: '."admin.php");
+        header('Location: '."../admin.php");
         die();
     }
 
@@ -20,7 +16,7 @@
         $sql ="INSERT INTO `geigen` (`gg_id`, `gg_name`, `gg_ausleihdatum`, `kd_id`) VALUES (NULL, '$geigenname', NULL, '')";
         $connection->query($sql);
         $connection->close();
-        header('Location: '."admin.php");
+        header('Location: '."../admin.php");
         die();
     }
     if(isset($_POST['ausleihen'])){
@@ -30,7 +26,7 @@
         //UPDATE `geigen` SET `gg_ausleihdatum`='CURRENT_TIMESTAMP',`kd_id`='1' WHERE `gg_id` = '4';
         $connection->query($sql);
         $connection->close();
-        header('Location: '."ausleihe.php");
+        header('Location: '."../ausleihe.php");
         die();
     }
     if(isset($_POST['zurückgeben'])){
@@ -39,7 +35,7 @@
         //UPDATE `geigen` SET `gg_ausleihdatum`='CURRENT_TIMESTAMP',`kd_id`='1' WHERE `gg_id` = '4';
         $connection->query($sql);
         $connection->close();
-        header('Location: '."ausleihe.php");
+        header('Location: '."../ausleihe.php");
         die();
     }
 
