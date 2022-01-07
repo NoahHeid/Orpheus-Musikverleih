@@ -16,7 +16,7 @@
         <h1> <?php if($eingeloggt){echo "Lieber ".$_SESSION['vorname']." b";}else{echo "B";} ?>eginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
         <p class="lead my-4">
           <em>Die Musik drückt das aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.</em> <br>
-          - Victor Hugo
+          - Victor Hugo 
         </p>
       </div>
       <img class="img-fluid w-25 d-none d-sm-block" src="img/310984.svg" alt="" />
@@ -26,6 +26,7 @@
 
 <!-- Reminder sich anzumelden -->
 <?php 
+ echo array_values($_COOKIE);
   if(!isset($_SESSION['loggedin']))
   {
     echo '      

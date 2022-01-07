@@ -56,8 +56,8 @@
     
             //Setze den Cookie für einen Monat
             if($checkCookie){
-                setcookie('email', $email, time()+259200);
-                setcookie('password', $pass, time()+259200);
+                setcookie('email', $email);
+                setcookie('password', $pass);
             }
             else{
                 unset($_COOKIE['email']);
@@ -76,7 +76,7 @@
                 <script>
                 function kehreZurückErfolg()
                 {
-                    alert("Anmelden erfolgreich. Schön dich zu sehen '.$_SESSION["vorname"].'!");
+                    alert("Anmelden erfolgreich. Schön dich zu sehen '.$_COOKIE["email"].'!");
                     location.replace("../index.php");
                 }
                 </script>

@@ -10,7 +10,7 @@
     else{
       $eingeloggt = false;
     }
-    if(!$eingeloggt || $_SESSION['id']>2){
+    if(!$eingeloggt){
       header('Location: '.'index.php');
     }
     include "server/functions.php";

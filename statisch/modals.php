@@ -14,9 +14,13 @@
                 <input type="text" hidden name="login">
                 <label for="user" class="col-form-label">Email</label>
                 <input type="text" class="form-control" id="user" name="user" value="<?php 
-                if(!empty($_COOKIE['email']))
+               
+                if(!empty($_COOKIE))
                 {
-                    echo "Cookie existiert";
+                    echo $_COOKIE['email'];
+                }
+                else{
+                    echo "Cookie leer";
                 }
                 ?>" required/>
             </div>
