@@ -38,15 +38,19 @@
         //Geigen
         $geigen = SQL("SELECT * FROM geigen WHERE kd_id = $kundenID");
         $date = new DateTime();
-        foreach($geigen as $geige){
-            if($date->getTimestamp() - strtotime($geige->gg_ausleihdatum) > 604800){
-              array_push($überfälligeInstrumente, $geige);
+        if(!empty($geigen)){
+            foreach($geigen as $geige){
+                if($date->getTimestamp() - strtotime($geige->gg_ausleihdatum) > 604800){
+                  array_push($überfälligeInstrumente, $geige);
+                }
             }
         }
         $harfen = SQL("SELECT * FROM harfen WHERE kd_id = $kundenID");
-        foreach($harfen as $harfe){
-            if($date->getTimestamp() - strtotime($harfe->hf_ausleihdatum) > 604800){
-              array_push($überfälligeInstrumente, $harfe);
+        if(!empty($harfen)){
+            foreach($harfen as $harfe){
+                if($date->getTimestamp() - strtotime($harfe->hf_ausleihdatum) > 604800){
+                  array_push($überfälligeInstrumente, $harfe);
+                }
             }
         }
         return $überfälligeInstrumente;

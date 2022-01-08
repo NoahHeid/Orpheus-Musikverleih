@@ -20,42 +20,48 @@
           <em>Die Musik drückt das aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.</em> <br>
           - Victor Hugo 
         </p>
-            
-        <!-- Nutze hier PHP Code um zu schauen, ob ein Instrument zu lange ausgeliehen wurde -->
-        <?php
-          //Sieh nach, ob der Nutzer ein Instrument zu lange besitzt und es zurückgeben muss
-          if($eingeloggt){
-            $überfälligeInstrumente = prüfeÜberfälligkeit($_SESSION['id']);          
-            if(count($überfälligeInstrumente)>0){
-              if(isset($überfälligeInstrumente[0]->hf_name))
-              {
-                $überfälligesBeispielInstrument = $überfälligeInstrumente[0]->hf_name;
-                $fälligSeit = date("d.m.y", strtotime($überfälligeInstrumente[0]->hf_ausleihdatum)+604800);
-              }
-              else
-              {
-                $überfälligesBeispielInstrument= $überfälligeInstrumente[0]->gg_name;
-                $fälligSeit = date("d.m.y", strtotime($überfälligeInstrumente[0]->gg_ausleihdatum)+604800);
-              }
-              echo "
-                <p class='lead my-4 text-danger'>
-                  Bitte gib die überfälligen Instrumente zurück! Unter anderem: ".$überfälligesBeispielInstrument." sie ist fällig seit ".$fälligSeit."
-                </p>
-                <script>
-                  alert('Du hast überfällige Instrumente:
-                    ".$überfälligesBeispielInstrument."
-                  ');
-                </script>
-              ";
-            }
-          }
-          
-        ?>
-
       </div>
       <img class="img-fluid w-25 d-none d-sm-block" src="img/310984.svg" alt="" />
     </div>
   </div>
+</section>
+
+<!-- Überfällige Instrumente zurückgeben! -->
+<section class = "text-center">
+  <!-- Nutze hier PHP Code um zu schauen, ob ein Instrument zu lange ausgeliehen wurde -->
+  <?php
+    //Sieh nach, ob der Nutzer ein Instrument zu lange besitzt und es zurückgeben muss
+    if($eingeloggt)
+    {
+        $überfälligeInstrumente = prüfeÜberfälligkeit($_SESSION['id']);      
+        if(!empty($überfälligeInstrumente))
+        {
+            if(count($überfälligeInstrumente)>0){
+            if(isset($überfälligeInstrumente[0]->hf_name))
+            {
+                $überfälligesBeispielInstrument = $überfälligeInstrumente[0]->hf_name;
+                $fälligSeit = date("d.m.y", strtotime($überfälligeInstrumente[0]->hf_ausleihdatum)+604800);
+            }
+            else
+            {
+                $überfälligesBeispielInstrument= $überfälligeInstrumente[0]->gg_name;
+                $fälligSeit = date("d.m.y", strtotime($überfälligeInstrumente[0]->gg_ausleihdatum)+604800);
+            }
+            echo "
+                <div class='h1 text-danger'>
+                Bitte gib die überfälligen Instrumente zurück! Unter anderem: ".$überfälligesBeispielInstrument." sie ist fällig seit ".$fälligSeit."
+                </div>
+                <script>
+                alert('Du hast überfällige Instrumente:
+                    ".$überfälligesBeispielInstrument."
+                ');
+                </script>
+            ";
+            }
+        }    
+
+    } 
+  ?>
 </section>
 
 <!-- Reminder sich anzumelden -->

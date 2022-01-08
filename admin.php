@@ -44,12 +44,25 @@
     } else {
       x.style.display = "none";
     }
-    if(document.getElementById("geigenSpalte").style.display===none && document.getElementById("harfenSpalte").style.display===none){
-      document.getElementById("instrumenteID") = "none";
+
+    //Wenn sowohl Harfen als auch Geigen ausgeblendet sind, solle auch die Überschrift von den Instrumenten ausgeblendet sein!
+    if(document.getElementById("geigenSpalte").style.display==="none" && document.getElementById("harfenSpalte").style.display==="none"){
+      document.getElementById("instrumentenSpalte").style.display = "none";
       console.log("Ausgeblendet!");
     }
     else{
-      document.getElementById("instrumenteID") = "block";
+      document.getElementById("instrumentenSpalte").style.display = "block";
+    }
+
+    //Wenn die ganze Musikspalte ausgeblendet ist, dann muss auch das "Neue Spalte einstellen" ausgeblendet sein!
+    if(document.getElementById("musikstundenSpalte").style.display == "none"){
+      var element = document.getElementById("neueStundeEinstellen");
+      element.style.display = "none";
+      console.log("IF");
+    }
+    else{
+      document.getElementById("neueStundeEinstellen").style.display = "block";
+      console.log("ELSE");
     }
   }
 </script>
@@ -57,16 +70,16 @@
 <div class="row my-4">
   <div class = "d-sm-flex align-items-center justify-content-center">  
     <div class="col text-center">
-      <a class="btn btn-lg btn-custom" onclick="toggleSichtbarkeit('geigenSpalte')">Blende Geigen aus</a>
+      <a class="btn btn-md btn-custom" onclick="toggleSichtbarkeit('geigenSpalte')">Blende Geigen aus</a>
     </div>
     <div class="col text-center">
-      <a class="btn btn-lg btn-custom" onclick="toggleSichtbarkeit('kundenSpalte')">Blende Kunden aus</a>
+      <a class="btn btn-md btn-custom" onclick="toggleSichtbarkeit('harfenSpalte')">Blende Harfen aus</a>
     </div>
     <div class="col text-center">
-      <a class="btn btn-lg btn-custom" onclick="toggleSichtbarkeit('harfenSpalte')">Blende Harfen aus</a>
+      <a class="btn btn-md btn-custom" onclick="toggleSichtbarkeit('musikstundenSpalte')">Blende Musikstunden aus</a>
     </div>
     <div class="col text-center">
-      <a class="btn btn-lg btn-custom" onclick="toggleSichtbarkeit('musikstundenSpalte')">Blende Musikstunden aus</a>
+      <a class="btn btn-md btn-custom" onclick="toggleSichtbarkeit('kundenSpalte')">Blende Kunden aus</a>
     </div>
     
   </div>
@@ -103,7 +116,7 @@
                 <!--Hier der Button, um eine Geige zu löschen -->
                 <form method="post" action="server/geigen.php">
                   <div class="input-group mb-3">
-                    <input type="text" hidden name="toDeleteID" value=<?php echo $geige->gg_id;?>>
+                    <input type="text" hidden name="toDeleteID" value="<?php echo $geige->gg_id;?>">
                     <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="delete" id="delete">
                   </div>
                 </form>
@@ -233,14 +246,12 @@
 <section class="text-light p-5 p-lg-0 pt-lg-5 text-center d-flex justify-content-center text-sm-start bgmaincolor5">
   <div class="col-11" id="musikstundenSpalte">
     <div class="d-flex justify-content-center h2 text-dark">Musikstunden</div> 
-    <?php
-      $musikschulDaten = SQL("SELECT * FROM musikschulstunden");
-    ?>
     <table class="table text-dark mr-5">
       <thead>
         <tr>
           <th scope="col">Löschen</th>
           <th scope="col">Datum</th>
+          <th scope="col">Ort</th>
           <th scope="col">Lehrkraft</th>
           <th scope="col">Teilnehmer 1</th>
           <th scope="col">Teilnehmer 2</th>
@@ -251,12 +262,12 @@
       </thead>
       <tbody>
         <?php
-          //Zeige die nächsten Stunden als erstes an!
+          $musikschulDaten = SQL("SELECT * FROM musikschulstunden");
+          //Zeige die nächsten Stunden als erstes an, sortiere den Ergebnis Array anhand des TimeStamps
           usort($musikschulDaten, "vergleicheTimestamp");
           foreach ($musikschulDaten as $musikStunde) 
           {
-            if($musikStunde->stunden_ort=="online")
-            {
+
         ?>
                 <tr>
                   <!--Hier der Button, um eine Stunde zu löschen -->
@@ -272,6 +283,11 @@
                   <!-- Datum der Stunde -->
                   <th scope ="row">
                     <?php echo date("H:i", strtotime($musikStunde->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($musikStunde->stunden_zeitpunkt)); ?>
+                  </th>
+
+                  <!-- Ort der Stunde -->
+                  <th scope ="row">
+                    <?php echo $musikStunde->stunden_ort ?>
                   </th>
                   
                   <!-- Lehrkraft -->
@@ -354,7 +370,6 @@
                   </td>  
                 </tr>
           <?php
-            }
           }
           ?>
       </tbody>

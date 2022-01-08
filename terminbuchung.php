@@ -32,6 +32,44 @@
   </div>
 </section>
 
+<!-- Überfällige Instrumente zurückgeben! -->
+<section class = "text-center">
+  <!-- Nutze hier PHP Code um zu schauen, ob ein Instrument zu lange ausgeliehen wurde -->
+  <?php
+    //Sieh nach, ob der Nutzer ein Instrument zu lange besitzt und es zurückgeben muss
+    if($eingeloggt)
+    {
+        $überfälligeInstrumente = prüfeÜberfälligkeit($_SESSION['id']);      
+        if(!empty($überfälligeInstrumente))
+        {
+            if(count($überfälligeInstrumente)>0){
+            if(isset($überfälligeInstrumente[0]->hf_name))
+            {
+                $überfälligesBeispielInstrument = $überfälligeInstrumente[0]->hf_name;
+                $fälligSeit = date("d.m.y", strtotime($überfälligeInstrumente[0]->hf_ausleihdatum)+604800);
+            }
+            else
+            {
+                $überfälligesBeispielInstrument= $überfälligeInstrumente[0]->gg_name;
+                $fälligSeit = date("d.m.y", strtotime($überfälligeInstrumente[0]->gg_ausleihdatum)+604800);
+            }
+            echo "
+                <div class='h1 text-danger'>
+                Bitte gib die überfälligen Instrumente zurück! Unter anderem: ".$überfälligesBeispielInstrument." sie ist fällig seit ".$fälligSeit."
+                </div>
+                <script>
+                alert('Du hast überfällige Instrumente:
+                    ".$überfälligesBeispielInstrument."
+                ');
+                </script>
+            ";
+            }
+        }    
+
+    } 
+  ?>
+</section>
+
 <!-- Online Termine -->
 <section class="text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5" id="online">
   <div class="container">
@@ -41,13 +79,15 @@
         <table class="table text-dark mr-5">
           <thead>
             <tr>
+              
+              <th scope="col">Datum</th>
               <th scope="col">Lehrkraft</th>
               <th scope="col">Teilnehmer 1</th>
               <th scope="col">Teilnehmer 2</th>
               <th scope="col">Teilnehmer 3</th>
               <th scope="col">Teilnehmer 4</th>
               <th scope="col">Teilnehmer 5</th>
-              <th scope="col">Datum</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -81,6 +121,12 @@
                   gibAnzahlSchüler($inhalt);
             ?>
             <tr>
+
+              <!-- Datum -->
+              <td>
+                <?php echo date("H:i", strtotime($inhalt->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($inhalt->stunden_zeitpunkt)); ?>
+              </td> 
+
               <!-- Lehrkraft -->
               <th scope="row"> 
                 <?php 
@@ -324,9 +370,7 @@
                   }
                   ?>  
               </td>  
-              <td>
-                <?php echo date("H:i", strtotime($inhalt->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($inhalt->stunden_zeitpunkt)); ?>
-              </td>  
+ 
             </tr>
             <?php
               }
@@ -348,46 +392,31 @@
         <table class="table text-dark mr-5">
           <thead>
             <tr>
+              <th scope="col">Datum</th>
               <th scope="col">Lehrkraft</th>
               <th scope="col">Teilnehmer 1</th>
               <th scope="col">Teilnehmer 2</th>
               <th scope="col">Teilnehmer 3</th>
               <th scope="col">Teilnehmer 4</th>
               <th scope="col">Teilnehmer 5</th>
-              <th scope="col">Datum</th>
             </tr>
           </thead>
           <tbody>
             <?php
               $musikschulDaten = SQL("SELECT * FROM musikschulstunden where stunden_zeitpunkt > CURRENT_TIMESTAMP");
               //Gib die Anzahl der Schüler an
-              function gibAnzahlSchüler($inhalt){
-                if($inhalt->kd_id1 == 0){
-                  return 0;
-                }
-                if($inhalt->kd_id2 == 0){
-                  return 1;
-                }
-                if($inhalt->kd_id3 == 0){
-                  return 2;
-                }
-                if($inhalt->kd_id4 == 0){
-                  return 3;
-                }
-                if($inhalt->kd_id5 == 0){
-                  return 4;
-                }
-                if($inhalt->kd_id5 == 1){
-                  return 5;
-                }
-              }
-
               usort($musikschulDaten, "vergleicheTimestamp");
               foreach ($musikschulDaten as $inhalt) {
                 if($inhalt->stunden_ort=="hybrid"){
                   gibAnzahlSchüler($inhalt);
             ?>
             <tr>
+
+              <!-- Datum -->
+              <td>
+                <?php echo date("H:i", strtotime($inhalt->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($inhalt->stunden_zeitpunkt)); ?>
+              </td> 
+              
               <!-- Lehrkraft -->
               <th scope="row"> 
                 <?php 
@@ -631,9 +660,7 @@
                   }
                   ?>  
               </td>  
-              <td>
-                <?php echo date("H:i", strtotime($inhalt->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($inhalt->stunden_zeitpunkt)); ?>
-              </td>  
+
             </tr>
             <?php
               }
@@ -655,46 +682,32 @@
         <table class="table text-dark mr-5">
           <thead>
             <tr>
+              <th scope="col">Datum</th>
               <th scope="col">Lehrkraft</th>
               <th scope="col">Teilnehmer 1</th>
               <th scope="col">Teilnehmer 2</th>
               <th scope="col">Teilnehmer 3</th>
               <th scope="col">Teilnehmer 4</th>
               <th scope="col">Teilnehmer 5</th>
-              <th scope="col">Datum</th>
+              
             </tr>
           </thead>
           <tbody>
             <?php
               $musikschulDaten = SQL("SELECT * FROM musikschulstunden where stunden_zeitpunkt > CURRENT_TIMESTAMP");
               //Gib die Anzahl der Schüler an
-              function gibAnzahlSchüler($inhalt){
-                if($inhalt->kd_id1 == 0){
-                  return 0;
-                }
-                if($inhalt->kd_id2 == 0){
-                  return 1;
-                }
-                if($inhalt->kd_id3 == 0){
-                  return 2;
-                }
-                if($inhalt->kd_id4 == 0){
-                  return 3;
-                }
-                if($inhalt->kd_id5 == 0){
-                  return 4;
-                }
-                if($inhalt->kd_id5 == 1){
-                  return 5;
-                }
-              }
-
               usort($musikschulDaten, "vergleicheTimestamp");
               foreach ($musikschulDaten as $inhalt) {
                 if($inhalt->stunden_ort=="vorort"){
                   gibAnzahlSchüler($inhalt);
             ?>
             <tr>
+              
+              <!-- Datum -->
+              <td>
+                <?php echo date("H:i", strtotime($inhalt->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($inhalt->stunden_zeitpunkt)); ?>
+              </td> 
+              
               <!-- Lehrkraft -->
               <th scope="row"> 
                 <?php 
@@ -937,10 +950,7 @@
                     }
                   }
                   ?>  
-              </td>  
-              <td>
-                <?php echo date("H:i", strtotime($inhalt->stunden_zeitpunkt))." Uhr am ".date("d.m.y", strtotime($inhalt->stunden_zeitpunkt)); ?>
-              </td>  
+              </td>   
             </tr>
             <?php
               }
