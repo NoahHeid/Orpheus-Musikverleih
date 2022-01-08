@@ -447,13 +447,6 @@
   </div>
 </section>
 
-<!-- Grosses Bild von Gitaristen -->
-<section class="p-5" id="bild">
-  <div class="container">
-    <img src="img/man_gitarre.jpg" class="img-fluid" alt="Gitarre">
-  </div>
-</section>
-
 <!-- Modal Mehr erfahren über Orpheus -->
   <div class="modal fade" id="orpheusMehr" tabindex="-1" aria-labelledby="orpheusMehr" aria-hidden="true">
   <div class="modal-dialog">
