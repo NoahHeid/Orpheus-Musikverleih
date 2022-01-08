@@ -33,43 +33,8 @@
   </div>
 </section>
 
-<!-- Überfällige Instrumente zurückgeben! -->
-<section class = "text-center">
-  <!-- Nutze hier PHP Code um zu schauen, ob ein Instrument zu lange ausgeliehen wurde -->
-  <?php
-    //Sieh nach, ob der Nutzer ein Instrument zu lange besitzt und es zurückgeben muss
-    if($eingeloggt)
-    {
-        $überfälligeInstrumente = prüfeÜberfälligkeit($_SESSION['id']);      
-        if(!empty($überfälligeInstrumente))
-        {
-            if(count($überfälligeInstrumente)>0){
-            if(isset($überfälligeInstrumente[0]->hf_name))
-            {
-                $überfälligesBeispielInstrument = $überfälligeInstrumente[0]->hf_name;
-                $fälligSeit = date("d.m.y", strtotime($überfälligeInstrumente[0]->hf_ausleihdatum)+604800);
-            }
-            else
-            {
-                $überfälligesBeispielInstrument= $überfälligeInstrumente[0]->gg_name;
-                $fälligSeit = date("d.m.y", strtotime($überfälligeInstrumente[0]->gg_ausleihdatum)+604800);
-            }
-            echo "
-                <div class='h1 text-danger'>
-                Bitte gib die überfälligen Instrumente zurück! Unter anderem: ".$überfälligesBeispielInstrument." sie ist fällig seit ".$fälligSeit."
-                </div>
-                <script>
-                alert('Du hast überfällige Instrumente:
-                    ".$überfälligesBeispielInstrument."
-                ');
-                </script>
-            ";
-            }
-        }    
-
-    } 
-  ?>
-</section>
+<!-- Warning, wenn ein Instrument zurückgegeben werden muss -->
+<?php include "statisch/ueberfaelligWarning.php"; ?>
 
 <!-- Geigenverleih -->
 <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5 border border-dark">
@@ -82,7 +47,6 @@
           <!-- Tabellenhead -->
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Geige</th>
               <th scope="col">Ausleihen</th>
             </tr>
@@ -97,12 +61,11 @@
               {
             ?>
               <tr>
-                <th scope="row"> <?php echo $geige->gg_id; ?></th>
                 <td>
                     <?php echo $geige->gg_name; ?>
-                </td>  
+                </td>
                 <td>
-                  <?php 
+                  <?php
                     //Falls die Geige auf Lager ist (Also das Ausleihdatum NULL ist), mache es möglich Auszuleihen!
                     if($geige->gg_ausleihdatum == NULL){
                       echo '<form method="post" action="server/geigen.php">
@@ -130,7 +93,7 @@
                       </form>';
                       }
                       else{
-                        echo 'Leider bereits ausgeliehen! Seit: '.date("d.m.y", strtotime($geige->gg_ausleihdatum));
+                        echo 'Leider seit '.date("d.m.y", strtotime($geige->gg_ausleihdatum)).' ausgeliehen.';
                       }
                     }
                   ?>

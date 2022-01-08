@@ -26,43 +26,8 @@
   </div>
 </section>
 
-<!-- Überfällige Instrumente zurückgeben! -->
-<section class = "text-center">
-  <!-- Nutze hier PHP Code um zu schauen, ob ein Instrument zu lange ausgeliehen wurde -->
-  <?php
-    //Sieh nach, ob der Nutzer ein Instrument zu lange besitzt und es zurückgeben muss
-    if($eingeloggt)
-    {
-        $überfälligeInstrumente = prüfeÜberfälligkeit($_SESSION['id']);      
-        if(!empty($überfälligeInstrumente))
-        {
-            if(count($überfälligeInstrumente)>0){
-            if(isset($überfälligeInstrumente[0]->hf_name))
-            {
-                $überfälligesBeispielInstrument = $überfälligeInstrumente[0]->hf_name;
-                $fälligSeit = date("d.m.y", strtotime($überfälligeInstrumente[0]->hf_ausleihdatum)+604800);
-            }
-            else
-            {
-                $überfälligesBeispielInstrument= $überfälligeInstrumente[0]->gg_name;
-                $fälligSeit = date("d.m.y", strtotime($überfälligeInstrumente[0]->gg_ausleihdatum)+604800);
-            }
-            echo "
-                <div class='h1 text-danger'>
-                Bitte gib die überfälligen Instrumente zurück! Unter anderem: ".$überfälligesBeispielInstrument." sie ist fällig seit ".$fälligSeit."
-                </div>
-                <script>
-                alert('Du hast überfällige Instrumente:
-                    ".$überfälligesBeispielInstrument."
-                ');
-                </script>
-            ";
-            }
-        }    
-
-    } 
-  ?>
-</section>
+<!-- Warning, wenn ein Instrument zurückgegeben werden muss -->
+<?php include "statisch/ueberfaelligWarning.php"; ?>
 
 <!-- Reminder sich anzumelden -->
 <?php 
@@ -183,7 +148,7 @@
 </section>
 
 <!-- Unser Angebot -->
-<section class="p-5 bgmaincolor1 text-light">
+<section class="p-5 bgmaincolor1 text-light" id="unserAngebot">
   <div class="container">
 
     <!-- Unser Instrumentverleih -->
@@ -314,7 +279,7 @@
         </h2>
         <div id="question-four" class="accordion-collapse collapse" data-bs-parent="#questions" >
           <div class="accordion-body">
-            Nachdem du dich oben auf dieser Website angemeldet hast steht dir die Option <a href="#" style="color: #9a8c98"><em>Jetzt Termin vereinbaren</em></a> zur Verfügung.
+            Nachdem du dich oben auf dieser Website angemeldet hast steht dir die Option <a href="#unserAngebot" style="color: #9a8c98"><em>Jetzt Termin vereinbaren</em></a> zur Verfügung.
             Hier wählst du nun einfach das von dir gewünschte Unterrichtsmodell aus und vereinbarst mit unseren fachkompetenten Lehrenden den für dich optimalen Termin.
           </div>
         </div>
@@ -446,44 +411,6 @@
     </div>
   </div>
 </section>
-
-<!-- Modal Mehr erfahren über Orpheus -->
-  <div class="modal fade" id="orpheusMehr" tabindex="-1" aria-labelledby="orpheusMehr" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h5 class="modal-title" id="orpheusMehr">Mehr über Orpheus</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
-      </div>
-
-      <!-- Modal Body -->
-      <div class="modal-body">
-        <p class="lead">Orpheus und die Musik</p>
-        <p>Orpheus war ein begnadeter Musiker und Sänger der antiken griechischen Sagenwelt. Sein Gesang war so schön,
-            dass sogar Tiere, Pflanzen und Steine davon berührt wurden. Auch stand Orpheus in der Gunst des Gottes Apollon,
-            von dem er einst eine göttliche Lyra geschenkt bekam, die dieser widerum von seinem Halbbruder Hermes erhalten hatte.
-            Als Eurydike, Orpheus Frau, eines Tages tragisch und viel zu früh verstarb machte sich Orpheus auf den Weg die Götter um Hilfe zu bitten.
-            Lange sang und flehte er, bis sich die Götter schließlich erweichen ließen.
-            Ihm wurde gestattet Eurydike aus der Unterwelt zurückzuholen, nur dürfe er sich den Weg zurück an die Oberfläche über
-            niemals umdrehen.
-            Auf dem langen Weg durch die Stille hinter ihm verunsichert hielt Orpheus es kurz vor Erreichen des Ziels jedoch nicht mehr aus.
-            Er drehte sich um und sah nur noch, wie Eurydike von der Dunkelheit hinter ihnen verschlungen wurde und verschwand.
-            Abermals versuchte er die Götter durch Singen und Flehen zu erweichen, dieses Mal jedoch ohne Erfolg...
-        </p>
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >
-          Schließen
-        </button>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 <?php
   //Wird die Fußleiste und das Impressum setzen
