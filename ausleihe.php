@@ -47,6 +47,7 @@
           <!-- Tabellenhead -->
           <thead>
             <tr>
+              <th scope="col">#</th>
               <th scope="col">Geige</th>
               <th scope="col">Ausleihen</th>
             </tr>
@@ -61,11 +62,12 @@
               {
             ?>
               <tr>
+                <th scope="row"> <?php echo $geige->gg_id; ?></th>
                 <td>
                     <?php echo $geige->gg_name; ?>
-                </td>
+                </td>  
                 <td>
-                  <?php
+                  <?php 
                     //Falls die Geige auf Lager ist (Also das Ausleihdatum NULL ist), mache es möglich Auszuleihen!
                     if($geige->gg_ausleihdatum == NULL){
                       echo '<form method="post" action="server/geigen.php">
@@ -93,7 +95,7 @@
                       </form>';
                       }
                       else{
-                        echo 'Leider seit '.date("d.m.y", strtotime($geige->gg_ausleihdatum)).' ausgeliehen.';
+                        echo 'Leider bereits ausgeliehen! Seit: '.date("d.m.y", strtotime($geige->gg_ausleihdatum));
                       }
                     }
                   ?>
