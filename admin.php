@@ -381,10 +381,15 @@
         <div class="h5 text-center">Neue Musikstunde</div>
       </div>
       <div class="row justify-content-between">
+
+        <!-- Datum -->
         <div class="col-3">
-        <label for="datum">Datum (Jahr-Monat-Tag Stunde:Minute:Sekunde)</label>
-          <input type="text" class="form-control" placeholder="Jahr-Monat-Tag Stunde:Minute:Sekunde" id="datum" name="datum" required>
+        <label for="datum">Datum</label>
+          <p id="checkTimestamp"></p>
+          <input type="text" class="form-control" onkeyup="istValiderTimestamp(this.value)" placeholder="Jahr-Monat-Tag Stunde:Minute:Sekunde" id="datum" name="datum" required>
         </div>
+
+         <!-- Ort -->
         <div class="col-3">
           <label for="ort">Ort</label>
           <select id="ort" name="ort" class="form-control" required>
@@ -394,6 +399,8 @@
             <option>Vor Ort</option>
           </select>
         </div>
+
+         <!-- Lehrer -->
         <div class="col-3">
           <label for="lehrer">Lehrer</label>
           <select id="lehrer" name="lehrer" class="form-control" required>
@@ -403,6 +410,8 @@
           </select>
         </div>
       </div>
+
+       <!-- Submit -->
       <div class="row">
         <div class="col-1">
           <input type="submit" value="Hinzufügen" name="neueStundeHinzufügen"class="btn btn-warning mt-4"/>
@@ -411,6 +420,33 @@
     </form>
   </div>
 </section>
+
+<!-- Ajax Skript um anzuzeigen, ob ein valider Timestamp eingegeben wurde! -->
+<script>
+  //checke ob die Eingabe ein richtiger Timestamp ist
+  function istValiderTimestamp(timestamp){
+      /// AJAX mit IE7+, Chrome, Firefox, Safari, Opera
+      if (window.XMLHttpRequest)
+      {
+        
+        xmlhttp=new XMLHttpRequest();
+      }
+      /// AJAX mit IE6, IE5
+      else
+      { 
+        
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      xmlhttp.onreadystatechange=function(){
+          if (xmlhttp.readyState==4 && xmlhttp.status==200){
+              document.getElementById("checkTimestamp").innerHTML=xmlhttp.responseText;
+          }
+      }
+      xmlhttp.open("GET","server/ajax.php?query="+timestamp,true);
+      xmlhttp.send();
+  }
+</script>
 
 <!-- Kunden -->
 <section class="text-light p-5 p-lg-0 pt-lg-5 text-center d-flex justify-content-center text-sm-start bgmaincolor5">

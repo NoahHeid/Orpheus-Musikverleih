@@ -29,20 +29,34 @@
     }
 
     //Adminbereich: Neue Stunde anlegen
-    if(isset($_POST['neueStundeHinzufügen'])){
-        $datum = $_POST['datum'];
-        $lehrer = $_POST['lehrer'];
-        $ort = $_POST['ort'];
+    if(isset($_POST['neueStundeHinzufügen'])){ 
 
-        //Übersetzt die Attribute aus der POST Request zu den richtigen Attributen, die in der Datenbank hinterlegt sind.
-        $map = getMap();
-        
-        $sql = "INSERT INTO `musikschulstunden`(`kd_idLehrkraft`, `stunden_zeitpunkt`, `stunden_ort`) VALUES ('$map[$lehrer]','$datum','$map[$ort]')";
-        echo $sql;
-        $connection->query($sql);
-        $connection->close();
-        header('Location: '."../admin.php");
-        die();
+        if($_POST['datum'] == "" || !isset($_POST['lehrer']) || !isset($_POST['ort']))
+        {
+            echo '
+            <script>
+                function kehreZurückFehler()
+                {
+                    alert("Eine oder mehrere der Eingaben waren leer. Bitte wähle alle drei Attribute aus!");
+                    location.replace("../admin.php");
+                }
+            </script>
+            <body onload="kehreZurückFehler()">
+            ';
+        }
+        else{
+            $datum = $_POST['datum'];
+            $lehrer = $_POST['lehrer'];
+            $ort = $_POST['ort'];
+            //Übersetzt die Attribute aus der POST Request zu den richtigen Attributen, die in der Datenbank hinterlegt sind.
+            $map = getMap();
+            $sql = "INSERT INTO `musikschulstunden`(`kd_idLehrkraft`, `stunden_zeitpunkt`, `stunden_ort`) VALUES ('$map[$lehrer]','$datum','$map[$ort]')";
+            echo $sql;
+            $connection->query($sql);
+            $connection->close();
+            header('Location: '."../admin.php");
+            die();
+        }
     }
 
     //Adminbereich: Stunde aus der Datenbank löschen
