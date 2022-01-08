@@ -35,7 +35,7 @@
   </div>
 </section>
 
-<!-- Button Reihe -->
+<!-- Button Skript -->
 <script>
   function toggleSichtbarkeit(id) {
     var x = document.getElementById(id);
@@ -66,22 +66,64 @@
       }
     }
 
+    //Ändere den Namen der Buttons, je nachdem, ob sie das Element ein oder ausblenden
+    
+    //Geigen
+    if(document.getElementById("geigenSpalte").style.display == "none"){
+      document.getElementById("geigenButton").innerHTML = "Geigen einblenden";
+      document.getElementById("geigenButton").style.backgroundColor = "#9A8C98";
+    }
+    else{
+      document.getElementById("geigenButton").innerHTML = "Geigen ausblenden";
+      document.getElementById("geigenButton").style.backgroundColor = "#2B2D42";
+    }
+
+    //Harfen
+    if(document.getElementById("harfenSpalte").style.display == "none"){
+      document.getElementById("harfenButton").innerHTML = "Harfen einblenden";
+      document.getElementById("harfenButton").style.backgroundColor = "#9A8C98";
+    }
+    else{
+      document.getElementById("harfenButton").innerHTML = "Harfen ausblenden";
+      document.getElementById("harfenButton").style.backgroundColor = "#2B2D42";
+    }
+
+    //Musikstunden
+    if(document.getElementById("musikstundenSpalte").style.display == "none"){
+      document.getElementById("stundenButton").innerHTML = "Musikstunden einblenden";
+      document.getElementById("stundenButton").style.backgroundColor = "#9A8C98";
+    }
+    else{
+      document.getElementById("stundenButton").innerHTML = "Musikstunden ausblenden";
+      document.getElementById("stundenButton").style.backgroundColor = "#2B2D42";
+    }
+
+    //Kunden
+    if(document.getElementById("kundenSpalte").style.display == "none"){
+      document.getElementById("kundenButton").innerHTML = "Kunden einblenden";
+      document.getElementById("kundenButton").style.backgroundColor = "#9A8C98";
+    }
+    else{
+      document.getElementById("kundenButton").innerHTML = "Kunden ausblenden";
+      document.getElementById("kundenButton").style.backgroundColor = "#2B2D42";
+    }    
   }
 </script>
 
+<!-- Button Reihe -->
 <div class="row my-4">
   <div class = "d-sm-flex align-items-center justify-content-center">  
     <div class="col text-center">
-      <a class="btn btn-md btn-custom" onclick="toggleSichtbarkeit('geigenSpalte')">Blende Geigen aus</a>
+      <a class="btn btn-md btn-custom" id="geigenButton" onclick="toggleSichtbarkeit('geigenSpalte')">Blende Geigen aus</a>
     </div>
     <div class="col text-center">
-      <a class="btn btn-md btn-custom" onclick="toggleSichtbarkeit('harfenSpalte')">Blende Harfen aus</a>
+      <a class="btn btn-md btn-custom" id="harfenButton" onclick="toggleSichtbarkeit('harfenSpalte')">Blende Harfen aus</a>
     </div>
     <div class="col text-center">
-      <a class="btn btn-md btn-custom" onclick="toggleSichtbarkeit('musikstundenSpalte')">Blende Musikstunden aus</a>
+      <a class="btn btn-md btn-custom" id="stundenButton" onclick="toggleSichtbarkeit('musikstundenSpalte')">Blende Musikstunden aus</a>
     </div>
     <div class="col text-center">
-      <a class="btn btn-md btn-custom" onclick="toggleSichtbarkeit('kundenSpalte')">Blende Kunden aus</a>
+      <a class="btn btn-md btn-custom" id="kundenButton" onclick="toggleSichtbarkeit('kundenSpalte')">Blende Kunden aus</a>
     </div>
     
   </div>
@@ -240,7 +282,7 @@
 <!-- Musikstunden -->
 <section class="text-light p-5 p-lg-0 pt-lg-5 text-center d-flex justify-content-center text-sm-start bgmaincolor5">
   <div class="col-11" id="musikstundenSpalte">
-    <div class="d-flex justify-content-center h2 text-dark">Musikstunden</div> 
+    <div class="d-flex justify-content-center h2 my-4 text-dark">Musikstunden</div> 
     <table class="table text-dark mr-5">
       <thead>
         <tr>
@@ -267,7 +309,7 @@
                 <tr>
                   <!--Hier der Button, um eine Stunde zu löschen -->
                   <td>
-                    <form method="post" action="server/serverTerminbuchen.php">
+                    <form method="post" action="server/terminbuchen.php">
                       <div class="input-group mb-3">
                         <input type="text" hidden name="toDeleteID" value=<?php echo $musikStunde->stunden_id;?>>
                         <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="❌" name="stundeLöschen" id="stundeLöschen">
@@ -383,7 +425,7 @@
       <div class="row justify-content-between">
 
         <!-- Datum -->
-        <div class="col-3">
+        <div class="col-5">
         <label for="datum">Datum</label>
           <p id="checkTimestamp"></p>
           <input type="text" class="form-control" onkeyup="istValiderTimestamp(this.value)" placeholder="Jahr-Monat-Tag Stunde:Minute:Sekunde" id="datum" name="datum" required>
@@ -393,7 +435,7 @@
         <div class="col-3">
           <label for="ort">Ort</label>
           <select id="ort" name="ort" class="form-control" required>
-            <option selected disabled>Wähle...</option>
+            <option selected hidden>Wähle...</option>
             <option>Online</option>
             <option>Hybrid</option>
             <option>Vor Ort</option>
@@ -404,7 +446,7 @@
         <div class="col-3">
           <label for="lehrer">Lehrer</label>
           <select id="lehrer" name="lehrer" class="form-control" required>
-            <option selected hidden disabled>Wähle...</option>
+            <option selected hidden >Wähle...</option>
             <option>Moritz Hussing</option>
             <option>Noah Heidrich</option>
           </select>
@@ -414,7 +456,7 @@
        <!-- Submit -->
       <div class="row">
         <div class="col-1">
-          <input type="submit" value="Hinzufügen" name="neueStundeHinzufügen"class="btn btn-warning mt-4"/>
+          <input type="submit" value="Bitte gib einen validen Timestamp ein!" disabled id="neueStundeHinzufügen" name="neueStundeHinzufügen"class="btn btn-warning mt-4"/>
         </div>
       </div>
     </form>
@@ -437,13 +479,26 @@
         
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
       }
+      
+      var neueStundeButton = document.getElementById('neueStundeHinzufügen');
 
       xmlhttp.onreadystatechange=function(){
           if (xmlhttp.readyState==4 && xmlhttp.status==200){
-              document.getElementById("checkTimestamp").innerHTML=xmlhttp.responseText;
+              if(xmlhttp.responseText == "true")
+              {
+                document.getElementById("checkTimestamp").innerHTML=null;
+                neueStundeButton.value = "Hinzufügen";
+                neueStundeButton.disabled = false;
+              }
+              else
+              {
+                document.getElementById("checkTimestamp").innerHTML=xmlhttp.responseText;
+                neueStundeButton.value = "Bitte gib einen validen Timestamp ein!";
+                neueStundeButton.disabled = true;
+              }
           }
       }
-      xmlhttp.open("GET","server/ajax.php?query="+timestamp,true);
+      xmlhttp.open("GET","server/ajax.php?timestampAjax="+timestamp,true);
       xmlhttp.send();
   }
 </script>

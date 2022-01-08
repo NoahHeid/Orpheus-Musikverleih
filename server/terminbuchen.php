@@ -30,7 +30,6 @@
 
     //Adminbereich: Neue Stunde anlegen
     if(isset($_POST['neueStundeHinzufügen'])){ 
-
         if($_POST['datum'] == "" || !isset($_POST['lehrer']) || !isset($_POST['ort']))
         {
             echo '
@@ -66,7 +65,7 @@
         echo $sql;
         $connection->query($sql);
         $connection->close();
-        header('Location: '."../admin.php");
+        header('Location: '."../admin.php#musikstundenSpalte");
         die();
     }
 

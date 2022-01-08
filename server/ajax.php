@@ -6,13 +6,13 @@ function validiereZeit($date, $format = 'Y-m-d H:i:s')
     return $d && $d->format($format) == $date;
 }
 
-if (isset($_GET["query"])){
-    $timestamp = $_GET["query"];
+if (isset($_GET["timestampAjax"])){
+    $timestamp = $_GET["timestampAjax"];
     if(validiereZeit($timestamp)==true){
-        echo "<span class='text-success'><strong>Valider</strong> Zeitstempel! :)</span>";
+        echo "true";
     }
     else{
-        echo "<span class='text-danger'>Kein <strong>valider</strong> Zeitstempel! :(</span>";
+        echo "<span class='text-danger'>Leider nicht im richtigen Format. Gewünscht: Jahr-Monat-Tag Stunde:Min:Sekunde</span>";
     }
 };
 
