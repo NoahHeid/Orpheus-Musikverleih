@@ -63,3 +63,11 @@
 .btn-custom:hover:after{
   transition: 800ms ease all;
 }
+
+/* Carousel */
+.carousel-item {
+  width: 120vh;
+  height: 70vh;
+  background-position: center;
+  background-size: cover;
+}

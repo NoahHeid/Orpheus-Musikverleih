@@ -391,7 +391,7 @@
       <div class="col-md">
         <h2 class="text-center text-black">Unser Store</h2>
         <p class="lead text-center text-black mb-5">
-          Hier findet jeder Musikliebhaber seinen Traum!
+          Hier wird der Traum eines jeden Musikliebhabers wahr!
         </p>
         <!-- Hier ist das Canvas initialisiert -->
         <div id="canvasdiv">
