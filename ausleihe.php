@@ -98,39 +98,80 @@
 
 <!-- Geigenverleih -->
 <section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5 border border-dark">
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+<div class="container">
+    <div class="row d-sm-flex align-items-around">
+      <!-- Geigenbild -->
+      <div class="col-5">
+        <img src="img/geigenAusleihe.png" class="img-fluid" alt="Responsive image">
+      </div>
+      <div class="col-2"></div>
+      <!-- Geigentabelle -->
+      <div class="col-5">
+        <table class="table text-dark mr-5">
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="la.jpg" alt="Los Angeles">
-    </div>
+          <!-- Tabellenhead -->
+          <thead>
+            <tr>
+              <th scope="col">Geige</th>
+              <th scope="col">Ausleihen</th>
+            </tr>
+          </thead>
 
-    <div class="item">
-      <img src="chicago.jpg" alt="Chicago">
-    </div>
-
-    <div class="item">
-      <img src="ny.jpg" alt="New York">
+          <!-- Tabellenbody -->
+          <tbody>
+            <?php
+              $geigenSQL = "SELECT * FROM geigen";
+              $geigenDaten = SQL($geigenSQL);
+              foreach ($geigenDaten as $geige) 
+              {
+            ?>
+              <tr>
+                <td>
+                    <?php echo $geige->gg_name; ?>
+                </td>  
+                <td>
+                  <?php 
+                    //Falls die Geige auf Lager ist (Also das Ausleihdatum NULL ist), mache es möglich Auszuleihen!
+                    if($geige->gg_ausleihdatum == NULL){
+                      echo '<form method="post" action="server/geigen.php">
+                      <div class="input-group mb-3">
+                        <input type="text" hidden name="ggID" value='.$geige->gg_id.'>
+                        <input type="text" hidden name="kdID" value='.$_SESSION['id'].'>
+                        <input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Ausleihen" name="ausleihen" id="ausleihen">
+                      </div>
+                    </form>';
+                    }else{
+                      //Prüfe ob das Element vom Nutzer ausgeliehen ist, wenn ja, mach es möglich, das Element zurückzugeben!
+                      if($geige->kd_id == $_SESSION['id']){
+                        echo '<form method="post" action="server/geigen.php">
+                        <div class="input-group mb-3">
+                          <input type="text" hidden name="ggID" value='.$geige->gg_id.'>';
+                          $date = new DateTime();
+                          if($date->getTimestamp() - strtotime($geige->gg_ausleihdatum)>604800){
+                            echo '<input type="submit" class="btn-sm bg-transparent btn-outline-danger"  value="Zurückgeben (Überfällig!)" name="zurückgeben" id="zurückgeben">';
+                          }
+                          else{
+                            echo '<input type="submit" class="btn-sm bg-transparent btn-outline-primary"  value="Zurückgeben" name="zurückgeben" id="zurückgeben">';
+                          }
+                          echo '
+                        </div>
+                      </form>';
+                      }
+                      else{
+                        echo 'Bereits seit '.date("d.m.y", strtotime($geige->gg_ausleihdatum)).' ausgeliehen!';
+                      }
+                    }
+                  ?>
+                </td>
+              </tr>
+            <?php
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
 </section>
 
 <!-- Harfenverleih -->
