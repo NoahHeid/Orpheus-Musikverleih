@@ -22,21 +22,38 @@
     if(isset($_POST['ausleihen'])){
         $auszuleihenID = $_POST['ggID'];
         $kdID = $_POST['kdID'];
+        
         $sql = "UPDATE geigen SET gg_ausleihdatum=CURRENT_TIMESTAMP,kd_id=$kdID WHERE gg_id = $auszuleihenID";
-        //UPDATE `geigen` SET `gg_ausleihdatum`='CURRENT_TIMESTAMP',`kd_id`='1' WHERE `gg_id` = '4';
         $connection->query($sql);
         $connection->close();
-        header('Location: '."../ausleihe.php");
-        die();
+        //Gehe zurück zur Startseite.
+        echo '
+            <script>
+            function kehreZurückErfolg()
+            {
+                alert("Viel Erfolg mit der neuen Geige. Bitte denk daran, dass die Instrumente nach einer Woche zurückgegeben werden müssen!");
+                location.replace("../ausleihe.php");
+            }
+            </script>
+            <body onload="kehreZurückErfolg()">
+        ';
     }
     if(isset($_POST['zurückgeben'])){
         $zurückgebenID = $_POST['ggID'];
         $sql = "UPDATE geigen SET gg_ausleihdatum=NULL,kd_id=0 WHERE gg_id = $zurückgebenID";
-        //UPDATE `geigen` SET `gg_ausleihdatum`='CURRENT_TIMESTAMP',`kd_id`='1' WHERE `gg_id` = '4';
         $connection->query($sql);
         $connection->close();
-        header('Location: '."../ausleihe.php");
-        die();
+        //Gehe zurück zur Startseite.
+        echo '
+            <script>
+            function kehreZurückErfolg()
+            {
+                alert("Vielen Dank für das Zurückgeben der Geige!");
+                location.replace("../ausleihe.php");
+            }
+            </script>
+            <body onload="kehreZurückErfolg()">
+        ';
     }
 
 ?>

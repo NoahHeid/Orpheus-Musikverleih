@@ -59,19 +59,19 @@
 
     <div class="carousel-item" data-bs-interval="4000">
       <div class="carousel-caption d-none d-md-block text-dark">
-        <img src="img/instrumente/pacato_evioline.png" class="d-block w-100" alt="...">
-        <h5>PACATO E-Violine</h5>
-        <p>Elektrische Violine mit schwarzem Teilkorpus und Stahlseiten</p>
-      </div>
-    </div>
-
-    <div class="carousel-item" data-bs-interval="4000">
-      <div class="carousel-caption d-none d-md-block text-dark">
         <img src="img/instrumente/paganini_allegro.png" class="d-block w-100" alt="...">
         <h5>PAGANINO Allegro Violine</h5>
         <p>Schöne Schülergeige von überzeugender Qualität mit Garnitur und Kinnhalter aus Ebenholz</p>
       </div>
     </div>    
+    
+    <div class="carousel-item" data-bs-interval="4000">
+      <div class="carousel-caption d-none d-md-block text-dark">
+        <img src="img/instrumente/pacato_evioline.png" class="d-block w-100" alt="...">
+        <h5>PACATO E-Violine</h5>
+        <p>Elektrische Violine mit schwarzem Teilkorpus und Stahlseiten</p>
+      </div>
+    </div>
     
     <div class="carousel-item" data-bs-interval="4000">
       <div class="carousel-caption d-none d-md-block text-dark">

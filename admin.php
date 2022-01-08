@@ -148,7 +148,7 @@
               
               <th scope="col">Geige</th>
               <th scope="col">Ausgeliehen an</th>
-              <th scope="col">Ausgeliehen am</th>
+              <th scope="col">Datum der Ausleihe</th>
             </tr>
           </thead>
           <tbody>
@@ -187,7 +187,7 @@
 
               <!-- Geigen Ausleihdatum anzeigen-->
               <td>
-                <?php if($geige->gg_ausleihdatum == null){echo "-";}else{echo $geige->gg_ausleihdatum;} ?>
+              <?php if($geige->gg_ausleihdatum == null){echo "-";}else{echo date("H:i", strtotime($geige->gg_ausleihdatum))." Uhr am ".date("d.m.y", strtotime($geige->gg_ausleihdatum));} ?>
               </td>               
             </tr>
             <?php
@@ -218,7 +218,7 @@
             <th scope="col">#</th>
             <th scope="col">Harfe</th>
             <th scope="col">Ausgeliehen an</th>
-            <th scope="col">Ausgeliehen am</th>
+            <th scope="col">Datum der Ausleihe</th>
           </tr>
         </thead>
         <tbody>
@@ -257,7 +257,7 @@
 
             <!-- Harfen Ausleihdatum anzeigen-->
             <td>
-              <?php if($harfe->hf_ausleihdatum == null){echo "-";}else{echo $harfe->hf_ausleihdatum;} ?>
+              <?php if($harfe->hf_ausleihdatum == null){echo "-";}else{echo date("H:i", strtotime($harfe->hf_ausleihdatum))." Uhr am ".date("d.m.y", strtotime($harfe->hf_ausleihdatum));} ?>
             </td>               
           </tr>
           <?php
@@ -515,7 +515,6 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">ID</th>
           <th scope="col">Vorname</th>
           <th scope="col">Nachname</th>
           <th scope="col">Email</th>
@@ -539,11 +538,6 @@
                     </div>
                   </form>
                 </td>
-
-                <!-- Kunden ID -->
-                <th scope="row"> 
-                  <?php echo $kunde->kd_id; ?>
-                </th>
 
                 <!-- Kunden Vorname -->
                 <td>

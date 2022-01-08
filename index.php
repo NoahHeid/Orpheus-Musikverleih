@@ -62,7 +62,7 @@
             <p class="card-text">Die Pandemie fordert uns alle heraus. Daher bieten wir Montags und Freitags Musikunterricht über Zoom an!</p>
             <script>
               function bitteErsteinloggenAlert(){
-                alert("Bitte zur Terminplanung erst einloggen!");
+                alert("Zum vollständigen Nutzen der Seite, musst du eingeloggt sein!");
               }
             </script>
             <?php 
@@ -114,7 +114,7 @@
             <?php 
               if(!isset($_SESSION['loggedin']))
               {
-                echo '<input type="button" class="btn btn-custom" onclick="alertNachricht()" value="Jetzt Termin vereinbaren" />';
+                echo '<input type="button" class="btn btn-custom" onclick="bitteErsteinloggenAlert()" value="Zur Buchung bitte erst einloggen" />';
               }
               else
               {
@@ -169,8 +169,8 @@
           }else
           {
             echo '
-              <a href="#" class="btn btn-warning mt-3">
-                <i class="bi bi-chevron-right"></i> Logge dich ein
+              <a class="btn btn-warning mt-3" onclick="bitteErsteinloggenAlert()">
+                <i class="bi bi-chevron-right"></i> Zum Ausleihen bitte erst einloggen
               </a>
             ';
           }
@@ -203,9 +203,9 @@
           else
           {
             echo '
-              <a href="#" class="btn btn-warning mt-3">
-                <i class="bi bi-chevron-right"></i> Logge dich ein
-              </a>
+            <a class="btn btn-warning mt-3" onclick="bitteErsteinloggenAlert()">
+            <i class="bi bi-chevron-right"></i> Zum Terminbuchen bitte erst einloggen
+          </a>
             ';
           }
         ?>

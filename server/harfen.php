@@ -30,16 +30,34 @@ if(isset($_POST['ausleihen'])){
     $sql = "UPDATE harfen SET hf_ausleihdatum=CURRENT_TIMESTAMP,kd_id=$kdID WHERE hf_id = $auszuleihenID";
     $connection->query($sql);
     $connection->close();
-    header('Location: '."../ausleihe.php");
-    die();
+    //Gehe zurück zur Startseite.
+    echo '
+        <script>
+        function kehreZurückErfolg()
+        {
+            alert("Viel Erfolg mit der neuen Harfe. Bitte denk daran, dass die Instrumente nach einer Woche zurückgegeben werden müssen!");
+            location.replace("../ausleihe.php");
+        }
+        </script>
+        <body onload="kehreZurückErfolg()">
+    ';
 }
 if(isset($_POST['zurückgeben'])){
     $zurückgebenID = $_POST['hfID'];
     $sql = "UPDATE harfen SET hf_ausleihdatum=NULL,kd_id=0 WHERE hf_id = $zurückgebenID";
     $connection->query($sql);
     $connection->close();
-    header('Location: '."../ausleihe.php");
-    die();
+    //Gehe zurück zur Startseite.
+    echo '
+        <script>
+        function kehreZurückErfolg()
+        {
+            alert("Vielen Dank für das Zurückgeben der Harfe!");
+            location.replace("../ausleihe.php");
+        }
+        </script>
+        <body onload="kehreZurückErfolg()">
+    ';
 }
 
 ?>
