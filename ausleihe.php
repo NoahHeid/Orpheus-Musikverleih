@@ -36,10 +36,10 @@
 <!-- Warning, wenn ein Instrument zurückgegeben werden muss -->
 <?php include "statisch/ueberfaelligWarning.php"; ?>
 
-<!-- Carousel -->
-<section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor4">
+<!--Geigen  Carousel -->
+<section class="text-light text-sm-start bgmaincolor4">
+<div class="h1 text-center bgmaincolor3">Unsere besten Geigen</div>
 <div id="carouselInstruments" class="carousel carousel-white slide" data-bs-ride="carousel">
-
   <div class="carousel-inner text-white">
 
     <div class="carousel-indicators">
@@ -50,34 +50,34 @@
     </div>
 
     <div class="carousel-item active" data-bs-interval="4000">
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption d-none d-md-block text-dark">
         <img src="img/instrumente/höfner_student_violine.png" class="d-block w-100" alt="...">
         <h5>HÖFNER Student Violine</h5>
         <p>Ausgezeichnete Schülergeige aus dem Hause der deutschen Geigenbauwerkstatt Karl Höfner</p>
       </div>
     </div>
 
-    <div class="carousel-item" data-bs-interval="2500">
-      <div class="carousel-caption d-none d-md-block">
+    <div class="carousel-item" data-bs-interval="4000">
+      <div class="carousel-caption d-none d-md-block text-dark">
         <img src="img/instrumente/pacato_evioline.png" class="d-block w-100" alt="...">
         <h5>PACATO E-Violine</h5>
         <p>Elektrische Violine mit schwarzem Teilkorpus und Stahlseiten</p>
       </div>
     </div>
 
-    <div class="carousel-item" data-bs-interval="2500">
-      <div class="carousel-caption d-none d-md-block">
+    <div class="carousel-item" data-bs-interval="4000">
+      <div class="carousel-caption d-none d-md-block text-dark">
         <img src="img/instrumente/paganini_allegro.png" class="d-block w-100" alt="...">
         <h5>PAGANINO Allegro Violine</h5>
         <p>Schöne Schülergeige von überzeugender Qualität mit Garnitur und Kinnhalter aus Ebenholz</p>
       </div>
     </div>    
     
-    <div class="carousel-item" data-bs-interval="2500">
-      <div class="carousel-caption d-none d-md-block">
+    <div class="carousel-item" data-bs-interval="4000">
+      <div class="carousel-caption d-none d-md-block text-dark">
         <img src="img/instrumente/paganino_classic.png" class="d-block w-100" alt="...">
-        <h5>PAGANINO Classic Viola</h5>
-        <p>Sehr gute Schülerbratsche von überzeugender Qualität aus handausgearbeitem Massivholz</p>
+        <h5>PAGANINO Classic Violine</h5>
+        <p>Sehr gute Schülergeige von überzeugender Qualität aus handausgearbeitem Massivholz</p>
       </div>
     </div>
 
@@ -97,12 +97,13 @@
 </section>
 
 <!-- Geigenverleih -->
-<section class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5 border border-dark">
+<section class="text-light bgmaincolor5">
+<div class="h1 text-center bgmaincolor3">Hier unsere Geigen ausleihen</div>
 <div class="container">
     <div class="row d-sm-flex align-items-around">
       <!-- Geigenbild -->
       <div class="col-5">
-        <img src="img/geigenAusleihe.png" class="img-fluid" alt="Responsive image">
+        <img src="img/instrumente/geigenAusleihe.png" class="img-fluid" alt="Responsive image">
       </div>
       <div class="col-2"></div>
       <!-- Geigentabelle -->
@@ -174,8 +175,60 @@
   </div>
 </section>
 
+<!-- Harfen  Carousel -->
+<section class="text-light text-sm-start bgmaincolor4">
+<div class="h1 text-center bgmaincolor3">Unsere besten Harfen</div>
+<div id="carouselHarfen" class="carousel carousel-white slide" data-bs-ride="carousel">
+  <div class="carousel-inner text-white">
+
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselHarfen" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselHarfen" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselHarfen" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-item active " data-bs-interval="4000">
+      <div class="carousel-caption d-none d-md-block text-dark">
+        <img src="img/instrumente/aurora.png" class="d-block" alt="...">
+        <h5>SALVI Aurora</h5>
+        <p>Ein zeitloses Modell von SALVI. Schlichte Eleganz und eine Klangqualität die alle Anforderungen von KonzertharfenistInnen übertrifft.</p>
+      </div>
+    </div>
+
+    <div class="carousel-item" data-bs-interval="4000">
+      <div class="carousel-caption d-none d-md-block text-dark">
+        <img src="img/instrumente/iris_natural.png" class="d-block" alt="...">
+        <h5>SALVI Iris Natural</h5>
+        <p>Iris - ein Vorzeigemodell aus dem Hause Salvi. Ein edles Erscheinungsbild gepaart mit einem anspruchsvollem Sound macht dieses Instrument zu einem beliebten Modell für professionelle Harfenspieler/innen und Orchester.</p>
+      </div>
+    </div>
+
+    <div class="carousel-item" data-bs-interval="4000">
+      <div class="carousel-caption d-none d-md-block text-dark">
+        <img src="img/instrumente/apollo.png" class="d-block" alt="...">
+        <h5>SALVI Apollo</h5>
+        <p>Mächtige Konzertharfe, gut geeignet für den Orchstereinsatz - perfektes Gliechgewicht zwischen Harmonie und Power.</p>
+      </div>
+    </div>    
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselHarfen" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselHarfen" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+
+</div>
+</section>
+
 <!-- Harfenverleih -->
-<section class="text-light p-5 mb-4 p-lg-0 pt-lg-5 text-center text-sm-start bgmaincolor5">
+<section class="text-light bgmaincolor5">
+  <div class="h1 text-center bgmaincolor3">Hier unsere Harfen ausleihen</div>
   <div class="container">
     <div class="row d-sm-flex align-items-center justify-content-around">
       <div class="col-5">
@@ -243,7 +296,7 @@
       <div class="col-2"></div>
       <!-- Harfenbild -->
       <div class="col-5">
-        <img src="img/harfenAusleihe.png" class="img-fluid" alt="Responsive image">
+        <img src="img/instrumente/harfenAusleihe.png" class="img-fluid" alt="Responsive image">
       </div>
     </div>
   </div>

@@ -30,6 +30,10 @@
     width: 100%;
     
   }
+  div.c-wrapper{
+    width: 80%; /* for example */
+    margin: auto;
+}
 
   .bgmaincolor1{
       background-color: var(--maincolor1);
