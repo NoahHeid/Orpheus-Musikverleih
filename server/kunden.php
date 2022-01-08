@@ -34,6 +34,7 @@
         //Hole Values aus der Form
         $email = $_POST['user'];
         $pass = $_POST['pass'];
+        
         if(isset($_POST['checkCookie'])){
             $checkCookie = true;
         }
@@ -54,16 +55,20 @@
             $_SESSION['email'] = $ergebnis[0]->kd_email;
             $_SESSION['handy'] = $ergebnis[0]->kd_handy;
     
-            //Setze den Cookie für einen Monat
+            //Setze den Cookie
             if($checkCookie){
-                setcookie('email', $email);
-                setcookie('password', $pass);
+                setcookie('email', $email, time()+3600, '/', null);
+                setcookie('password', $pass, time()+3600, '/', null);
+                setcookie('checkBoxCookie', true, time()+3600, '/', null);
             }
             else{
+                echo "Else";
                 unset($_COOKIE['email']);
                 unset($_COOKIE['password']);
-                setcookie('email', "", time()-3600);
-                setcookie('password', "", time()-3600);
+                unset($_COOKIE['checkBoxCookie']);
+                setcookie('email', '', time()-3600,  '/', null);
+                setcookie('password', '', time()-3600,  '/', null);
+                setcookie('checkBoxCookie', '', time()-3600,  '/', null);
             }
             //Update nun auch die letzte Anmeldung in der Datenbank!
             $kdID = $ergebnis[0]->kd_id;
@@ -76,7 +81,7 @@
                 <script>
                 function kehreZurückErfolg()
                 {
-                    alert("Anmelden erfolgreich. Schön dich zu sehen '.$_COOKIE["email"].'!");
+                    alert("Anmelden erfolgreich. Schön dich zu sehen '.$_SESSION["vorname"].'!");
                     location.replace("../index.php");
                 }
                 </script>

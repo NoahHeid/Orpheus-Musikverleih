@@ -15,12 +15,9 @@
                 <label for="user" class="col-form-label">Email</label>
                 <input type="text" class="form-control" id="user" name="user" value="<?php 
                
-                if(!empty($_COOKIE))
+                if(isset($_COOKIE['email']))
                 {
                     echo $_COOKIE['email'];
-                }
-                else{
-                    echo "Cookie leer";
                 }
                 ?>" required/>
             </div>
@@ -29,12 +26,12 @@
                 <input type="password" class="form-control" id="pass" required name="pass" value="<?php 
                 if(isset($_COOKIE['password']))
                 {
-                    echo "Cookie existiert";
+                    echo $_COOKIE['password'];
                 }
                 ?>" />
             </div>
             <div class="form-check mt-2">
-                <input class="form-check-input" type="checkbox" value="true" name="checkCookie" id="checkCookie">
+                <input class="form-check-input" <?php if(isset($_COOKIE['checkBoxCookie'])){echo "checked";} ?> type="checkbox" value="true" name="checkCookie" id="checkCookie">
                 <label class="form-check-label" for="checkCookie">Daten speichern (verwendet Cookies)</label>
             </div>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >
@@ -47,7 +44,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal Hier Registrieren -->
 <div
     class="modal fade"
