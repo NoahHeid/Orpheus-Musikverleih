@@ -55,15 +55,17 @@
     }
 
     //Wenn die ganze Musikspalte ausgeblendet ist, dann muss auch das "Neue Spalte einstellen" ausgeblendet sein!
-    if(document.getElementById("musikstundenSpalte").style.display == "none"){
+    if(id == "musikstundenSpalte"){
+      if(document.getElementById("musikstundenSpalte").style.display == "none"){
       var element = document.getElementById("neueStundeEinstellen");
       element.style.display = "none";
-      console.log("IF");
+      }
+      else{
+        var element = document.getElementById("neueStundeEinstellen");
+        element.style.display = "block";
+      }
     }
-    else{
-      document.getElementById("neueStundeEinstellen").style.display = "block";
-      console.log("ELSE");
-    }
+
   }
 </script>
 
@@ -101,7 +103,7 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">ID</th>
+              
               <th scope="col">Geige</th>
               <th scope="col">Ausgeliehen an</th>
               <th scope="col">Ausgeliehen am</th>
@@ -121,10 +123,7 @@
                   </div>
                 </form>
               </td>
-              
-              <!-- Geigen ID anzeigen -->
-              <th scope="row"> <?php echo $geige->gg_id; ?></th>
-              
+
               <!-- Geigen Name anzeigen-->
               <td>
                 <?php echo $geige->gg_name; ?>
@@ -146,7 +145,7 @@
 
               <!-- Geigen Ausleihdatum anzeigen-->
               <td>
-                    <?php echo $geige->gg_ausleihdatum; ?>
+                <?php if($geige->gg_ausleihdatum == null){echo "-";}else{echo $geige->gg_ausleihdatum;} ?>
               </td>               
             </tr>
             <?php
@@ -175,7 +174,6 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">ID</th>
             <th scope="col">Harfe</th>
             <th scope="col">Ausgeliehen an</th>
             <th scope="col">Ausgeliehen am</th>
@@ -195,9 +193,6 @@
                 </div>
               </form>
             </td>
-            
-            <!-- Harfen ID anzeigen -->
-            <th scope="row"> <?php echo $harfe->hf_id; ?></th>
             
             <!-- Harfen Name anzeigen-->
             <td>
@@ -220,7 +215,7 @@
 
             <!-- Harfen Ausleihdatum anzeigen-->
             <td>
-                  <?php echo $harfe->hf_ausleihdatum; ?>
+              <?php if($harfe->hf_ausleihdatum == null){echo "-";}else{echo $harfe->hf_ausleihdatum;} ?>
             </td>               
           </tr>
           <?php
