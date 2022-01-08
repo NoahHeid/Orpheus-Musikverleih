@@ -43,26 +43,37 @@
   <div class="carousel-inner text-white">
 
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselInstruments" data-bs-slide-to="0" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselInstruments" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselInstruments" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselInstruments" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselInstruments" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselInstruments" data-bs-slide-to="3" aria-label="Slide 4"></button>
     </div>
 
-    <div class="carousel-item" data-bs-interval="4000">
+    <div class="carousel-item active" data-bs-interval="4000"> 
+        <div class="col-6">
+          <img src="img/instrumente/höfner_student_violine.png" class="img-fluid" alt="...">
+        </div>
+        <div class="col-6">
+          Test
+        </div>
+      
+    </div>
+
+    <div class="carousel-item " data-bs-interval="2500">
       <div class="carousel-caption d-none d-md-block">
-        <img src="img/noah.jpeg" class="d-block w-100" alt="...">
+        <img src="img/instrumente/pacato_evioline.png" class="img-fluid" alt="...">
       </div>
     </div>
 
-    <div class="carousel-item active" data-bs-interval="4000">
+    <div class="carousel-item" data-bs-interval="2500">
       <div class="carousel-caption d-none d-md-block">
-        <img src="img/moritz.png" class="d-block w-100" alt="...">
+        <img src="img/instrumente/paganini_allegro.png" class="img-fluid" alt="...">
       </div>
     </div>
 
-    <div class="carousel-item" data-bs-interval="4000">
+    <div class="carousel-item" data-bs-interval="2500">
       <div class="carousel-caption d-none d-md-block">
-        <img src="img/orpheus-saga.jpg" class="d-block w-100" alt="...">
+        <img src="img/instrumente/paganino_classic.png" class="img-fluid" alt="...">
       </div>
     </div>
 
