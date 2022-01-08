@@ -23,7 +23,7 @@
   <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between">
       <div>
-        <h1> <?php echo "Lieber ".$_SESSION['vorname']?>, viel Spaß beim Erkunden unseres <span class="text-warning"> Instrumentenparadises!</span></h1>
+        <h1> <?php echo "Liebe*r ".$_SESSION['vorname']?>, viel Spaß beim Erkunden unseres <span class="text-warning"> Instrumentenparadises!</span></h1>
         <p class="lead my-4">
             Bitte denk daran, dass die Instrumente nach einer Woche zurückgegeben werden müssen!
         </p>
@@ -218,7 +218,6 @@
     </div>
   </div>
 </section>
-
 <?php
   include 'statisch/footer.php';
 ?>

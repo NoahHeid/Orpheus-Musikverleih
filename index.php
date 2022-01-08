@@ -15,7 +15,7 @@
   <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between">
       <div>
-        <h1> <?php if($eingeloggt){echo "Lieber ".$_SESSION['vorname']." b";}else{echo "B";} ?>eginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
+        <h1> <?php if($eingeloggt){echo "Liebe*r ".$_SESSION['vorname']." b";}else{echo "B";} ?>eginne mit uns deine Reise in die <span class="text-warning"> Welt der Musik!</span></h1>
         <p class="lead my-4">
           <em>Die Musik drückt das aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.</em> <br>
           - Victor Hugo 
@@ -281,8 +281,8 @@
         <div id="question-two" class="accordion-collapse collapse" data-bs-parent="#questions">
           <div class="accordion-body">
             Die Preise für die einzelnen Stunden sind abhänig vom gewählten Instrument und dem Level der Lernenden:<br>
-            Harfe: 40 € für Anfänger, 50 € für Fortgeschrittene<br>
-            Violine: 35 € für Anfänger, 45 € für Fortgeschrittene<br>
+            Harfe: 30 € für Anfänger, 35 € für Fortgeschrittene<br>
+            Violine: 40 € für Anfänger, 50 € für Fortgeschrittene<br>
             Die Leihgebühr für Instrumente beträgt 25 € pro Woche<br>
           </div>
         </div>
