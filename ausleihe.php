@@ -61,19 +61,27 @@
 
     <div class="carousel-item " data-bs-interval="2500">
       <div class="carousel-caption d-none d-md-block">
-        <img src="img/instrumente/pacato_evioline.png" class="img-fluid" alt="...">
+        <img src="img/geige1.png" class="d-block w-100" alt="...">
+        <h5>Scala Vilagio F.H. Maggini</h5>
+            <p>Eine wunderschön gearbeitete Violine italienischer Machart mit Griffbrett aus Ebenholz und geflammtem Boden.
+
+            </p>
       </div>
     </div>
 
     <div class="carousel-item" data-bs-interval="2500">
       <div class="carousel-caption d-none d-md-block">
-        <img src="img/instrumente/paganini_allegro.png" class="img-fluid" alt="...">
+        <img src="img/geige2.png" class="d-block w-100" alt="...">
+        <h5>Gewa Pure Violaset HW 40,8cm</h5>
+            <p>Eine gut gearbeitete Viola mit Griffbrett aus Hartholz. Das Gewa Pure Violaset enthält einen Bogen und glänzt durch einen warmen und vollen Klang.</p>
       </div>
     </div>
 
     <div class="carousel-item" data-bs-interval="2500">
       <div class="carousel-caption d-none d-md-block">
-        <img src="img/instrumente/paganino_classic.png" class="img-fluid" alt="...">
+        <img src="img/geige3.png" class="d-block w-100" alt="...">
+        <h5>Conrad Götz Heritage Contempor. 115 Violin</h5>
+            <p>Violine deutscher Machart von sehr hoher Qualität. Conrad Götz Heritage hat ein Griffbrett aus Ebenholz und überzeugt mit feinen und eleganten Klängen</p>
       </div>
     </div>
 
